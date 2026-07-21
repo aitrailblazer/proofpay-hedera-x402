@@ -65,7 +65,7 @@
     class ProofPayVideo extends LitElement{
       static styles=css`
         :host{display:block;width:100vw;height:100vh;background:radial-gradient(circle at 12% 0,rgba(99,224,181,.12),transparent 32%),radial-gradient(circle at 90% 10%,rgba(242,198,101,.10),transparent 28%),#05070a}
-        .frame{position:relative;width:100%;height:100%;padding:6.2vh 6.5vw 7vh;display:flex;flex-direction:column}
+        *,*::before,*::after{box-sizing:border-box}.frame{position:relative;width:100%;height:100%;padding:6.2vh 6.5vw 7vh;display:flex;flex-direction:column}
         .watermark{position:absolute;right:3vw;top:3vh;display:flex;align-items:center;gap:.7vw;color:#c7c5bd;font-size:1vw;letter-spacing:.03em;opacity:.82}
         .watermark img{width:3.3vw;height:3.3vw;object-fit:contain}.copyright{position:absolute;left:3vw;top:3.2vh;color:#777f85;font-size:.72vw;letter-spacing:.04em}
         .eyebrow{font-size:1vw;font-weight:850;letter-spacing:.19em;color:var(--green);margin-bottom:1.8vh}.title{font-size:4.15vw;line-height:1.02;letter-spacing:-.05em;font-weight:900;max-width:82vw;margin:0}
