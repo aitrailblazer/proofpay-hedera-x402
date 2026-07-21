@@ -58,6 +58,20 @@ The configuration prompt hides the ECDSA private-key input and stores the
 buyer, separate seller, and receipt-signing values in macOS Keychain. Neither
 script prints the private values.
 
+For an Azure-hosted or Codex-operated demo, load the four credentials directly
+from Azure Key Vault without writing a `.env` file:
+
+```bash
+az login
+AZURE_KEY_VAULT_NAME=aitrailblazerkeyvault npm run demo:keyvault
+```
+
+The launcher reads `proofpay-hedera-buyer-account-id`,
+`proofpay-hedera-buyer-private-key-hex`,
+`proofpay-hedera-seller-account-id`, and
+`proofpay-receipt-private-key-pem-base64`. The values are passed only through
+the child-process environment and are never printed.
+
 ## Environment
 
 See `.env.example`. `HEDERA_CLIENT_KEY` is required only by the buyer. The
@@ -78,6 +92,19 @@ from the running server rather than trusting a key embedded in the bundle.
 
 Current submission evidence is tracked in
 [`docs/ProofPay_Submission_Proof_Index.html`](docs/ProofPay_Submission_Proof_Index.html).
+
+## Live Hedera testnet proof
+
+- Transaction:
+  [`0.0.7162784-1784665192-906989595`](https://hashscan.io/testnet/transaction/0.0.7162784-1784665192-906989595)
+- Public proof bundle:
+  [`docs/evidence/proof-bundle-2026-07-21.json`](docs/evidence/proof-bundle-2026-07-21.json)
+- Bundle SHA-256:
+  `8f48bdb232c8c908dc39f334bd12f7d83aae74798a8b4f4d52beb253435c2342`
+
+The committed bundle contains public transaction, quote, receipt, ciphertext,
+decryption, and deterministic evidence material only. It contains no wallet or
+receipt-signing private key.
 
 ## Evidence boundary
 

@@ -1,0 +1,121 @@
+{
+  "receipt": {
+    "payload": {
+      "schema_id": "proofpay.receipt.v1",
+      "receipt_id": "pprec_91b33c408f6649f5b150068fe50a7c86",
+      "quote_id": "ppq_fc1299710b6d40b7bf19493fbae72476",
+      "request_id": "ppr_eb9dbf7c07d94d4ea8eb57fa6143f589",
+      "nonce": "13af5a0c4547da021ce007e6129955c2",
+      "product_id": "issuer-filing-evidence-v1",
+      "product_schema": "issuer-filing-evidence.v1",
+      "network": "hedera:testnet",
+      "asset": "0.0.0",
+      "amount_atomic": "1000001",
+      "payer": "0.0.9676074",
+      "pay_to": "0.0.9676073",
+      "transaction_id": "0.0.7162784-1784665192-906989595",
+      "hashscan_url": "https://hashscan.io/testnet/transaction/0.0.7162784-1784665192-906989595",
+      "payment_terms_hash": "sha256:e65b904f96504a66356dd8acc4aab97759ff627cfc7dc0464203206421f229f3",
+      "request_hash": "sha256:e4419bb8cb34c6c7b6123a5ef41daa2ecef2b0c4528ceae6e625485b603b48d9",
+      "evidence_hash": "sha256:b923718cb77d551edce1d526a298f7b1a2af5199e8f2cbf3b9922e4c16677a5f",
+      "output_hash": "sha256:43f25ef34d1795869076c83188d40771e7d34f4231af3ab2f5d2ef2c72d473a2",
+      "sealed_hash": "sha256:d5bca437fc12ca894286b9b402018165b39c99f692f348416e5cf866df820f09",
+      "source_date": "2026-07-21",
+      "software_commit": "ad31b60b70b46be2e088f0fa4f5409073a3df5fc",
+      "settlement_verified": true,
+      "artifact_verified": true,
+      "settled_at": "1784665197.689086104",
+      "issued_at": "2026-07-21T20:19:58.882Z",
+      "receipt_signer": "sha256:2b285113480be17ba333d44b0e6b3d8508bc3fa8d42ec3df6838d974748daf1b",
+      "signature_algorithm": "Ed25519"
+    },
+    "signature": "aUXrDTlchSAjPfCPetR997tFMmPAg4W018wp6LCpPm8yp6dueYwaSwLZWP9c2+S2/g8jAlNJmhHbU+2S5L8aBg=="
+  },
+  "attestation": {
+    "payload": {
+      "schema_id": "proofpay.artifact-attestation.v1",
+      "quote_id": "ppq_fc1299710b6d40b7bf19493fbae72476",
+      "request_id": "ppr_eb9dbf7c07d94d4ea8eb57fa6143f589",
+      "nonce": "13af5a0c4547da021ce007e6129955c2",
+      "product_id": "issuer-filing-evidence-v1",
+      "product_schema": "issuer-filing-evidence.v1",
+      "request_hash": "sha256:e4419bb8cb34c6c7b6123a5ef41daa2ecef2b0c4528ceae6e625485b603b48d9",
+      "evidence_hash": "sha256:b923718cb77d551edce1d526a298f7b1a2af5199e8f2cbf3b9922e4c16677a5f",
+      "output_hash": "sha256:43f25ef34d1795869076c83188d40771e7d34f4231af3ab2f5d2ef2c72d473a2",
+      "sealed_hash": "sha256:d5bca437fc12ca894286b9b402018165b39c99f692f348416e5cf866df820f09",
+      "source_date": "2026-07-21",
+      "payment_terms_hash": "sha256:e65b904f96504a66356dd8acc4aab97759ff627cfc7dc0464203206421f229f3",
+      "issued_at": "2026-07-21T20:19:56.270Z",
+      "expires_at": "2026-07-21T20:22:56.270Z",
+      "receipt_signer": "sha256:2b285113480be17ba333d44b0e6b3d8508bc3fa8d42ec3df6838d974748daf1b",
+      "signature_algorithm": "Ed25519"
+    },
+    "signature": "f+k4CMd5FCZSwYfg4/WrcpiDoNZdxp5ouWVQqirPOVK673+T16/5HROnzknCaMHNgTSQ1Zsj6KMs1xEY0+SQAw=="
+  },
+  "sealed": {
+    "algorithm": "aes-256-gcm",
+    "iv": "KTK3sPI8cfB+LCfj",
+    "auth_tag": "JnjQ8j8HyR2KzLltyKcTsw==",
+    "ciphertext": "uvNtsZnhdc8jHqtCA02F2RF0TGFxW+umkZHI47TdHZ91nimI+UjUPSdHhJBmD/6cUpX9ky3ot1Int8z3sl0+3VxL35CV5skkL0gGNBWgjQHRlX8M6K/8akGSIcV6lsPt1a5Qgxwo7mAPm/c2tLzLZZITH70pH3p/0mb49EOVecgiR0AAZ7F4VNz9KHB3vHETOhZlCHW7fOu70tx6ReMgGQErbJwRorTivtRwKLjmpgm+02FoQdTNWPJu7y/pEvt2wa/efHVwVJh7iL2gg5LYZctOI5jgI6xbDuOmlO8DnZN0Z4WNCz4Aae9rbkPgeg8PgwYdEdsOHaFB7fG0RLFd4vwgvhhiXgoCMusSiyKSdqXj6BKhwOYtoPM1Ib0Ud2yN0Myxjommil3nl5G4uhKMF6VIUUtCn6fFcS89vvGNk3u8yfex92MvdMLrs7BWONnqD+7bxS50Yym6MpgSCZXvFCT6y499/PASgxcKQvU38971iNrO4V+IPu3Cpfm/aiHhGADJ2hXU3hXlmpcX9UHLN1Gf/XgK+I91tsJ1VndJAZmVtg9L0qpunnEaxdyG3oBjO0fFtccj0QAJ5QLf9ET4KQvL2JoRLy6L+rbavc+bveUEbFWmYN0A8KvNMIU5/Hh1kAL3P1jSrzZ8F4PeBbGpYDX9UkcDCCbysuSW2+LO+oMRPgUP+NpHzmNKhh8lu9VDpMBA8RO2hhfbxQSZd9DTSuzBpkru+Sgwnt4nVQQN53PR2lzpSEJOYsnoXfLoVTIT8IZyGXK1dZvGxe3m01PVk7uTHeAQZljd9aNvk2uAx3gFLMwAIDijYhWYhm/Im9dy63l8XOcwfBHzrTnHGQLxOZF5p7UzcyyQ3PZxYgLBh6v+utD2GKIIGU61epTOLgSY8eaI0U6uLXXgT96La7KiOsVi3GOCKgv9IZZ630GSGMHViu5nlBhwnBQaULtRsr5A0udfL8XwQOauUhtzFESqxjteqY4cRzvJs6Et1M2+2RjR1qyd5FO2QiJ4/U5rbQ/AlpvB7BSZaaqKngVQT91xuDUBHCpz+u4SmYZ9A0PIUiYZuW5OPkd5L9yNz9cCoHRwBDDive1vtj7AHEiEvSF86+yvbhABU0BUOi1ChzIcX7FoFStfq5V98+9OFDcZkdR/f+38J8uir42XBeB6UFyscsN3JJtcd44eRG1TBWqgBCOw3SJ+t6l45WQxhS1tWWIY7k2uAHSQ5VSGxTjqgHyqy2xTyLtOucLvYswDpZbFl7uqm1f1S62cJYT0IqXo5M0wm3o4oJB6MIEscX/x7mgE7kOC1zifYNSlxLtd5byaV1ES1MHwBkuP5QwkNexwO+CkExwH+imt/CaVs7nmpzSd/avUmbO4566uNf2tWV/3zPk2l4Y7/hmaDkZCHTv1pgjh69rNkSwxxzN+aej+Od2TWJzRPKsyNA7/FC5UOjlOWQpSsJ8CTshWDXSlPUtK1dMDgBtYdg8teGab5JkNDrthHmK00PIhe+0="
+  },
+  "decryption_key": "8nhNPloTX5p8hCN6I0rWLmWUHpw66jYpM2T/EXHp0iw=",
+  "artifact": {
+    "cik": "0001050446",
+    "entity_name": "Strategy Inc",
+    "evidence_boundary": [
+      "Snapshot captured from the public DeltaSignal fundamentals route on 2026-07-21.",
+      "The fixture is deterministic and public-safe; it is not a live market quote.",
+      "The product provides filing-backed evidence and no buy, sell, hold, target-price, or allocation instruction."
+    ],
+    "filing_form": "10-K",
+    "fundamentals": {
+      "cash_and_equivalents": 2301470000,
+      "cash_flow_from_operations": -67240999.9999,
+      "current_assets": 2564137000,
+      "net_income": -3848151999.9999,
+      "operating_income": -5444384999.9999,
+      "revenue": 477233000,
+      "total_assets": 61641082000,
+      "total_equity": 44123458000,
+      "total_liabilities": 10598110000
+    },
+    "period": "2025-12-31",
+    "provenance": {
+      "data_source": "linkbase_rooted_facts",
+      "is_linkbase_backed": true,
+      "quality_flag": "High",
+      "root_resolution_method": "standard_root_match",
+      "source_endpoint": "https://api.aitrailblazer.net/v1/company-fundamentals/MSTR",
+      "source_snapshot_sha256": "sha256:872108263ef00b5cdef0705b717fa69c48a0af33063095cc7082436f6547a0b9"
+    },
+    "retrieved_at": "2026-07-21T16:25:00Z",
+    "schema_id": "issuer-filing-evidence.v1",
+    "source_date": "2026-07-21",
+    "ticker": "MSTR"
+  },
+  "quote": {
+    "quote_id": "ppq_fc1299710b6d40b7bf19493fbae72476",
+    "request_id": "ppr_eb9dbf7c07d94d4ea8eb57fa6143f589",
+    "nonce": "13af5a0c4547da021ce007e6129955c2",
+    "product_id": "issuer-filing-evidence-v1",
+    "request": {
+      "ticker": "MSTR",
+      "period": "2025-12-31"
+    },
+    "request_hash": "sha256:e4419bb8cb34c6c7b6123a5ef41daa2ecef2b0c4528ceae6e625485b603b48d9",
+    "source_date": "2026-07-21",
+    "payment_terms": {
+      "scheme": "exact",
+      "network": "hedera:testnet",
+      "asset": "0.0.0",
+      "amount_atomic": "1000001",
+      "pay_to": "0.0.9676073",
+      "max_timeout_seconds": 180
+    },
+    "payment_terms_hash": "sha256:e65b904f96504a66356dd8acc4aab97759ff627cfc7dc0464203206421f229f3",
+    "created_at": "2026-07-21T20:19:56.270Z",
+    "expires_at": "2026-07-21T20:22:56.270Z",
+    "paid_resource_url": "http://127.0.0.1:4021/evidence/ppq_fc1299710b6d40b7bf19493fbae72476"
+  },
+  "trusted_receipt_public_key": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA1vDLYIOitjlYXhviOlWvgHIE6FUxnBW+A1YIYDg4uLg=\n-----END PUBLIC KEY-----\n"
+}

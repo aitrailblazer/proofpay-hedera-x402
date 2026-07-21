@@ -36,13 +36,48 @@ const normalizedTransactionId = (value: string): string => {
 export class HederaMirrorTransactionVerifier implements TransactionVerifier {
   readonly #baseUrl: string;
   readonly #fetch: typeof fetch;
+  readonly #maxAttempts: number;
+  readonly #retryDelayMs: number;
 
   constructor(
     baseUrl = "https://testnet.mirrornode.hedera.com",
     fetchImpl: typeof fetch = fetch,
+    options: { maxAttempts?: number; retryDelayMs?: number } = {},
   ) {
     this.#baseUrl = baseUrl.replace(/\/+$/, "");
     this.#fetch = fetchImpl;
+    this.#maxAttempts = options.maxAttempts ?? 10;
+    this.#retryDelayMs = options.retryDelayMs ?? 1_000;
+  }
+
+  async #lookup(id: string): Promise<MirrorTransaction> {
+    for (let attempt = 1; attempt <= this.#maxAttempts; attempt += 1) {
+      const response = await this.#fetch(
+        `${this.#baseUrl}/api/v1/transactions/${encodeURIComponent(id)}`,
+        { headers: { accept: "application/json" } },
+      );
+      const retryableStatus =
+        response.status === 404 ||
+        response.status === 429 ||
+        response.status >= 500;
+      if (response.ok) {
+        const payload = (await response.json()) as MirrorResponse;
+        const transaction = payload.transactions?.find(
+          (candidate) =>
+            normalizedTransactionId(candidate.transaction_id) === id,
+        );
+        if (transaction) return transaction;
+        if (attempt === this.#maxAttempts) {
+          throw new Error("mirror_transaction_not_found");
+        }
+      } else if (!retryableStatus || attempt === this.#maxAttempts) {
+        throw new Error(`mirror_transaction_lookup_${response.status}`);
+      }
+      await new Promise((resolve) =>
+        setTimeout(resolve, this.#retryDelayMs * attempt),
+      );
+    }
+    throw new Error("mirror_transaction_not_found");
   }
 
   async verify(
@@ -59,20 +94,7 @@ export class HederaMirrorTransactionVerifier implements TransactionVerifier {
     if (!id) {
       throw new Error("settlement_transaction_missing");
     }
-    const response = await this.#fetch(
-      `${this.#baseUrl}/api/v1/transactions/${encodeURIComponent(id)}`,
-      { headers: { accept: "application/json" } },
-    );
-    if (!response.ok) {
-      throw new Error(`mirror_transaction_lookup_${response.status}`);
-    }
-    const payload = (await response.json()) as MirrorResponse;
-    const transaction = payload.transactions?.find(
-      (candidate) => normalizedTransactionId(candidate.transaction_id) === id,
-    );
-    if (!transaction) {
-      throw new Error("mirror_transaction_not_found");
-    }
+    const transaction = await this.#lookup(id);
     if (transaction.result !== "SUCCESS") {
       throw new Error(`mirror_transaction_${transaction.result.toLowerCase()}`);
     }

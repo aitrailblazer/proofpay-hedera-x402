@@ -89,4 +89,21 @@ describe("Hedera mirror verification", () => {
       verifier.verify({ ...settlement, success: false }, terms),
     ).rejects.toThrow("settlement_claim_unsuccessful");
   });
+
+  it("retries while a newly settled transaction is not yet indexed", async () => {
+    const fetchMock = vi
+      .fn<typeof fetch>()
+      .mockResolvedValueOnce(new Response(null, { status: 404 }))
+      .mockResolvedValueOnce(response());
+    const verifier = new HederaMirrorTransactionVerifier(
+      "https://mirror.example",
+      fetchMock,
+      { maxAttempts: 3, retryDelayMs: 0 },
+    );
+
+    await expect(verifier.verify(settlement, terms)).resolves.toMatchObject({
+      result: "SUCCESS",
+    });
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+  });
 });
