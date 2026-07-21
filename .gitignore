@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.env
+.data/
+artifacts/live-proof/*
+!artifacts/live-proof/.gitkeep
+*.log
+.DS_Store

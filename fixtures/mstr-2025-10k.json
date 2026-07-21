@@ -1,0 +1,34 @@
+{
+  "schema_id": "issuer-filing-evidence.v1",
+  "ticker": "MSTR",
+  "cik": "0001050446",
+  "entity_name": "Strategy Inc",
+  "filing_form": "10-K",
+  "period": "2025-12-31",
+  "source_date": "2026-07-21",
+  "retrieved_at": "2026-07-21T16:25:00Z",
+  "fundamentals": {
+    "cash_and_equivalents": 2301470000,
+    "cash_flow_from_operations": -67240999.9999,
+    "current_assets": 2564137000,
+    "net_income": -3848151999.9999,
+    "operating_income": -5444384999.9999,
+    "revenue": 477233000,
+    "total_assets": 61641082000,
+    "total_equity": 44123458000,
+    "total_liabilities": 10598110000
+  },
+  "provenance": {
+    "data_source": "linkbase_rooted_facts",
+    "is_linkbase_backed": true,
+    "quality_flag": "High",
+    "root_resolution_method": "standard_root_match",
+    "source_endpoint": "https://api.aitrailblazer.net/v1/company-fundamentals/MSTR",
+    "source_snapshot_sha256": "TO_BE_REPLACED_BY_FIXTURE_HASH"
+  },
+  "evidence_boundary": [
+    "Snapshot captured from the public DeltaSignal fundamentals route on 2026-07-21.",
+    "The fixture is deterministic and public-safe; it is not a live market quote.",
+    "The product provides filing-backed evidence and no buy, sell, hold, target-price, or allocation instruction."
+  ]
+}
