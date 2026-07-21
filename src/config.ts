@@ -36,7 +36,8 @@ export const loadConfig = (): ServerConfig => {
     replayLedgerPath:
       process.env.PROOFPAY_REPLAY_LEDGER_PATH?.trim() ||
       ".data/settlement-replay-ledger.json",
-    publicBaseUrl:
-      process.env.PROOFPAY_SERVER_URL?.trim() || `http://127.0.0.1:${port}`,
+    publicBaseUrl: (
+      process.env.PROOFPAY_SERVER_URL?.trim() || `http://127.0.0.1:${port}`
+    ).replace(/\/+$/, ""),
   };
 };

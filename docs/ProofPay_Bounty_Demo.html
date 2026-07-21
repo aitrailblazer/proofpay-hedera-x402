@@ -17,42 +17,49 @@
     import {LitElement,html,css} from "https://unpkg.com/lit@3/index.js?module";
 
     const tx="0.0.7162784-1784665192-906989595";
+    const payer="0.0.9676074";
+    const seller="0.0.9676073";
+    const feePayer="0.0.7162784";
     const scenes=[
-      {k:"title",eyebrow:"DELTA SIGNAL · HEDERA x402 BOUNTY",title:"ProofPay",subtitle:"Prove what an autonomous agent paid for.",chips:["HBAR","HTTP 402","Signed evidence receipts"]},
+      {k:"title",eyebrow:"PRERECORDED EVIDENCE WALKTHROUGH · HEDERA x402 BOUNTY",title:"ProofPay",subtitle:"A real testnet payment completed 21 July 2026. No new payment executes during playback.",chips:["REAL TESTNET PAYMENT","HBAR","HTTP 402","Signed evidence receipts"]},
       {k:"problem",eyebrow:"THE MISSING LINK",title:"A payment proves value moved.",subtitle:"It does not prove what the API delivered.",split:[["ON-CHAIN PAYMENT","payer · seller · amount · timestamp"],["DELIVERED ARTIFACT","request · evidence · output · provenance"]],footer:"ProofPay cryptographically binds both sides."},
       {k:"flow",eyebrow:"END-TO-END ARCHITECTURE",title:"One discrete request. One payment. One verified response.",flow:["Codex agent","HTTP 402","Blocky402","Hedera testnet","Evidence unlock","Signed receipt"]},
-      {k:"terminal",eyebrow:"1 · AUTONOMOUS PURCHASE",title:"Codex receives HTTP 402 and pays in HBAR.",lines:[
+      {k:"terminal",eyebrow:"1 · COMPLETED AUTONOMOUS PURCHASE · 21 JUL 2026",title:"Reconstruction from the committed proof bundle",lines:[
         "> npm run demo:keyvault",
         "1/5 Discovering ProofPay catalog",
         "2/5 Creating a single-use MSTR evidence quote",
         "    amount=1000001 tinybar",
         "3/5 Paying HTTP 402 on Hedera testnet",
+        `    value_buyer=${payer}  seller=${seller}`,
+        `    transaction_fee_payer=${feePayer}`,
         `    transaction=${tx}`
-      ],note:"Buyer signing key is loaded from Azure Key Vault and never printed."},
+      ],note:"Recorded-run values come from the committed proof bundle. Private signing keys are never printed."},
       {k:"settle",eyebrow:"2 · HEDERA SETTLEMENT",title:"The buyer authorizes value. The facilitator sponsors the fee.",ledger:[
         ["Buyer","Signs the exact transfer"],
         ["Blocky402","Verifies, co-signs and pays the network fee"],
         ["Hedera","Reaches consensus and returns the transaction ID"],
         ["ProofPay","Releases evidence only after confirmed settlement"]
       ]},
-      {k:"terminal",eyebrow:"3 · EVIDENCE UNLOCK",title:"Settlement unlocks deterministic DeltaSignal evidence.",lines:[
+      {k:"terminal",eyebrow:"3 · RECORDED EVIDENCE UNLOCK",title:"The performed settlement unlocked DeltaSignal evidence.",lines:[
         "4/5 Mirror-verifying settlement and unlocking the evidence",
         "5/5 Independently verifying and writing the proof bundle",
+        `    Value buyer: ${payer}  →  Seller: ${seller}`,
+        `    Fee payer: ${feePayer}`,
+        `    Transaction: ${tx}`,
         "    Evidence: MSTR 10-K 2025-12-31",
-        "    Receipt signer: Ed25519",
-        "    Artifact delivery: AES-256-GCM",
+        "    Receipt: pprec_91b33c408f6649f5b150068fe50a7c86",
         "PASS: payment, delivery, provenance, and signatures are bound."
-      ],note:"The result preserves source date, evidence hash, output hash and software commit."},
-      {k:"hashscan",eyebrow:"4 · PUBLIC ON-CHAIN PROOF",title:"Real Hedera testnet transaction",tx,stats:[["RESULT","SUCCESS"],["ASSET","HBAR"],["AMOUNT","1,000,001 tinybar"],["TRANSFER COUNT","4"],["CONSENSUS","1784665197.689086104"]]},
+      ],note:"Public evidence: docs/evidence/proof-bundle-2026-07-21.json · independently verifiable offline."},
+      {k:"hashscan",eyebrow:"4 · MIRROR-NODE + HASHSCAN PROOF",title:"The completed Hedera testnet payment",tx,stats:[["VALUE BUYER",payer],["SELLER",seller],["FEE PAYER",feePayer],["RESULT","SUCCESS"],["AMOUNT","1,000,001 tinybar"],["CONSENSUS","1784665197.689086104"]]},
       {k:"verify",eyebrow:"5 · INDEPENDENT VERIFICATION",title:"Sixteen checks. Zero trust in the bundle itself.",checks:["Trusted signer","Receipt signature","Quote binding","Payment terms","Request hash","Ciphertext hash","Artifact decrypts","Output hash","Evidence hash","Source date","Settlement claims","Replay protection"],result:"16 / 16 PASS"},
       {k:"tamper",eyebrow:"6 · FAIL-CLOSED INTEGRITY",title:"Change one field. Verification fails.",terminal:["Original bundle: PASS","Tamper action: changed decrypted artifact ticker","Tampered bundle: REJECTED","artifact_canonical · evidence_hash"],result:"MUTATION DETECTED"},
       {k:"value",eyebrow:"DURABLE DELTASIGNAL VALUE",title:"Pay per evidence—not per subscription.",cards:[
         ["Autonomous","Agents buy only the research they need."],
         ["Auditable","Payment is bound to request and response."],
         ["Composable","The same receipt model supports every payment rail."],
-        ["Public proof","HashScan plus a portable verification bundle."]
+        ["Demonstrated proof","This delivery has HashScan plus a portable verification bundle."]
       ],footer:"No API key · No checkout · No human in the loop"},
-      {k:"thanks",eyebrow:"PUBLIC SOURCE · REAL SETTLEMENT · VERIFIABLE DELIVERY",title:"Thank you!",subtitle:"ProofPay — Hedera x402 evidence receipts",links:["github.com/aitrailblazer/proofpay-hedera-x402",`hashscan.io/testnet/transaction/${tx}`]}
+      {k:"thanks",eyebrow:"PUBLIC SOURCE · PERFORMED SETTLEMENT · VERIFIABLE DELIVERY",title:"Thank you!",subtitle:"ProofPay — Hedera x402 evidence receipts",links:["github.com/aitrailblazer/proofpay-hedera-x402",`hashscan.io/testnet/transaction/${tx}`]}
     ];
 
     class ProofPayVideo extends LitElement{
@@ -73,7 +80,7 @@
         .terminal{margin-top:4vh;border:1px solid #34414a;border-radius:1vw;background:#030608;overflow:hidden;box-shadow:0 2vh 6vh #0008}.bar{height:4vh;background:#121920;display:flex;align-items:center;gap:.45vw;padding:0 1vw}.dot{width:.55vw;height:.55vw;border-radius:50%;background:#59636a}.dot:first-child{background:#ff6f78}.dot:nth-child(2){background:#ffbd66}.dot:nth-child(3){background:#64e0b6}
         pre{margin:0;padding:2.2vw;color:#d6efdf;font:700 1.23vw/1.62 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap}.note{margin-top:2vh;border-left:.3vw solid var(--gold);padding:1.2vh 1vw;background:#1b170e;color:#e7cf9d;font-size:1.05vw}
         .ledger{display:grid;grid-template-columns:1fr 1fr;gap:1vw;margin-top:4vh}.ledgerRow{display:grid;grid-template-columns:9vw 1fr;align-items:center;border:1px solid var(--line);border-radius:.8vw;padding:1.4vw;background:#0e151b}.ledgerRow b{color:var(--gold);font-size:1.1vw}.ledgerRow span{font-size:1.15vw;color:#cbd1d2}
-        .tx{font:850 2vw ui-monospace;color:var(--gold);margin-top:3vh;padding:1.4vw;border:1px solid #5b4c28;background:#1c180e;border-radius:.8vw}.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:.8vw;margin-top:2vh}.stat{border:1px solid var(--line);border-radius:.7vw;padding:1.2vw;background:#0e151b}.stat span{display:block;color:#89939a;font-size:.72vw;letter-spacing:.1em}.stat b{display:block;margin-top:.7vh;font:800 1.05vw ui-monospace;color:#e5ebe6}.stat:first-child b{color:var(--green)}
+        .tx{font:850 2vw ui-monospace;color:var(--gold);margin-top:3vh;padding:1.4vw;border:1px solid #5b4c28;background:#1c180e;border-radius:.8vw}.stats{display:grid;grid-template-columns:repeat(6,1fr);gap:.7vw;margin-top:2vh}.stat{border:1px solid var(--line);border-radius:.7vw;padding:1vw;background:#0e151b}.stat span{display:block;color:#89939a;font-size:.66vw;letter-spacing:.08em}.stat b{display:block;margin-top:.7vh;font:800 .88vw ui-monospace;color:#e5ebe6}.stat:first-child b{color:var(--green)}
         .checks{display:grid;grid-template-columns:repeat(4,1fr);gap:.7vw;margin-top:3.5vh}.check{border:1px solid #2e4f45;border-radius:.65vw;background:#0b1b16;padding:1vw;font-size:1vw;color:#d8e9df}.check::before{content:"✓";color:var(--green);font-weight:900;margin-right:.6vw}.result{align-self:flex-end;margin-top:2.5vh;font:900 2.8vw ui-monospace;color:var(--green)}
         .tamper{margin-top:4vh;display:grid;grid-template-columns:1.4fr .6fr;gap:2vw;align-items:center}.tamper .terminal{margin:0}.reject{border:1px solid #74313f;border-radius:1vw;background:#241017;padding:2vw;text-align:center;color:var(--red);font:900 1.8vw ui-monospace}
         .cards{display:grid;grid-template-columns:1fr 1fr;gap:1vw;margin-top:4vh}.card b{display:block;color:var(--gold);font-size:1.25vw;margin-bottom:.8vh}.card span{color:#c4cbcd;font-size:1.08vw}

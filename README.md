@@ -96,11 +96,14 @@ Use the interactive
 [`ProofPay Demo Recording Console`](docs/ProofPay_Demo_Recording_Console.html)
 for the timed, step-by-step under-five-minute recording workflow.
 
-Watch or download the finished **2:57 captioned demo** from the
-[`demo-v1` GitHub release](https://github.com/aitrailblazer/proofpay-hedera-x402/releases/tag/demo-v1).
+Watch or download the finished **3:26 captioned demo** from the
+[`demo-v2` GitHub release](https://github.com/aitrailblazer/proofpay-hedera-x402/releases/tag/demo-v2).
 The rendered video includes narration, burned-in captions, a branded opening
-slide, the real Hedera transaction, verification and tamper evidence, and a
-closing thank-you slide.
+slide, the payer, seller, amount, consensus timestamp and transaction ID from
+the performed Hedera testnet payment, verification and tamper evidence, and a
+closing thank-you slide. A plain-text
+[`slide-by-slide transcript`](docs/ProofPay_Demo_Transcript.txt) documents every
+on-screen beat and narration line.
 
 ## Live Hedera testnet proof
 

@@ -1,7 +1,7 @@
 [
   {
     "scene": 0,
-    "narration": "ProofPay proves what an autonomous agent paid for. It combines Hedera x402 settlement with a signed receipt for the exact evidence delivered."
+    "narration": "ProofPay proves what an autonomous agent paid for. This prerecorded evidence walkthrough documents a real successful Hedera testnet x402 payment completed on July twenty-first, twenty twenty-six. No new payment executes during playback."
   },
   {
     "scene": 1,
@@ -13,7 +13,7 @@
   },
   {
     "scene": 3,
-    "narration": "The autonomous buyer starts without an API key or subscription. Credentials come directly from Azure Key Vault and are never printed. The agent discovers the catalog, creates a single-use MSTR quote, receives HTTP four oh two, and pays one million one tinybar on Hedera testnet."
+    "narration": "This slide reconstructs the completed purchase from the committed proof bundle. Value buyer account zero point zero point nine six seven six zero seven four authorized one million one tinybar to seller account zero point zero point nine six seven six zero seven three. Facilitator account zero point zero point seven one six two seven eight four paid the network fee. No signing key is shown."
   },
   {
     "scene": 4,
@@ -21,11 +21,11 @@
   },
   {
     "scene": 5,
-    "narration": "After settlement, ProofPay mirror-verifies the buyer debit, seller credit, exact amount, network, and transaction result. It then unlocks deterministic DeltaSignal MSTR filing evidence and produces an Ed25519 signed receipt binding payment, delivery, and provenance."
+    "narration": "For the performed transaction, ProofPay mirror-verified the buyer debit, seller credit, exact amount, network, consensus result, and transaction identifier. It then unlocked deterministic DeltaSignal MSTR filing evidence and produced the committed Ed25519 signed receipt binding payment, delivery, and provenance."
   },
   {
     "scene": 6,
-    "narration": "This is a real Hedera testnet transaction. HashScan shows success, the HBAR transfer, the consensus timestamp, and the full transaction identifier. The payment is public and independently inspectable."
+    "narration": "This is the real Hedera testnet transaction we completed: zero point zero point seven one six two seven eight four, dash, one seven eight four six six five one nine two, dash, nine zero six nine eight nine five nine five. HashScan and the Hedera mirror node independently show success, value buyer, seller, fee payer, amount, and consensus timestamp."
   },
   {
     "scene": 7,
@@ -37,10 +37,10 @@
   },
   {
     "scene": 9,
-    "narration": "For DeltaSignal, this creates pay-per-evidence infrastructure for autonomous agents. Buyers pay only for the research they need. Every delivery is auditable, portable across payment rails, and backed by public settlement proof."
+    "narration": "For DeltaSignal, this creates pay-per-evidence infrastructure for autonomous agents. Buyers pay only for the research they need. This demonstrated delivery is auditable, portable across payment rails, and backed by public settlement proof."
   },
   {
     "scene": 10,
-    "narration": "Thank you for watching. ProofPay is public, open source, and ready for verifiable agent commerce on Hedera."
+    "narration": "Thank you for watching. The repository includes the performed payment bundle, the public transaction link, this slide-by-slide transcript, and the verifier needed to reproduce our evidence checks."
   }
 ]
