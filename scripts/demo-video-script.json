@@ -1,0 +1,46 @@
+[
+  {
+    "scene": 0,
+    "narration": "ProofPay proves what an autonomous agent paid for. It combines Hedera x402 settlement with a signed receipt for the exact evidence delivered."
+  },
+  {
+    "scene": 1,
+    "narration": "A blockchain transaction proves that value moved between accounts. But it does not prove what an API returned. ProofPay closes that gap by binding the payment to the request, evidence, output, provenance, and software version."
+  },
+  {
+    "scene": 2,
+    "narration": "Here is the complete flow. Codex requests evidence. The resource server returns HTTP four oh two. Codex signs the exact HBAR transfer. Blocky four oh two verifies and sponsors the network fee. Hedera settles, the evidence unlocks, and ProofPay issues a signed receipt."
+  },
+  {
+    "scene": 3,
+    "narration": "The autonomous buyer starts without an API key or subscription. Credentials come directly from Azure Key Vault and are never printed. The agent discovers the catalog, creates a single-use MSTR quote, receives HTTP four oh two, and pays one million one tinybar on Hedera testnet."
+  },
+  {
+    "scene": 4,
+    "narration": "Hedera's sponsored fee model separates authorization from network fees. The buyer signs the exact value transfer. Blocky four oh two validates it, adds the fee payer signature, and submits it. ProofPay releases nothing until settlement succeeds."
+  },
+  {
+    "scene": 5,
+    "narration": "After settlement, ProofPay mirror-verifies the buyer debit, seller credit, exact amount, network, and transaction result. It then unlocks deterministic DeltaSignal MSTR filing evidence and produces an Ed25519 signed receipt binding payment, delivery, and provenance."
+  },
+  {
+    "scene": 6,
+    "narration": "This is a real Hedera testnet transaction. HashScan shows success, the HBAR transfer, the consensus timestamp, and the full transaction identifier. The payment is public and independently inspectable."
+  },
+  {
+    "scene": 7,
+    "narration": "HashScan proves money moved. The portable verifier proves what the money unlocked. Sixteen checks validate the trusted signer, quote, payment terms, request hash, encrypted payload, decrypted artifact, evidence hash, source date, output hash, and settlement claims."
+  },
+  {
+    "scene": 8,
+    "narration": "ProofPay fails closed. Change a single field in the delivered evidence and verification rejects the bundle. The signed artifact and evidence hashes no longer match, so mutation is detected immediately."
+  },
+  {
+    "scene": 9,
+    "narration": "For DeltaSignal, this creates pay-per-evidence infrastructure for autonomous agents. Buyers pay only for the research they need. Every delivery is auditable, portable across payment rails, and backed by public settlement proof."
+  },
+  {
+    "scene": 10,
+    "narration": "Thank you for watching. ProofPay is public, open source, and ready for verifiable agent commerce on Hedera."
+  }
+]

@@ -96,6 +96,12 @@ Use the interactive
 [`ProofPay Demo Recording Console`](docs/ProofPay_Demo_Recording_Console.html)
 for the timed, step-by-step under-five-minute recording workflow.
 
+Watch or download the finished **2:57 captioned demo** from the
+[`demo-v1` GitHub release](https://github.com/aitrailblazer/proofpay-hedera-x402/releases/tag/demo-v1).
+The rendered video includes narration, burned-in captions, a branded opening
+slide, the real Hedera transaction, verification and tamper evidence, and a
+closing thank-you slide.
+
 ## Live Hedera testnet proof
 
 - Transaction:
@@ -110,6 +116,10 @@ for the timed, step-by-step under-five-minute recording workflow.
 The committed bundle contains public transaction, quote, receipt, ciphertext,
 decryption, and deterministic evidence material only. It contains no wallet or
 receipt-signing private key.
+
+The DeltaSignal logo and visual identity used in the demo are
+© 2026 DeltaSignal. All rights reserved. This notice asserts ownership in the
+published artifact; it is not a representation of government registration.
 
 Run the deterministic offline verifier and tamper demonstration with:
 

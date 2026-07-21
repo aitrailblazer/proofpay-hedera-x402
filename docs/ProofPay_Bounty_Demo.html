@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="ProofPay Hedera x402 bounty video presentation.">
+  <title>ProofPay — Hedera x402 Demo</title>
+  <style>
+    :root{color-scheme:dark;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--bg:#05070a;--panel:#10161c;--line:#2c3742;--text:#f5f1e8;--muted:#aab2b8;--green:#63e0b5;--gold:#f2c665;--orange:#ff7a34;--red:#ef3155;--blue:#73bfff}
+    *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--text)}
+    proofpay-video:not(:defined){display:grid;place-items:center;width:100%;height:100%}
+  </style>
+</head>
+<body>
+  <proofpay-video>Loading ProofPay demo…</proofpay-video>
+  <script type="module">
+    import {LitElement,html,css} from "https://unpkg.com/lit@3/index.js?module";
+
+    const tx="0.0.7162784-1784665192-906989595";
+    const scenes=[
+      {k:"title",eyebrow:"DELTA SIGNAL · HEDERA x402 BOUNTY",title:"ProofPay",subtitle:"Prove what an autonomous agent paid for.",chips:["HBAR","HTTP 402","Signed evidence receipts"]},
+      {k:"problem",eyebrow:"THE MISSING LINK",title:"A payment proves value moved.",subtitle:"It does not prove what the API delivered.",split:[["ON-CHAIN PAYMENT","payer · seller · amount · timestamp"],["DELIVERED ARTIFACT","request · evidence · output · provenance"]],footer:"ProofPay cryptographically binds both sides."},
+      {k:"flow",eyebrow:"END-TO-END ARCHITECTURE",title:"One discrete request. One payment. One verified response.",flow:["Codex agent","HTTP 402","Blocky402","Hedera testnet","Evidence unlock","Signed receipt"]},
+      {k:"terminal",eyebrow:"1 · AUTONOMOUS PURCHASE",title:"Codex receives HTTP 402 and pays in HBAR.",lines:[
+        "> npm run demo:keyvault",
+        "1/5 Discovering ProofPay catalog",
+        "2/5 Creating a single-use MSTR evidence quote",
+        "    amount=1000001 tinybar",
+        "3/5 Paying HTTP 402 on Hedera testnet",
+        `    transaction=${tx}`
+      ],note:"Buyer signing key is loaded from Azure Key Vault and never printed."},
+      {k:"settle",eyebrow:"2 · HEDERA SETTLEMENT",title:"The buyer authorizes value. The facilitator sponsors the fee.",ledger:[
+        ["Buyer","Signs the exact transfer"],
+        ["Blocky402","Verifies, co-signs and pays the network fee"],
+        ["Hedera","Reaches consensus and returns the transaction ID"],
+        ["ProofPay","Releases evidence only after confirmed settlement"]
+      ]},
+      {k:"terminal",eyebrow:"3 · EVIDENCE UNLOCK",title:"Settlement unlocks deterministic DeltaSignal evidence.",lines:[
+        "4/5 Mirror-verifying settlement and unlocking the evidence",
+        "5/5 Independently verifying and writing the proof bundle",
+        "    Evidence: MSTR 10-K 2025-12-31",
+        "    Receipt signer: Ed25519",
+        "    Artifact delivery: AES-256-GCM",
+        "PASS: payment, delivery, provenance, and signatures are bound."
+      ],note:"The result preserves source date, evidence hash, output hash and software commit."},
+      {k:"hashscan",eyebrow:"4 · PUBLIC ON-CHAIN PROOF",title:"Real Hedera testnet transaction",tx,stats:[["RESULT","SUCCESS"],["ASSET","HBAR"],["AMOUNT","1,000,001 tinybar"],["TRANSFER COUNT","4"],["CONSENSUS","1784665197.689086104"]]},
+      {k:"verify",eyebrow:"5 · INDEPENDENT VERIFICATION",title:"Sixteen checks. Zero trust in the bundle itself.",checks:["Trusted signer","Receipt signature","Quote binding","Payment terms","Request hash","Ciphertext hash","Artifact decrypts","Output hash","Evidence hash","Source date","Settlement claims","Replay protection"],result:"16 / 16 PASS"},
+      {k:"tamper",eyebrow:"6 · FAIL-CLOSED INTEGRITY",title:"Change one field. Verification fails.",terminal:["Original bundle: PASS","Tamper action: changed decrypted artifact ticker","Tampered bundle: REJECTED","artifact_canonical · evidence_hash"],result:"MUTATION DETECTED"},
+      {k:"value",eyebrow:"DURABLE DELTASIGNAL VALUE",title:"Pay per evidence—not per subscription.",cards:[
+        ["Autonomous","Agents buy only the research they need."],
+        ["Auditable","Payment is bound to request and response."],
+        ["Composable","The same receipt model supports every payment rail."],
+        ["Public proof","HashScan plus a portable verification bundle."]
+      ],footer:"No API key · No checkout · No human in the loop"},
+      {k:"thanks",eyebrow:"PUBLIC SOURCE · REAL SETTLEMENT · VERIFIABLE DELIVERY",title:"Thank you!",subtitle:"ProofPay — Hedera x402 evidence receipts",links:["github.com/aitrailblazer/proofpay-hedera-x402",`hashscan.io/testnet/transaction/${tx}`]}
+    ];
+
+    class ProofPayVideo extends LitElement{
+      static styles=css`
+        :host{display:block;width:100vw;height:100vh;background:radial-gradient(circle at 12% 0,rgba(99,224,181,.12),transparent 32%),radial-gradient(circle at 90% 10%,rgba(242,198,101,.10),transparent 28%),#05070a}
+        .frame{position:relative;width:100%;height:100%;padding:6.2vh 6.5vw 7vh;display:flex;flex-direction:column}
+        .watermark{position:absolute;right:3vw;top:3vh;display:flex;align-items:center;gap:.7vw;color:#c7c5bd;font-size:1vw;letter-spacing:.03em;opacity:.82}
+        .watermark img{width:3.3vw;height:3.3vw;object-fit:contain}.copyright{position:absolute;left:3vw;top:3.2vh;color:#777f85;font-size:.72vw;letter-spacing:.04em}
+        .eyebrow{font-size:1vw;font-weight:850;letter-spacing:.19em;color:var(--green);margin-bottom:1.8vh}.title{font-size:4.15vw;line-height:1.02;letter-spacing:-.05em;font-weight:900;max-width:82vw;margin:0}
+        .subtitle{font-size:1.7vw;color:var(--muted);margin-top:2vh;max-width:68vw;line-height:1.35}.content{flex:1;display:flex;flex-direction:column;justify-content:center}
+        .chips{display:flex;gap:.8vw;margin-top:4vh}.chip{border:1px solid #38444d;border-radius:999px;padding:.75vh 1.1vw;color:#d7ddd8;font-size:.9vw;background:#0c1217}
+        .titleScene{align-items:center;text-align:center;justify-content:center}.heroLogo{width:15vw;height:15vw;object-fit:contain;margin-bottom:1.8vh;filter:drop-shadow(0 1.5vh 4vh rgba(239,49,85,.2))}
+        .titleScene .title{font-size:6.2vw}.titleScene .subtitle{font-size:2vw}.titleScene .chips{justify-content:center}.notice{margin-top:4vh;color:#8f969b;font-size:.85vw}
+        .split{display:grid;grid-template-columns:1fr 1fr;gap:2vw;margin-top:5vh}.splitCard,.card{border:1px solid var(--line);background:rgba(16,22,28,.92);border-radius:1.1vw;padding:2vw}
+        .splitCard b{display:block;color:var(--gold);font-size:1vw;letter-spacing:.1em;margin-bottom:1.4vh}.splitCard span{font-size:1.5vw;color:#dce1dc}.footer{margin-top:3vh;color:var(--green);font-size:1.4vw;font-weight:800}
+        .flow{display:grid;grid-template-columns:repeat(6,1fr);gap:.8vw;margin-top:6vh}.node{position:relative;display:grid;place-items:center;min-height:13vh;padding:1vw;text-align:center;border:1px solid #3c4a54;border-radius:.8vw;background:#0e171d;font-size:1.2vw;font-weight:800}
+        .node:not(:last-child)::after{content:"→";position:absolute;right:-1vw;color:var(--gold);font-size:1.5vw;z-index:2}
+        .terminal{margin-top:4vh;border:1px solid #34414a;border-radius:1vw;background:#030608;overflow:hidden;box-shadow:0 2vh 6vh #0008}.bar{height:4vh;background:#121920;display:flex;align-items:center;gap:.45vw;padding:0 1vw}.dot{width:.55vw;height:.55vw;border-radius:50%;background:#59636a}.dot:first-child{background:#ff6f78}.dot:nth-child(2){background:#ffbd66}.dot:nth-child(3){background:#64e0b6}
+        pre{margin:0;padding:2.2vw;color:#d6efdf;font:700 1.23vw/1.62 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap}.note{margin-top:2vh;border-left:.3vw solid var(--gold);padding:1.2vh 1vw;background:#1b170e;color:#e7cf9d;font-size:1.05vw}
+        .ledger{display:grid;grid-template-columns:1fr 1fr;gap:1vw;margin-top:4vh}.ledgerRow{display:grid;grid-template-columns:9vw 1fr;align-items:center;border:1px solid var(--line);border-radius:.8vw;padding:1.4vw;background:#0e151b}.ledgerRow b{color:var(--gold);font-size:1.1vw}.ledgerRow span{font-size:1.15vw;color:#cbd1d2}
+        .tx{font:850 2vw ui-monospace;color:var(--gold);margin-top:3vh;padding:1.4vw;border:1px solid #5b4c28;background:#1c180e;border-radius:.8vw}.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:.8vw;margin-top:2vh}.stat{border:1px solid var(--line);border-radius:.7vw;padding:1.2vw;background:#0e151b}.stat span{display:block;color:#89939a;font-size:.72vw;letter-spacing:.1em}.stat b{display:block;margin-top:.7vh;font:800 1.05vw ui-monospace;color:#e5ebe6}.stat:first-child b{color:var(--green)}
+        .checks{display:grid;grid-template-columns:repeat(4,1fr);gap:.7vw;margin-top:3.5vh}.check{border:1px solid #2e4f45;border-radius:.65vw;background:#0b1b16;padding:1vw;font-size:1vw;color:#d8e9df}.check::before{content:"✓";color:var(--green);font-weight:900;margin-right:.6vw}.result{align-self:flex-end;margin-top:2.5vh;font:900 2.8vw ui-monospace;color:var(--green)}
+        .tamper{margin-top:4vh;display:grid;grid-template-columns:1.4fr .6fr;gap:2vw;align-items:center}.tamper .terminal{margin:0}.reject{border:1px solid #74313f;border-radius:1vw;background:#241017;padding:2vw;text-align:center;color:var(--red);font:900 1.8vw ui-monospace}
+        .cards{display:grid;grid-template-columns:1fr 1fr;gap:1vw;margin-top:4vh}.card b{display:block;color:var(--gold);font-size:1.25vw;margin-bottom:.8vh}.card span{color:#c4cbcd;font-size:1.08vw}
+        .thanks{align-items:center;text-align:center;justify-content:center}.thanks .heroLogo{width:12vw;height:12vw}.thanks .title{font-size:6vw}.links{margin-top:3vh;display:grid;gap:.8vh;color:#aab4ba;font:700 1vw ui-monospace}
+      `;
+      render(){
+        const i=Math.max(0,Math.min(scenes.length-1,Number(new URLSearchParams(location.search).get("scene")||0))),s=scenes[i];
+        return html`<main class="frame">
+          ${s.k!=="title"&&s.k!=="thanks"?html`<div class="watermark"><img src="./assets/deltasignal-logo.png" alt=""><span>DeltaSignal © 2026</span></div>`:""}
+          <div class="content ${s.k==="title"?"titleScene":""} ${s.k==="thanks"?"thanks":""}">
+            ${s.k==="title"?html`<img class="heroLogo" src="./assets/deltasignal-logo.png" alt="DeltaSignal logo"><div class="eyebrow">${s.eyebrow}</div><h1 class="title">${s.title}</h1><div class="subtitle">${s.subtitle}</div><div class="chips">${s.chips.map(x=>html`<span class="chip">${x}</span>`)}</div><div class="notice">DeltaSignal logo and visual identity © 2026 DeltaSignal. All rights reserved.</div>`:""}
+            ${s.k==="problem"?html`<div class="eyebrow">${s.eyebrow}</div><h1 class="title">${s.title}</h1><div class="subtitle">${s.subtitle}</div><div class="split">${s.split.map(x=>html`<div class="splitCard"><b>${x[0]}</b><span>${x[1]}</span></div>`)}</div><div class="footer">${s.footer}</div>`:""}
+            ${s.k==="flow"?html`<div class="eyebrow">${s.eyebrow}</div><h1 class="title">${s.title}</h1><div class="flow">${s.flow.map(x=>html`<div class="node">${x}</div>`)}</div>`:""}
+            ${s.k==="terminal"?html`<div class="eyebrow">${s.eyebrow}</div><h1 class="title">${s.title}</h1><div class="terminal"><div class="bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i></div><pre>${s.lines.join("\n")}</pre></div><div class="note">${s.note}</div>`:""}
+            ${s.k==="settle"?html`<div class="eyebrow">${s.eyebrow}</div><h1 class="title">${s.title}</h1><div class="ledger">${s.ledger.map(x=>html`<div class="ledgerRow"><b>${x[0]}</b><span>${x[1]}</span></div>`)}</div>`:""}
+            ${s.k==="hashscan"?html`<div class="eyebrow">${s.eyebrow}</div><h1 class="title">${s.title}</h1><div class="tx">${s.tx}</div><div class="stats">${s.stats.map(x=>html`<div class="stat"><span>${x[0]}</span><b>${x[1]}</b></div>`)}</div><div class="footer">hashscan.io/testnet/transaction/${s.tx}</div>`:""}
+            ${s.k==="verify"?html`<div class="eyebrow">${s.eyebrow}</div><h1 class="title">${s.title}</h1><div class="checks">${s.checks.map(x=>html`<div class="check">${x}</div>`)}</div><div class="result">${s.result}</div>`:""}
+            ${s.k==="tamper"?html`<div class="eyebrow">${s.eyebrow}</div><h1 class="title">${s.title}</h1><div class="tamper"><div class="terminal"><div class="bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i></div><pre>${s.terminal.join("\n")}</pre></div><div class="reject">${s.result}</div></div>`:""}
+            ${s.k==="value"?html`<div class="eyebrow">${s.eyebrow}</div><h1 class="title">${s.title}</h1><div class="cards">${s.cards.map(x=>html`<div class="card"><b>${x[0]}</b><span>${x[1]}</span></div>`)}</div><div class="footer">${s.footer}</div>`:""}
+            ${s.k==="thanks"?html`<img class="heroLogo" src="./assets/deltasignal-logo.png" alt="DeltaSignal logo"><div class="eyebrow">${s.eyebrow}</div><h1 class="title">${s.title}</h1><div class="subtitle">${s.subtitle}</div><div class="links">${s.links.map(x=>html`<div>${x}</div>`)}</div><div class="notice">DeltaSignal logo and visual identity © 2026 DeltaSignal. All rights reserved.</div>`:""}
+          </div>
+          ${s.k!=="title"&&s.k!=="thanks"?html`<div class="copyright">DeltaSignal logo and visual identity © 2026 DeltaSignal. All rights reserved.</div>`:""}
+        </main>`;
+      }
+    }
+    customElements.define("proofpay-video",ProofPayVideo);
+  </script>
+</body>
+</html>

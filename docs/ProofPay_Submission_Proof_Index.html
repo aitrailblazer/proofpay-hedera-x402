@@ -19,11 +19,11 @@
   </proofpay-index>
 
   <script id="proofpay-index-contract" type="application/xml">
-<StrategiXVisualSpec id="proofpay-submission-proof-index" version="1.1" status="live-proof-complete-demo-pending" canonicalFormat="html">
+<StrategiXVisualSpec id="proofpay-submission-proof-index" version="1.2" status="submission-evidence-complete" canonicalFormat="html">
   <CanonicalArtifact>
     <Title>ProofPay Submission Proof Index</Title>
     <Repository>https://github.com/aitrailblazer/proofpay-hedera-x402</Repository>
-    <UpdatedAt>2026-07-21T20:24:00Z</UpdatedAt>
+    <UpdatedAt>2026-07-21T22:30:00Z</UpdatedAt>
     <Deadline timezone="America/New_York">2026-07-31T23:59:00-04:00</Deadline>
   </CanonicalArtifact>
   <Purpose>Provide judges and maintainers one fail-closed index of implementation, test, transaction, verification, and demo evidence.</Purpose>
@@ -34,7 +34,7 @@
     <Gate id="on-chain-payment" state="PASS">A funded buyer settled 1,000,001 tinybar to the separate seller through the x402 flow.</Gate>
     <Gate id="hashscan" state="PASS">The transaction is independently visible on HashScan and the Hedera testnet mirror node.</Gate>
     <Gate id="offline-verification" state="PASS">All 16 payment, signer, encryption, provenance, and artifact-binding checks pass against the trusted receipt public key.</Gate>
-    <Gate id="demo" state="PENDING">The under-five-minute demo is scripted but not recorded.</Gate>
+    <Gate id="demo" state="PASS">The captioned 177-second demo is published as the demo-v1 GitHub release.</Gate>
   </Status>
   <ImplementationEvidence>
     <Item path="src/app.ts">Hono x402 resource server using ExactHederaScheme.</Item>
@@ -51,10 +51,10 @@
     <HashScanUrl state="PASS">https://hashscan.io/testnet/transaction/0.0.7162784-1784665192-906989595</HashScanUrl>
     <ProofBundle path="docs/evidence/proof-bundle-2026-07-21.json" state="PASS"/>
     <ProofBundleSha256 state="PASS">8f48bdb232c8c908dc39f334bd12f7d83aae74798a8b4f4d52beb253435c2342</ProofBundleSha256>
-    <DemoUrl state="PENDING"/>
-    <DemoDurationSeconds state="PENDING" maximum="299"/>
+    <DemoUrl state="PASS">https://github.com/aitrailblazer/proofpay-hedera-x402/releases/download/demo-v1/ProofPay_Hedera_x402_Bounty_Demo_Captioned.mp4</DemoUrl>
+    <DemoDurationSeconds state="PASS" maximum="299">177.114</DemoDurationSeconds>
   </LiveProofSlots>
-  <AcceptanceBoundary>The real on-chain transaction and committed proof bundle satisfy the settlement evidence gate. The recorded demo remains explicitly pending.</AcceptanceBoundary>
+  <AcceptanceBoundary>The real on-chain transaction, committed proof bundle, and public under-five-minute demo satisfy the technical submission evidence gates. The official form must still be submitted by the entrant.</AcceptanceBoundary>
   <DemoContract targetSeconds="295">
     <Beat seconds="20">State the payment-to-artifact integrity gap.</Beat>
     <Beat seconds="20">Show free catalog and DeltaSignal provenance.</Beat>
@@ -85,7 +85,7 @@
       ["Real settlement","PASS","1,000,001 tinybar settled between separate testnet accounts."],
       ["HashScan proof","PASS","Transaction 0.0.7162784-1784665192-906989595."],
       ["Offline verification","PASS","16/16 receipt and artifact checks pass."],
-      ["Demo","PENDING","4:55 script exists; recording awaits live proof."]
+      ["Demo","PASS","Captioned 2:57 video published in the demo-v1 release."]
     ];
     class ProofPayIndex extends LitElement {
       static styles = css`
@@ -105,7 +105,7 @@
         const xml=document.getElementById("proofpay-index-contract")?.textContent?.trim()??"";
         return html`<main class="wrap">
           <header><div class="eyebrow">Hedera x402 bounty · evidence index</div><h1>ProofPay proves what an agent paid for.</h1>
-            <p>Public source, real HBAR settlement, HashScan evidence, and offline receipt verification are green. Only the recorded under-five-minute demo remains pending.</p>
+            <p>Public source, real HBAR settlement, HashScan evidence, offline receipt verification, and the captioned under-five-minute demo are green. The entrant only needs to complete the official form.</p>
             <div class="chips"><span class="chip">DeltaSignal evidence</span><span class="chip">HBAR</span><span class="chip">Ed25519 receipt</span><span class="chip">AES-GCM delivery</span><span class="chip">Replay ledger</span></div>
           </header>
           <section class="panel"><h2>Submission gates</h2><table><thead><tr><th>Gate</th><th>State</th><th>Proof</th></tr></thead><tbody>
@@ -115,7 +115,7 @@
             <div class="slot">Transaction ID<b class="PASS">0.0.7162784-1784665192-906989595</b></div>
             <div class="slot">HashScan URL<b class="PASS"><a href="https://hashscan.io/testnet/transaction/0.0.7162784-1784665192-906989595">OPEN TRANSACTION</a></b></div>
             <div class="slot">Proof bundle SHA-256<b class="PASS">8f48bdb2…435c2342</b></div>
-            <div class="slot">Demo URL + duration<b>PENDING — RECORDING REQUIRED</b></div>
+            <div class="slot">Demo video · 02:57<b class="PASS"><a href="https://github.com/aitrailblazer/proofpay-hedera-x402/releases/download/demo-v1/ProofPay_Hedera_x402_Bounty_Demo_Captioned.mp4">WATCH / DOWNLOAD</a></b></div>
           </div></section>
           <section class="panel"><h2>Verified implementation</h2><ul>
             <li><code>src/app.ts</code> — dynamic single-use HBAR x402 quotes.</li>
