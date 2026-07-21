@@ -2,6 +2,14 @@ PROOFPAY — HEDERA x402 BOUNTY DEMO
 Slide-by-slide transcript
 Updated: 2026-07-21
 
+VOICE PRODUCTION
+
+Voice: Apple Samantha (en_US), generated locally with macOS text to speech
+Delivery: phrase-directed at 146–158 words per minute with deliberate pauses
+Mastering: 48 kHz mono, high-pass filter, corrective EQ, gentle compression,
+EBU R128 normalization targeting -16 LUFS and -1.8 dBTP before AAC encoding
+Captions: timed per spoken phrase and burned into the final video; SRT included
+
 PUBLIC PAYMENT EVIDENCE USED IN THIS VIDEO
 
 Network: Hedera testnet
@@ -40,10 +48,11 @@ No new payment executes during playback.
 Real testnet payment · HBAR · HTTP 402 · Signed evidence receipts
 
 Narration:
-ProofPay proves what an autonomous agent paid for. This prerecorded evidence
-walkthrough documents a real successful Hedera testnet x402 payment completed
-on July twenty-first, twenty twenty-six. No new payment executes during
-playback.
+ProofPay proves what an autonomous agent paid for.
+This is a prerecorded evidence walkthrough — documenting a real, successful
+Hedera testnet payment.
+The payment was completed on July twenty-first, twenty twenty-six.
+No new payment executes during playback.
 
 ----------------------------------------------------------------------
 SLIDE 2 OF 11 — THE MISSING LINK
@@ -57,9 +66,11 @@ Delivered artifact: request · evidence · output · provenance
 ProofPay cryptographically binds both sides.
 
 Narration:
-A blockchain transaction proves that value moved between accounts. But it does
-not prove what an API returned. ProofPay closes that gap by binding the payment
-to the request, evidence, output, provenance, and software version.
+A blockchain transaction proves that value moved between accounts.
+But it does not prove what an A P I delivered.
+ProofPay closes that gap.
+It binds the payment to the request, evidence, output, provenance, and software
+version.
 
 ----------------------------------------------------------------------
 SLIDE 3 OF 11 — END-TO-END ARCHITECTURE
@@ -71,10 +82,14 @@ Codex agent → HTTP 402 → Blocky402 → Hedera testnet → Evidence unlock
 → Signed receipt
 
 Narration:
-Here is the complete flow. Codex requests evidence. The resource server returns
-HTTP four oh two. Codex signs the exact HBAR transfer. Blocky four oh two
-verifies and sponsors the network fee. Hedera settles, the evidence unlocks,
-and ProofPay issues a signed receipt.
+Here is the complete flow.
+Codex requests evidence.
+The resource server returns H T T P four oh two.
+Codex signs the exact H bar transfer.
+Blocky four oh two verifies the transfer and sponsors the network fee.
+Hedera settles.
+The evidence unlocks.
+And ProofPay issues a signed receipt.
 
 ----------------------------------------------------------------------
 SLIDE 4 OF 11 — COMPLETED AUTONOMOUS PURCHASE
@@ -91,10 +106,10 @@ Transaction: 0.0.7162784-1784665192-906989595
 
 Narration:
 This slide reconstructs the completed purchase from the committed proof bundle.
-Value buyer account zero point zero point nine six seven six zero seven four
-authorized one million one tinybar to seller account zero point zero point nine
-six seven six zero seven three. Facilitator account zero point zero point seven
-one six two seven eight four paid the network fee. No signing key is shown.
+The buyer authorized one million and one tinybar to the seller.
+The facilitator paid the network fee.
+The exact public account identifiers and transaction are shown on screen.
+No signing key is shown.
 
 ----------------------------------------------------------------------
 SLIDE 5 OF 11 — HEDERA SETTLEMENT
@@ -108,10 +123,11 @@ Hedera: reaches consensus and returns the transaction ID.
 ProofPay: releases evidence only after confirmed settlement.
 
 Narration:
-Hedera's sponsored fee model separates authorization from network fees. The
-buyer signs the exact value transfer. Blocky four oh two validates it, adds the
-fee payer signature, and submits it. ProofPay releases nothing until settlement
-succeeds.
+Hedera's sponsored-fee model separates transfer authorization from network
+fees.
+The buyer signs the exact value transfer.
+Blocky four oh two validates it, adds the fee-payer signature, and submits it.
+ProofPay releases nothing until settlement succeeds.
 
 ----------------------------------------------------------------------
 SLIDE 6 OF 11 — RECORDED EVIDENCE UNLOCK
@@ -127,10 +143,12 @@ Receipt: pprec_91b33c408f6649f5b150068fe50a7c86
 PASS: payment, delivery, provenance, and signatures are bound.
 
 Narration:
-For the performed transaction, ProofPay mirror-verified the buyer debit, seller
-credit, exact amount, network, consensus result, and transaction identifier. It
-then unlocked deterministic DeltaSignal MSTR filing evidence and produced the
-committed Ed25519 signed receipt binding payment, delivery, and provenance.
+For this transaction, ProofPay verified the buyer debit, seller credit, exact
+amount, network, consensus result, and transaction identifier.
+Only then did it unlock deterministic DeltaSignal evidence from the Strategy
+ten K filing.
+The E D twenty-five five nineteen receipt binds the payment, delivery, evidence,
+and provenance.
 
 ----------------------------------------------------------------------
 SLIDE 7 OF 11 — MIRROR-NODE AND HASHSCAN PROOF
@@ -147,11 +165,11 @@ Amount: 1,000,001 tinybar
 Consensus: 1784665197.689086104
 
 Narration:
-This is the real Hedera testnet transaction we completed: zero point zero point
-seven one six two seven eight four, dash, one seven eight four six six five one
-nine two, dash, nine zero six nine eight nine five nine five. HashScan and the
-Hedera mirror node independently show success, value buyer, seller, fee payer,
-amount, and consensus timestamp.
+This is the completed Hedera testnet transaction.
+The full transaction identifier is shown on screen and linked in the
+repository.
+HashScan and the Hedera mirror node independently confirm the buyer, seller,
+fee payer, amount, successful result, and consensus time.
 
 ----------------------------------------------------------------------
 SLIDE 8 OF 11 — INDEPENDENT VERIFICATION
@@ -165,10 +183,12 @@ Evidence hash · Source date · Settlement claims · Replay protection
 16 / 16 PASS
 
 Narration:
-HashScan proves money moved. The portable verifier proves what the money
-unlocked. Sixteen checks validate the trusted signer, quote, payment terms,
-request hash, encrypted payload, decrypted artifact, evidence hash, source
-date, output hash, and settlement claims.
+HashScan proves that value moved.
+The portable verifier proves what that value unlocked.
+Sixteen independent checks validate the trusted signer, quote, payment terms,
+request, encrypted payload, artifact, evidence, source date, output, and
+settlement.
+All sixteen checks passed.
 
 ----------------------------------------------------------------------
 SLIDE 9 OF 11 — FAIL-CLOSED INTEGRITY
@@ -183,9 +203,11 @@ artifact_canonical · evidence_hash
 MUTATION DETECTED
 
 Narration:
-ProofPay fails closed. Change a single field in the delivered evidence and
-verification rejects the bundle. The signed artifact and evidence hashes no
-longer match, so mutation is detected immediately.
+ProofPay fails closed.
+Change one field in the delivered evidence, and verification rejects the
+bundle.
+The signed artifact and evidence hashes no longer match.
+Mutation is detected immediately.
 
 ----------------------------------------------------------------------
 SLIDE 10 OF 11 — DURABLE DELTASIGNAL VALUE
@@ -202,9 +224,10 @@ No API key · No checkout · No human in the loop
 
 Narration:
 For DeltaSignal, this creates pay-per-evidence infrastructure for autonomous
-agents. Buyers pay only for the research they need. This demonstrated delivery
-is auditable, portable across payment rails, and backed by public settlement
-proof.
+agents.
+Buyers pay only for the research they need.
+Each delivery is auditable, portable across payment rails, and backed by public
+settlement proof.
 
 ----------------------------------------------------------------------
 SLIDE 11 OF 11 — THANK YOU
@@ -218,9 +241,11 @@ github.com/aitrailblazer/proofpay-hedera-x402
 hashscan.io/testnet/transaction/0.0.7162784-1784665192-906989595
 
 Narration:
-Thank you for watching. The repository includes the performed payment bundle,
-the public transaction link, this slide-by-slide transcript, and the verifier
-needed to reproduce our evidence checks.
+Thank you for watching.
+The repository contains the performed payment bundle and the public transaction
+link.
+The complete transcript and verifier reproduce every evidence check.
+ProofPay — verifiable payment for verifiable evidence.
 
 DeltaSignal logo and visual identity © 2026 DeltaSignal.
 All rights reserved.

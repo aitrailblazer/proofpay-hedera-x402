@@ -96,18 +96,39 @@ Use the interactive
 [`ProofPay Demo Recording Console`](docs/ProofPay_Demo_Recording_Console.html)
 for the timed, step-by-step under-five-minute recording workflow.
 
-Watch or download the finished **3:26 captioned demo** from the
-[`demo-v2` GitHub release](https://github.com/aitrailblazer/proofpay-hedera-x402/releases/tag/demo-v2).
+Watch or download the finished **3:43 captioned demo** from the
+[`demo-v3` GitHub release](https://github.com/aitrailblazer/proofpay-hedera-x402/releases/tag/demo-v3).
 The rendered video includes narration, burned-in captions, a branded opening
 slide, the payer, seller, amount, consensus timestamp and transaction ID from
 the performed Hedera testnet payment, verification and tamper evidence, and a
-closing thank-you slide. A plain-text
+closing thank-you slide. The enhanced narration uses phrase-directed Apple
+Samantha delivery, deliberate pauses, 48 kHz mastering, corrective EQ, gentle
+compression, and EBU R128 loudness normalization. A plain-text
 [`slide-by-slide transcript`](docs/ProofPay_Demo_Transcript.txt) documents every
 on-screen beat and narration line.
 The companion
 [`slide-by-slide visualization prompts`](docs/ProofPay_Demo_Visualization_Prompts.txt)
 specify the cinematic evidence layer, deterministic overlay boundary, motion
 cues, negative prompts, branding, and provenance requirements for every slide.
+
+### Rebuild the enhanced Apple narration
+
+On macOS, place the eleven deterministic `scene-00.png` through
+`scene-10.png` frames in a frame directory, then run:
+
+```bash
+PROOFPAY_DEMO_FRAMES=artifacts/demo-video-v2 \
+PROOFPAY_DEMO_OUTPUT=artifacts/demo-video-v3 \
+npm run demo:video
+```
+
+The build reads phrase-level direction from
+[`scripts/demo-video-script.json`](scripts/demo-video-script.json), renders
+Apple Samantha locally at controlled rates, inserts deliberate pauses, masters
+each scene to 48 kHz mono with corrective EQ and gentle compression, normalizes
+to an EBU R128 target of -16 LUFS and -1.8 dBTP, retimes the SRT captions, and
+renders the final captioned video. The reproducible implementation is
+[`scripts/build-demo-video.ts`](scripts/build-demo-video.ts).
 
 ## Live Hedera testnet proof
 
