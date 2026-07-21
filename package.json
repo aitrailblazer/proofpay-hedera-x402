@@ -16,6 +16,7 @@
     "demo:keychain": "bash scripts/demo-keychain.sh",
     "demo:keyvault": "bash scripts/demo-keyvault.sh",
     "demo:live": "bash scripts/demo-live.sh",
+    "demo:tamper": "tsx scripts/tamper-demo.ts",
     "verify": "tsx scripts/verify.ts",
     "check": "npm run build && npm test"
   },

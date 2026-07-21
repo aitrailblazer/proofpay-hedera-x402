@@ -92,6 +92,9 @@ from the running server rather than trusting a key embedded in the bundle.
 
 Current submission evidence is tracked in
 [`docs/ProofPay_Submission_Proof_Index.html`](docs/ProofPay_Submission_Proof_Index.html).
+Use the interactive
+[`ProofPay Demo Recording Console`](docs/ProofPay_Demo_Recording_Console.html)
+for the timed, step-by-step under-five-minute recording workflow.
 
 ## Live Hedera testnet proof
 
@@ -107,6 +110,13 @@ Current submission evidence is tracked in
 The committed bundle contains public transaction, quote, receipt, ciphertext,
 decryption, and deterministic evidence material only. It contains no wallet or
 receipt-signing private key.
+
+Run the deterministic offline verifier and tamper demonstration with:
+
+```bash
+npm run verify -- docs/evidence/proof-bundle-2026-07-21.json docs/evidence/proofpay-receipt-public-key.pem
+npm run demo:tamper
+```
 
 ## Evidence boundary
 
