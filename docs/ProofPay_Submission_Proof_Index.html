@@ -23,13 +23,13 @@
   <CanonicalArtifact>
     <Title>ProofPay Submission Proof Index</Title>
     <Repository>https://github.com/aitrailblazer/proofpay-hedera-x402</Repository>
-    <UpdatedAt>2026-07-21T20:20:00Z</UpdatedAt>
+    <UpdatedAt>2026-07-21T20:24:00Z</UpdatedAt>
     <Deadline timezone="America/New_York">2026-07-31T23:59:00-04:00</Deadline>
   </CanonicalArtifact>
   <Purpose>Provide judges and maintainers one fail-closed index of implementation, test, transaction, verification, and demo evidence.</Purpose>
   <Status>
     <Gate id="public-source" state="PASS">Public MIT-licensed repository exists.</Gate>
-    <Gate id="ci" state="PASS">GitHub Actions passed the public baseline; the live-proof revision passes TypeScript build and 19 local tests.</Gate>
+    <Gate id="ci" state="PASS">GitHub Actions run 29865554201 passed TypeScript build and 19 tests for live-proof commit c0be8bd8cbebb84edf2b037b28c8a027281935ff.</Gate>
     <Gate id="hedera-402" state="PASS_LOCAL">Hosted facilitator returned a valid hedera:testnet HBAR challenge in local smoke testing.</Gate>
     <Gate id="on-chain-payment" state="PASS">A funded buyer settled 1,000,001 tinybar to the separate seller through the x402 flow.</Gate>
     <Gate id="hashscan" state="PASS">The transaction is independently visible on HashScan and the Hedera testnet mirror node.</Gate>
@@ -79,7 +79,7 @@
     import {LitElement, html, css} from "https://unpkg.com/lit@3/index.js?module";
     const gates = [
       ["Public source","PASS","MIT repository is public."],
-      ["Build + tests","PASS","Public CI baseline passes; live revision passes build + 19/19 tests."],
+      ["Build + tests","PASS","GitHub Actions 29865554201: build + 19/19 tests."],
       ["Hedera challenge","PASS LOCAL","Hosted facilitator returned hedera:testnet + HBAR 402."],
       ["Real settlement","PASS","1,000,001 tinybar settled between separate testnet accounts."],
       ["HashScan proof","PASS","Transaction 0.0.7162784-1784665192-906989595."],

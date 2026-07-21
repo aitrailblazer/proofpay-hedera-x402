@@ -101,6 +101,8 @@ Current submission evidence is tracked in
   [`docs/evidence/proof-bundle-2026-07-21.json`](docs/evidence/proof-bundle-2026-07-21.json)
 - Bundle SHA-256:
   `8f48bdb232c8c908dc39f334bd12f7d83aae74798a8b4f4d52beb253435c2342`
+- Live-proof CI:
+  [GitHub Actions run 29865554201](https://github.com/aitrailblazer/proofpay-hedera-x402/actions/runs/29865554201)
 
 The committed bundle contains public transaction, quote, receipt, ciphertext,
 decryption, and deterministic evidence material only. It contains no wallet or
