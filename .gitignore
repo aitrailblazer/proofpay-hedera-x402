@@ -5,6 +5,6 @@ dist/
 artifacts/live-proof/*
 !artifacts/live-proof/.gitkeep
 artifacts/demo-video/
-artifacts/demo-video-v2/
+artifacts/demo-video-v*/
 *.log
 .DS_Store
