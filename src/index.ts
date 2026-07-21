@@ -5,6 +5,7 @@ import { loadConfig } from "./config.js";
 import { receiptSignerFromBase64Pem } from "./crypto.js";
 import { FixtureEvidenceProvider } from "./evidence.js";
 import { HederaMirrorTransactionVerifier } from "./mirror.js";
+import { normalizeForwardedRequest } from "./proxy.js";
 import { QuoteStore } from "./quotes.js";
 import { ReceiptFinalizer } from "./receipt.js";
 import { FileSettlementReplayGuard } from "./replay.js";
@@ -25,7 +26,13 @@ const finalizer = new ReceiptFinalizer({
 });
 const app = createApp(config, { quotes, finalizer, signer });
 
-serve({ fetch: app.fetch, port: config.port }, ({ port }) => {
+serve(
+  {
+    fetch: (request) => app.fetch(normalizeForwardedRequest(request)),
+    port: config.port,
+  },
+  ({ port }) => {
   console.log(`ProofPay Hedera x402 listening on ${config.publicBaseUrl} (port ${port})`);
   console.log(`Receipt signer: ${signer.fingerprint}`);
-});
+  },
+);
