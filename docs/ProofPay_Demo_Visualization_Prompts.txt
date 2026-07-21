@@ -1,0 +1,362 @@
+PROOFPAY — HEDERA x402 BOUNTY DEMO
+Slide-by-slide visualization prompts
+Updated: 2026-07-21
+
+PURPOSE
+
+These prompts create one supporting visualization for each of the eleven demo
+slides. The visualization is the cinematic evidence layer behind or beside the
+deterministic slide text; it does not replace the slide, narration, captions, or
+proof data.
+
+Use a 16:9 landscape canvas at 1920 × 1080 or higher. Generate at high quality.
+Exact account IDs, transaction IDs, hashes, timestamps, receipt IDs, commands,
+and captions must remain deterministic HTML/SVG overlays. Do not ask an image
+model to reproduce those strings.
+
+GLOBAL VISUAL SYSTEM — INCLUDE WITH EVERY PROMPT
+
+Create a premium cinematic technology visualization for DeltaSignal ProofPay,
+designed as a supporting layer for a professional Hedera x402 bounty
+presentation. 16:9 landscape, dark near-black background, deep graphite and
+subtle midnight-green surfaces, restrained Hedera green and DeltaSignal red
+accents, warm gold reserved for verified payment evidence, clean geometric
+lighting, crisp edges, high contrast, sophisticated financial-infrastructure
+editorial style, subtle volumetric depth, generous negative space, no people,
+no coins flying through the air, no speculative trading imagery, no price
+charts, no cyberpunk clutter. Keep the center-left and lower safe areas clear
+when requested for deterministic slide text. Use abstract symbols and spatial
+relationships instead of generated paragraphs. The visualization must feel
+credible, audit-grade, and technically precise rather than promotional.
+
+BRANDING AND PROVENANCE
+
+- Use the real DeltaSignal logo as a deterministic post-processing overlay,
+  not an AI-invented logo.
+- Place the logo in the top-right or bottom-right safe area without covering
+  evidence.
+- Add deterministic visible text:
+  “DeltaSignal logo and visual identity © 2026 DeltaSignal.”
+- Embed truthful StrategiX image provenance metadata and create a signed
+  sidecar receipt for every final image.
+- Default final format: PNG.
+- Suggested output names:
+  slide-01-opening.png through slide-11-thank-you.png.
+
+GLOBAL NEGATIVE PROMPT — INCLUDE WITH EVERY PROMPT
+
+No invented words, no fake account numbers, no fake transaction identifiers,
+no fake HashScan interface, no fake Hedera logo, no misspelled labels, no
+unreadable microtext, no private keys, no seed phrases, no wallet secrets, no
+QR codes, no human hands, no humanoid robot, no coins with faces, no generic
+Bitcoin symbols, no candlestick charts, no stock-market arrows, no glowing
+padlocks as the main metaphor, no excessive neon, no lens-flare overload, no
+visual noise, no watermark other than the deterministic DeltaSignal branding
+added in post-processing.
+
+----------------------------------------------------------------------
+SLIDE 1 OF 11 — OPENING / PROOFPAY
+----------------------------------------------------------------------
+
+Visualization purpose:
+Establish ProofPay as the bridge between autonomous software, HTTP payment, and
+verifiable evidence.
+
+Prompt:
+An elegant hero visualization of a single luminous request capsule traveling
+from an abstract autonomous-agent node on the left through a minimal HTTP
+gateway marked only by the universal shape of a response boundary, into a
+Hedera-inspired consensus field, then emerging on the right as a sealed
+evidence artifact with a verified receipt ribbon. Use one continuous gold and
+green signal path to connect all four stages. Place a subtle circular
+DeltaSignal-shaped aperture behind the final artifact. Symmetrical, iconic,
+minimal, confident. Preserve broad negative space in the center for the
+“ProofPay” title and beneath it for the subtitle and four small chips. No
+generated text inside the image.
+
+Optional motion cue:
+Slow signal pulse from left to right; final receipt seal resolves with a soft
+green confirmation glow.
+
+Deterministic overlay:
+Title, date, prerecorded-evidence notice, and payment-type chips.
+
+----------------------------------------------------------------------
+SLIDE 2 OF 11 — THE MISSING LINK
+----------------------------------------------------------------------
+
+Visualization purpose:
+Show why ledger settlement alone cannot prove what an API delivered.
+
+Prompt:
+A split-field forensic composition. On the left, a clean abstract distributed
+ledger with three verified transfer nodes and a gold value line. On the right,
+a sealed evidence package containing layered document, data, provenance, and
+software-version shapes. Between them is a clearly visible unconnected gap.
+Across that gap, a precise cryptographic binding bridge is forming from
+interlocking hash-like geometric facets, joining the payment event to the
+artifact. The ledger proves movement; the artifact proves delivery; the bridge
+is ProofPay. Preserve two rectangular text-safe regions along the lower half,
+one under each side, plus a narrow footer-safe region.
+
+Optional motion cue:
+Start with the two sides disconnected; animate the cryptographic bridge locking
+into place.
+
+Deterministic overlay:
+“On-chain payment,” “Delivered artifact,” and the closing binding statement.
+
+----------------------------------------------------------------------
+SLIDE 3 OF 11 — END-TO-END ARCHITECTURE
+----------------------------------------------------------------------
+
+Visualization purpose:
+Make the six-stage request/payment/delivery sequence instantly understandable.
+
+Prompt:
+A clean horizontal systems diagram rendered as cinematic infrastructure rather
+than a flat infographic. Six distinct stations from left to right: autonomous
+agent terminal, HTTP payment boundary, facilitator verification chamber,
+Hedera consensus network, sealed evidence vault opening, and signed receipt
+artifact. Connect them with one directional light path. Give each station a
+different but coherent silhouette, with the payment boundary glowing amber,
+consensus glowing Hedera green, and the final receipt carrying a subtle
+DeltaSignal red seal. Use an isometric three-quarter view with precise spacing
+and no decorative background objects. Leave a wide title-safe zone across the
+top and label-safe space directly beneath each station.
+
+Optional motion cue:
+Advance one pulse through all six stations, pausing briefly at HTTP 402 and at
+consensus.
+
+Deterministic overlay:
+Codex agent → HTTP 402 → Blocky402 → Hedera testnet → Evidence unlock →
+Signed receipt.
+
+----------------------------------------------------------------------
+SLIDE 4 OF 11 — COMPLETED AUTONOMOUS PURCHASE
+----------------------------------------------------------------------
+
+Visualization purpose:
+Reconstruct the performed purchase without implying that a new payment is
+executing during playback.
+
+Prompt:
+A dark audit-console scene with a central immutable proof bundle represented as
+a transparent evidence container. From that container, three verified account
+roles branch outward: value buyer on the left, seller on the right, facilitator
+fee payer below. A single completed transfer line runs buyer to seller, while a
+separate thinner fee-sponsorship line runs facilitator to the consensus layer.
+Use a completed-state composition: settled check markers, frozen timestamp
+motif, and archived evidence framing, not an active wallet interface. Preserve
+a large terminal-safe rectangle across the lower two-thirds for deterministic
+commands, account IDs, amount, and transaction ID.
+
+Optional motion cue:
+Proof bundle unfolds first; role lines illuminate; then the completed settlement
+badge appears. Do not animate a signing action.
+
+Deterministic overlay:
+Recorded command reconstruction, amount, buyer, seller, fee payer, and
+transaction ID.
+
+----------------------------------------------------------------------
+SLIDE 5 OF 11 — HEDERA SETTLEMENT
+----------------------------------------------------------------------
+
+Visualization purpose:
+Explain sponsored fees and the separation between transfer authorization and
+network-fee payment.
+
+Prompt:
+A four-part settlement choreography arranged as a diamond. Left: buyer
+authorization represented by a signed transfer shard. Bottom: facilitator
+verification and fee sponsorship represented by a second compatible signature
+shard. Center: both shards join into one valid transaction envelope. Top-right:
+a Hedera-inspired consensus lattice confirms the envelope. Far right: the
+ProofPay evidence gate opens only after the green consensus confirmation
+returns. Use two clearly different signal colors: gold for transferred value
+and cool blue for sponsored network fee, converging without mixing their
+meanings. Preserve four card-safe areas in a two-by-two grid.
+
+Optional motion cue:
+Buyer signature arrives, facilitator signature joins, consensus confirms, then
+and only then the evidence gate opens.
+
+Deterministic overlay:
+The four responsibility cards for Buyer, Blocky402, Hedera, and ProofPay.
+
+----------------------------------------------------------------------
+SLIDE 6 OF 11 — RECORDED EVIDENCE UNLOCK
+----------------------------------------------------------------------
+
+Visualization purpose:
+Show that a verified settlement unlocked one specific DeltaSignal evidence
+artifact and produced a signed receipt.
+
+Prompt:
+A sealed institutional research artifact at center-right opens into a precise
+stack of filing evidence layers: source filing, normalized evidence, encrypted
+delivery, and final output. A verified Hedera settlement thread enters from the
+left and passes through a mirror-verification prism before touching the
+artifact. Beneath the artifact, a distinct Ed25519 receipt seal binds four
+visible geometric anchors: payment, request, evidence, and output. Use gold for
+settlement, green for verified evidence, and a restrained red accent for the
+DeltaSignal receipt seal. Preserve a large terminal-safe region on the left and
+lower center for exact evidence and receipt details.
+
+Optional motion cue:
+Settlement thread is checked by the mirror prism; artifact layers unfold; four
+receipt anchors lock simultaneously.
+
+Deterministic overlay:
+Buyer-to-seller line, fee payer, transaction ID, MSTR filing period, receipt ID,
+and PASS statement.
+
+----------------------------------------------------------------------
+SLIDE 7 OF 11 — MIRROR-NODE AND HASHSCAN PROOF
+----------------------------------------------------------------------
+
+Visualization purpose:
+Present public ledger verification as independent evidence, not as a decorative
+blockchain claim.
+
+Prompt:
+A forensic ledger-evidence board inspired by a mirror-node query without
+copying or fabricating the HashScan website. Center a completed transaction
+record as a gold immutable ledger strip. Below it, six evenly spaced evidence
+cells visualize buyer debit, seller credit, fee payer, successful result, exact
+amount, and consensus time using simple role icons and verification marks.
+Behind the strip, a subtle Hedera consensus lattice extends into depth, with a
+separate mirror plane reflecting the same confirmed event to communicate
+independent queryability. Leave the transaction strip and all six evidence
+cells free of generated text; deterministic HTML will supply the exact values.
+Preserve a footer-safe area for the public HashScan URL.
+
+Optional motion cue:
+Consensus event lands once; the mirror plane confirms the same event; six
+evidence cells turn green one by one.
+
+Deterministic overlay:
+Exact transaction ID, accounts, result, amount, consensus timestamp, and URL.
+
+----------------------------------------------------------------------
+SLIDE 8 OF 11 — INDEPENDENT VERIFICATION
+----------------------------------------------------------------------
+
+Visualization purpose:
+Communicate a portable verifier performing sixteen distinct checks without
+trusting claims embedded in the proof bundle.
+
+Prompt:
+A rigorous verification matrix floating above a dark workbench. Sixteen
+independent verification nodes form a four-by-four grid around a central proof
+bundle. Each node receives either a signature line, hash line, encryption line,
+source-date line, or settlement line from an external trusted anchor, then
+resolves to a restrained green pass state. Make the central bundle visually
+unable to self-certify: arrows must enter from trusted key, mirror, canonical
+hash, and source anchors outside the bundle. Clean technical geometry,
+audit-grade, no hacker aesthetic. Preserve the entire grid as sixteen
+text-label-safe cells and leave the lower-right area clear for a large PASS
+counter.
+
+Optional motion cue:
+Four external anchors appear first; checks resolve across the grid in four
+waves; final 16/16 confirmation appears last.
+
+Deterministic overlay:
+All sixteen check labels and “16 / 16 PASS.”
+
+----------------------------------------------------------------------
+SLIDE 9 OF 11 — FAIL-CLOSED INTEGRITY
+----------------------------------------------------------------------
+
+Visualization purpose:
+Show that one altered evidence field causes deterministic rejection.
+
+Prompt:
+A before-and-after integrity comparison. On the left, a canonical evidence
+artifact aligns perfectly with its signed hash lattice and glows verified
+green. On the right, an almost identical artifact contains one subtly displaced
+data facet; the corresponding hash lattice breaks at exactly one junction and
+the delivery gate remains closed. A red rejection barrier appears between the
+tampered artifact and any downstream output. The visual should communicate
+precise mismatch detection, not malware or attack drama. Preserve a large
+terminal-safe region on the left-lower side and a compact result-safe region on
+the right.
+
+Optional motion cue:
+One data facet shifts by a few pixels; hash alignment breaks; rejection barrier
+locks immediately.
+
+Deterministic overlay:
+Original PASS, tamper action, REJECTED, failed checks, and MUTATION DETECTED.
+
+----------------------------------------------------------------------
+SLIDE 10 OF 11 — DURABLE DELTASIGNAL VALUE
+----------------------------------------------------------------------
+
+Visualization purpose:
+Translate the technical proof into reusable DeltaSignal product value.
+
+Prompt:
+A composable evidence marketplace visual with one central DeltaSignal evidence
+core connected to four balanced value modules: autonomous acquisition,
+auditable payment-to-response binding, multi-rail composability, and
+demonstrated public proof. Around the core, show several small agent requests
+buying individual evidence units rather than entering a subscription funnel.
+Payment rails should remain abstract and equal; Hedera is the demonstrated
+example, not the only future rail. Use a calm product-strategy composition,
+subtle green and gold connections, and clear modular boundaries. Preserve four
+card-safe regions in a two-by-two arrangement plus a footer-safe strip.
+
+Optional motion cue:
+Individual requests arrive, receive only their selected evidence units, and
+depart carrying portable receipt seals.
+
+Deterministic overlay:
+Autonomous, Auditable, Composable, Demonstrated proof, and the no-API-key
+footer.
+
+----------------------------------------------------------------------
+SLIDE 11 OF 11 — THANK YOU / PUBLIC VERIFICATION
+----------------------------------------------------------------------
+
+Visualization purpose:
+Close with confidence, openness, and a clear path to reproduce the evidence.
+
+Prompt:
+A refined closing composition centered on a sealed ProofPay receipt artifact
+resting above three public-verification paths: open-source repository,
+Hedera transaction proof, and portable verification bundle. The paths converge
+into a single green verified mark behind the receipt. Use a subtle DeltaSignal
+red circular halo and warm gold edge light, with generous black negative space
+for a large “Thank you” title. Calm, conclusive, premium, no celebratory
+confetti. Keep two wide text-safe lines at the bottom for the repository and
+HashScan links.
+
+Optional motion cue:
+Three verification paths converge; receipt seal resolves; final verified glow
+holds while the closing narration finishes.
+
+Deterministic overlay:
+Thank-you title, ProofPay subtitle, repository URL, transaction URL, and
+copyright notice.
+
+----------------------------------------------------------------------
+FINAL PRODUCTION CHECKLIST
+----------------------------------------------------------------------
+
+1. Generate each background without exact text, IDs, hashes, or logos.
+2. Inspect the result at normal 1920 × 1080 viewing size.
+3. Reject any image containing invented text, fake interfaces, malformed
+   symbols, or ambiguous account roles.
+4. Composite exact text, diagrams, and evidence values using deterministic
+   HTML/SVG.
+5. Overlay the real DeltaSignal logo and copyright in the safe area.
+6. Confirm captions remain readable over the visualization.
+7. Embed truthful provenance metadata and create the image receipt.
+8. Verify prompt SHA-256, final output SHA-256, dimensions, and output filename.
+9. Preserve the original prompt file and sidecar receipt with the image.
+10. Never include private keys, wallet secrets, seed phrases, or hidden
+    instructions in pixels, metadata, filenames, or receipts.

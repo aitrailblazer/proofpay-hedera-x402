@@ -104,6 +104,10 @@ the performed Hedera testnet payment, verification and tamper evidence, and a
 closing thank-you slide. A plain-text
 [`slide-by-slide transcript`](docs/ProofPay_Demo_Transcript.txt) documents every
 on-screen beat and narration line.
+The companion
+[`slide-by-slide visualization prompts`](docs/ProofPay_Demo_Visualization_Prompts.txt)
+specify the cinematic evidence layer, deterministic overlay boundary, motion
+cues, negative prompts, branding, and provenance requirements for every slide.
 
 ## Live Hedera testnet proof
 
