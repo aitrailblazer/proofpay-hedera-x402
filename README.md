@@ -1,6 +1,7 @@
 # ProofPay — Hedera x402 evidence receipts
 
-ProofPay demonstrates an autonomous agent buying deterministic DeltaSignal-style
+ProofPay demonstrates an autonomous agent buying deterministic
+[DeltaSignal ATLAS-7](https://aitrailblazer.github.io/deltasignal-atlas-codex-plugin/llms-full.txt)
 issuer evidence with HBAR on Hedera testnet. It extends a normal x402 payment
 with a signed receipt that binds the transaction to the request, evidence,
 delivered output, source date, and software version.
@@ -12,6 +13,13 @@ unlocked. The server returns encrypted evidence after x402 settlement, verifies
 the transaction against the Hedera mirror node, then releases the decryption
 key and a signed Ed25519 receipt. The included verifier detects changed
 evidence, receipts, ciphertext, keys, or transaction bindings.
+
+DeltaSignal's live public service already exposes compatibility-first Base x402
+and an additive Circle Gateway lane. ProofPay is an isolated experiment showing
+how Hedera can become another distribution rail without moving credentials,
+wallet authority, or settlement logic into the DeltaSignal client. The bundled
+MSTR fixture was captured from DeltaSignal's filing-backed fundamentals route
+and retains its source endpoint, source date, quality flag, and snapshot hash.
 
 ## Quick start
 
@@ -56,6 +64,9 @@ from the running server rather than trusting a key embedded in the bundle.
 4. Show the decrypted MSTR filing evidence and receipt hashes (45 seconds).
 5. Run `npm run verify` and then a tamper test (45 seconds).
 6. Close with the DeltaSignal pay-per-evidence use case (30 seconds).
+
+Current submission evidence is tracked in
+[`docs/ProofPay_Submission_Proof_Index.html`](docs/ProofPay_Submission_Proof_Index.html).
 
 ## Evidence boundary
 

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="ProofPay Hedera x402 submission evidence index.">
+  <title>ProofPay Submission Proof Index</title>
+  <style>
+    :root { color-scheme: dark; font-family: Inter, system-ui, sans-serif; --bg:#07090d; --panel:#14181f; --line:#303641; --text:#f4f0e8; --muted:#aaa89f; --green:#69e3bd; --amber:#ffbd66; --red:#ff7b81; }
+    * { box-sizing:border-box } body { margin:0; background:radial-gradient(circle at 15% 0,#253024 0,transparent 30rem),var(--bg); color:var(--text) }
+    proofpay-index:not(:defined) { display:block; max-width:1050px; margin:auto; padding:32px 20px }
+    a { color:#ffe19a } code { color:#ffe19a }
+  </style>
+</head>
+<body>
+  <proofpay-index>
+    <h1>ProofPay Submission Proof Index</h1>
+    <p>The Lit visual surface is loading. The complete contract is embedded below.</p>
+  </proofpay-index>
+
+  <script id="proofpay-index-contract" type="application/xml">
+<StrategiXVisualSpec id="proofpay-submission-proof-index" version="1.0" status="live-proof-pending" canonicalFormat="html">
+  <CanonicalArtifact>
+    <Title>ProofPay Submission Proof Index</Title>
+    <Repository>https://github.com/aitrailblazer/proofpay-hedera-x402</Repository>
+    <UpdatedAt>2026-07-21T17:27:00Z</UpdatedAt>
+    <Deadline timezone="America/New_York">2026-07-31T23:59:00-04:00</Deadline>
+  </CanonicalArtifact>
+  <Purpose>Provide judges and maintainers one fail-closed index of implementation, test, transaction, verification, and demo evidence.</Purpose>
+  <Status>
+    <Gate id="public-source" state="PASS">Public MIT-licensed repository exists.</Gate>
+    <Gate id="ci" state="PASS">GitHub Actions run 29853016700 passed build and 18 tests for commit ea190ad2fbdbed8c31f341278a94417d3549c099.</Gate>
+    <Gate id="hedera-402" state="PASS_LOCAL">Hosted facilitator returned a valid hedera:testnet HBAR challenge in local smoke testing.</Gate>
+    <Gate id="on-chain-payment" state="PENDING">No real funded Hedera testnet transaction has been produced yet.</Gate>
+    <Gate id="hashscan" state="PENDING">No HashScan link may be claimed until the live transaction succeeds.</Gate>
+    <Gate id="demo" state="PENDING">The under-five-minute demo is scripted but not recorded.</Gate>
+  </Status>
+  <ImplementationEvidence>
+    <Item path="src/app.ts">Hono x402 resource server using ExactHederaScheme.</Item>
+    <Item path="scripts/buy.ts">Delegated Hedera buyer; key remains in client environment.</Item>
+    <Item path="src/mirror.ts">Mirror-node verification of transaction, payer debit, seller credit, amount, result, and network.</Item>
+    <Item path="src/receipt.ts">Ed25519 receipt and independent payment-to-artifact verification.</Item>
+    <Item path="src/replay.ts">Persistent, fail-closed settlement replay ledger.</Item>
+    <Item path="test/">Canonicalization, mirror, receipt, tamper, replay, persistence, and HTTP tests.</Item>
+  </ImplementationEvidence>
+  <LiveProofSlots>
+    <TransactionId state="PENDING"/>
+    <HashScanUrl state="PENDING"/>
+    <ProofBundleSha256 state="PENDING"/>
+    <DemoUrl state="PENDING"/>
+    <DemoDurationSeconds state="PENDING" maximum="299"/>
+  </LiveProofSlots>
+  <AcceptanceBoundary>HTTP 402 and passing tests are not substitutes for a real on-chain transaction. This artifact must remain PENDING until direct evidence exists.</AcceptanceBoundary>
+  <DemoContract targetSeconds="295">
+    <Beat seconds="20">State the payment-to-artifact integrity gap.</Beat>
+    <Beat seconds="20">Show free catalog and DeltaSignal provenance.</Beat>
+    <Beat seconds="25">Show Hedera HBAR HTTP 402.</Beat>
+    <Beat seconds="30">Show delegated signing without revealing the key.</Beat>
+    <Beat seconds="40">Settle, unlock evidence, and emit the receipt.</Beat>
+    <Beat seconds="35">Open the fresh HashScan transaction.</Beat>
+    <Beat seconds="40">Verify every binding.</Beat>
+    <Beat seconds="30">Tamper one byte and show deterministic failure.</Beat>
+    <Beat seconds="35">Show architecture and public source.</Beat>
+    <Beat seconds="20">Close with the DeltaSignal pay-per-evidence use case.</Beat>
+  </DemoContract>
+  <Sources>
+    <Source>https://hedera.com/x402-bounty/</Source>
+    <Source>https://aitrailblazer.github.io/deltasignal-atlas-codex-plugin/llms-full.txt</Source>
+    <Source>https://github.com/matevszm/x402-hedera-example</Source>
+    <Source>https://github.com/hedera-dev/scaffold-hbar/tree/templates/x402-pay-per-use</Source>
+  </Sources>
+</StrategiXVisualSpec>
+  </script>
+
+  <script type="module">
+    import {LitElement, html, css} from "https://unpkg.com/lit@3/index.js?module";
+    const gates = [
+      ["Public source","PASS","MIT repository is public."],
+      ["Build + tests","PASS","GitHub Actions run 29853016700: 18/18 tests."],
+      ["Hedera challenge","PASS LOCAL","Hosted facilitator returned hedera:testnet + HBAR 402."],
+      ["Real settlement","PENDING","Funded Hedera testnet buyer and seller required."],
+      ["HashScan proof","PENDING","Must be generated by the real settlement."],
+      ["Demo","PENDING","4:55 script exists; recording awaits live proof."]
+    ];
+    class ProofPayIndex extends LitElement {
+      static styles = css`
+        :host{display:block}.wrap{width:min(1050px,calc(100vw - 32px));margin:auto;padding:34px 0 64px}
+        header,.panel{border:1px solid var(--line);border-radius:18px;background:rgba(20,24,31,.94);padding:24px;margin-bottom:16px;box-shadow:0 20px 60px #0005}
+        h1{font-size:clamp(34px,6vw,64px);line-height:1;margin:8px 0 16px;letter-spacing:-.045em}h2{margin-top:0}
+        p,li{color:var(--muted)}.eyebrow{font:800 12px ui-monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--green)}
+        .chips{display:flex;flex-wrap:wrap;gap:8px}.chip{border:1px solid var(--line);padding:7px 10px;border-radius:999px;font:700 12px ui-monospace}
+        table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:11px;border-bottom:1px solid var(--line);vertical-align:top}
+        th{color:var(--muted);font-size:12px;text-transform:uppercase}.state{font:850 11px ui-monospace}.PASS{color:var(--green)}.PENDING{color:var(--amber)}
+        .warning{border-color:#6c5128;background:#241d13}.slots{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px}
+        .slot{border:1px dashed #68532c;border-radius:12px;padding:15px}.slot b{display:block;color:var(--amber);font:800 12px ui-monospace;margin-top:7px}
+        pre{white-space:pre-wrap;overflow:auto;background:#080a0d;padding:14px;border-radius:10px;font-size:11px}
+        @media(max-width:650px){th:nth-child(3),td:nth-child(3){display:none}}
+      `;
+      render(){
+        const xml=document.getElementById("proofpay-index-contract")?.textContent?.trim()??"";
+        return html`<main class="wrap">
+          <header><div class="eyebrow">Hedera x402 bounty · evidence index</div><h1>ProofPay proves what an agent paid for.</h1>
+            <p>Public source and local verification are green. On-chain proof remains deliberately unclaimed until a funded Hedera testnet settlement succeeds.</p>
+            <div class="chips"><span class="chip">DeltaSignal evidence</span><span class="chip">HBAR</span><span class="chip">Ed25519 receipt</span><span class="chip">AES-GCM delivery</span><span class="chip">Replay ledger</span></div>
+          </header>
+          <section class="panel"><h2>Submission gates</h2><table><thead><tr><th>Gate</th><th>State</th><th>Proof</th></tr></thead><tbody>
+            ${gates.map(g=>html`<tr><td>${g[0]}</td><td class="state ${g[1]==="PASS"?"PASS":"PENDING"}">${g[1]}</td><td>${g[2]}</td></tr>`)}
+          </tbody></table></section>
+          <section class="panel warning"><h2>Live proof slots</h2><div class="slots">
+            ${["Transaction ID","HashScan URL","Proof bundle SHA-256","Demo URL + duration"].map(x=>html`<div class="slot">${x}<b>PENDING — DO NOT INFER</b></div>`)}
+          </div></section>
+          <section class="panel"><h2>Verified implementation</h2><ul>
+            <li><code>src/app.ts</code> — dynamic single-use HBAR x402 quotes.</li>
+            <li><code>src/mirror.ts</code> — independent transfer verification.</li>
+            <li><code>src/receipt.ts</code> — canonical signatures and artifact bindings.</li>
+            <li><code>src/replay.ts</code> — persistent transaction replay rejection.</li>
+            <li><code>scripts/demo-live.sh</code> — one-command live flow.</li>
+          </ul></section>
+          <section class="panel"><details><summary>Embedded machine contract</summary><pre>${xml}</pre></details></section>
+        </main>`;
+      }
+    }
+    customElements.define("proofpay-index",ProofPayIndex);
+  </script>
+</body>
+</html>
