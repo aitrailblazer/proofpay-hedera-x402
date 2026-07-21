@@ -4,8 +4,8 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 
-if [[ ! -f .env ]]; then
-  echo "Missing .env. Copy .env.example and add Hedera testnet credentials." >&2
+if [[ ! -f .env && ( -z "${HEDERA_CLIENT_ID:-}" || -z "${HEDERA_CLIENT_KEY:-}" || -z "${PAY_TO_ACCOUNT:-}" || -z "${PROOFPAY_RECEIPT_PRIVATE_KEY_PEM_BASE64:-}" ) ]]; then
+  echo "Missing credentials. Use npm run configure:keychain, npm run demo:keychain, or a local .env." >&2
   exit 1
 fi
 

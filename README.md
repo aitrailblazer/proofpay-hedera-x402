@@ -47,6 +47,17 @@ Or run the server and buyer together with `npm run demo:live`.
 The buyer prints the real transaction ID and its
 `https://hashscan.io/testnet/transaction/...` URL.
 
+On macOS, avoid plaintext credential files:
+
+```bash
+npm run configure:keychain
+npm run demo:keychain
+```
+
+The configuration prompt hides the ECDSA private-key input and stores the
+buyer, separate seller, and receipt-signing values in macOS Keychain. Neither
+script prints the private values.
+
 ## Environment
 
 See `.env.example`. `HEDERA_CLIENT_KEY` is required only by the buyer. The

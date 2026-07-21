@@ -12,6 +12,8 @@
     "test:watch": "vitest",
     "keygen": "tsx scripts/generate-receipt-key.ts",
     "buy": "tsx scripts/buy.ts",
+    "configure:keychain": "bash scripts/configure-keychain.sh",
+    "demo:keychain": "bash scripts/demo-keychain.sh",
     "demo:live": "bash scripts/demo-live.sh",
     "verify": "tsx scripts/verify.ts",
     "check": "npm run build && npm test"
