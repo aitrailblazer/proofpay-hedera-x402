@@ -19,7 +19,7 @@
   </proofpay-index>
 
   <script id="proofpay-index-contract" type="application/xml">
-<StrategiXVisualSpec id="proofpay-submission-proof-index" version="1.3" status="submission-evidence-complete" canonicalFormat="html">
+<StrategiXVisualSpec id="proofpay-submission-proof-index" version="1.4" status="submission-evidence-complete" canonicalFormat="html">
   <CanonicalArtifact>
     <Title>ProofPay Submission Proof Index</Title>
     <Repository>https://github.com/aitrailblazer/proofpay-hedera-x402</Repository>
@@ -34,7 +34,7 @@
     <Gate id="on-chain-payment" state="PASS">A funded buyer settled 1,000,001 tinybar to the separate seller through the x402 flow.</Gate>
     <Gate id="hashscan" state="PASS">The transaction is independently visible on HashScan and the Hedera testnet mirror node.</Gate>
     <Gate id="offline-verification" state="PASS">All 16 payment, signer, encryption, provenance, and artifact-binding checks pass against the trusted receipt public key.</Gate>
-    <Gate id="demo" state="PASS">The captioned 223-second YouTube edition uses the completed payment values, all 11 scene visuals, phrase-synchronized action highlights, one burned caption layer, and enhanced narration, and is published as the demo-v5 GitHub release.</Gate>
+    <Gate id="demo" state="PASS">The captioned 221.4-second YouTube edition uses the completed payment values, all 11 scene visuals, phrase-synchronized action highlights, one burned caption layer, and scene-coherent Ava Premium narration, and is published as the demo-v6 GitHub release.</Gate>
   </Status>
   <ImplementationEvidence>
     <Item path="src/app.ts">Hono x402 resource server using ExactHederaScheme.</Item>
@@ -54,11 +54,13 @@
     <HashScanUrl state="PASS">https://hashscan.io/testnet/transaction/0.0.7162784-1784665192-906989595</HashScanUrl>
     <ProofBundle path="docs/evidence/proof-bundle-2026-07-21.json" state="PASS"/>
     <ProofBundleSha256 state="PASS">8f48bdb232c8c908dc39f334bd12f7d83aae74798a8b4f4d52beb253435c2342</ProofBundleSha256>
-    <DemoUrl state="PASS">https://github.com/aitrailblazer/proofpay-hedera-x402/releases/download/demo-v5/ProofPay_Hedera_x402_Bounty_Demo_YouTube_Edition.mp4</DemoUrl>
+    <DemoUrl state="PASS">https://github.com/aitrailblazer/proofpay-hedera-x402/releases/download/demo-v6/ProofPay_Hedera_x402_Bounty_Demo_YouTube_Edition.mp4</DemoUrl>
     <DemoTranscript path="docs/ProofPay_Demo_Transcript.txt" state="PASS"/>
     <DemoVisualizationPrompts path="docs/ProofPay_Demo_Visualization_Prompts.txt" state="PASS"/>
     <DemoInfographicSceneBriefs path="docs/ProofPay_Demo_Infographic_Scene_Briefs.txt" state="PASS"/>
-    <DemoDurationSeconds state="PASS" maximum="299">223.100</DemoDurationSeconds>
+    <DemoDurationSeconds state="PASS" maximum="299">221.400</DemoDurationSeconds>
+    <DemoSha256 state="PASS">4edb37a6b2620779a59a233daf2eb42b4357d74dac8d077619e3e6269ac7acfe</DemoSha256>
+    <VoicePreflight state="PASS">The system-selected Ava Premium PCM differs from the explicit compact-Samantha control.</VoicePreflight>
   </LiveProofSlots>
   <AcceptanceBoundary>The real on-chain transaction, committed proof bundle, and public under-five-minute demo satisfy the technical submission evidence gates. The official form must still be submitted by the entrant.</AcceptanceBoundary>
   <DemoContract targetSeconds="295">
@@ -91,7 +93,7 @@
       ["Real settlement","PASS","1,000,001 tinybar settled between separate testnet accounts."],
       ["HashScan proof","PASS","Transaction 0.0.7162784-1784665192-906989595."],
       ["Offline verification","PASS","16/16 receipt and artifact checks pass."],
-      ["Demo","PASS","YouTube-ready 3:43 video with burned captions and synchronized action highlights published in the demo-v5 release."]
+      ["Demo","PASS","YouTube-ready 3:41 video with burned captions, synchronized action highlights, and scene-coherent Ava Premium narration published in demo-v6."]
     ];
     class ProofPayIndex extends LitElement {
       static styles = css`
@@ -121,7 +123,7 @@
             <div class="slot">Transaction ID<b class="PASS">0.0.7162784-1784665192-906989595</b></div>
             <div class="slot">HashScan URL<b class="PASS"><a href="https://hashscan.io/testnet/transaction/0.0.7162784-1784665192-906989595">OPEN TRANSACTION</a></b></div>
             <div class="slot">Proof bundle SHA-256<b class="PASS">8f48bdb2…435c2342</b></div>
-            <div class="slot">Demo video · 03:43<b class="PASS"><a href="https://github.com/aitrailblazer/proofpay-hedera-x402/releases/download/demo-v5/ProofPay_Hedera_x402_Bounty_Demo_YouTube_Edition.mp4">WATCH / DOWNLOAD</a></b></div>
+            <div class="slot">Demo video · 03:41<b class="PASS"><a href="https://github.com/aitrailblazer/proofpay-hedera-x402/releases/download/demo-v6/ProofPay_Hedera_x402_Bounty_Demo_YouTube_Edition.mp4">WATCH / DOWNLOAD</a></b></div>
           </div></section>
           <section class="panel"><h2>Verified implementation</h2><ul>
             <li><code>src/app.ts</code> — dynamic single-use HBAR x402 quotes.</li>

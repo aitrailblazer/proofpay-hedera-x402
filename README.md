@@ -12,11 +12,11 @@
   <a href="https://hedera.com/"><img src="https://img.shields.io/badge/Hedera-Testnet-32E6A1?style=flat-square" alt="Hedera testnet"></a>
   <a href="https://www.x402.org/"><img src="https://img.shields.io/badge/Protocol-x402-F2C665?style=flat-square" alt="x402 protocol"></a>
   <a href="test/"><img src="https://img.shields.io/badge/tests-23%20passing-63E0B5?style=flat-square" alt="23 tests passing"></a>
-  <a href="https://github.com/aitrailblazer/proofpay-hedera-x402/releases/tag/demo-v5"><img src="https://img.shields.io/badge/demo-3%3A43-FF6433?style=flat-square" alt="3 minute 43 second YouTube-ready demo"></a>
+  <a href="https://github.com/aitrailblazer/proofpay-hedera-x402/releases/tag/demo-v6"><img src="https://img.shields.io/badge/demo-3%3A41-FF6433?style=flat-square" alt="3 minute 41 second YouTube-ready demo"></a>
 </p>
 
 <p>
-  <a href="https://github.com/aitrailblazer/proofpay-hedera-x402/releases/download/demo-v5/ProofPay_Hedera_x402_Bounty_Demo_YouTube_Edition.mp4">▶ Watch the demo</a>
+  <a href="https://github.com/aitrailblazer/proofpay-hedera-x402/releases/download/demo-v6/ProofPay_Hedera_x402_Bounty_Demo_YouTube_Edition.mp4">▶ Watch the demo</a>
   &nbsp;·&nbsp;
   <a href="https://hashscan.io/testnet/transaction/0.0.7162784-1784665192-906989595">✓ Verify the transaction</a>
   &nbsp;·&nbsp;
@@ -266,8 +266,8 @@ infrastructure for:
 
 | Artifact | Link |
 |---|---|
-| YouTube-ready 3:43 captioned demo | [Watch / download](https://github.com/aitrailblazer/proofpay-hedera-x402/releases/download/demo-v5/ProofPay_Hedera_x402_Bounty_Demo_YouTube_Edition.mp4) |
-| Complete demo release | [`demo-v5`](https://github.com/aitrailblazer/proofpay-hedera-x402/releases/tag/demo-v5) |
+| YouTube-ready 3:41 captioned demo | [Watch / download](https://github.com/aitrailblazer/proofpay-hedera-x402/releases/download/demo-v6/ProofPay_Hedera_x402_Bounty_Demo_YouTube_Edition.mp4) |
+| Complete demo release | [`demo-v6`](https://github.com/aitrailblazer/proofpay-hedera-x402/releases/tag/demo-v6) |
 | Slide-by-slide transcript | [`ProofPay_Demo_Transcript.txt`](docs/ProofPay_Demo_Transcript.txt) |
 | Infographic scene briefs | [`ProofPay_Demo_Infographic_Scene_Briefs.txt`](docs/ProofPay_Demo_Infographic_Scene_Briefs.txt) |
 | Visualization prompts | [`ProofPay_Demo_Visualization_Prompts.txt`](docs/ProofPay_Demo_Visualization_Prompts.txt) |

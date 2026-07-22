@@ -4,8 +4,9 @@ Updated: 2026-07-22
 
 VOICE PRODUCTION
 
-Voice: Apple Samantha (en_US), generated locally with macOS text to speech
-Delivery: phrase-directed at 146–158 words per minute with deliberate pauses
+Voice: Ava (Premium), generated locally through the selected macOS system voice
+Delivery: scene-coherent at 146–158 words per minute with deliberate pauses
+Voice guard: decoded PCM differs from the explicit compact-Samantha control
 Mastering: 48 kHz mono, high-pass filter, corrective EQ, gentle compression,
 EBU R128 normalization targeting -16 LUFS and -1.8 dBTP before AAC encoding
 Captions: one timed phrase is burned into the picture; no subtitle stream
