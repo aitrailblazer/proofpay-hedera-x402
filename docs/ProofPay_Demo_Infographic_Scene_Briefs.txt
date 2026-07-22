@@ -1,0 +1,610 @@
+PROOFPAY — HEDERA x402 BOUNTY DEMO
+Infographic scene descriptions and generation briefs
+Updated: 2026-07-21
+
+PURPOSE
+
+This file defines one self-contained infographic for each of the eleven
+ProofPay demo scenes. Each brief explains the story, information hierarchy,
+diagram type, visual composition, exact deterministic overlay content, and an
+image-generation prompt.
+
+Use these briefs with:
+
+- docs/ProofPay_Demo_Transcript.txt for narration and exact on-screen claims;
+- docs/ProofPay_Demo_Visualization_Prompts.txt for the shared cinematic style,
+  negative prompt, branding, provenance, and production checklist; and
+- docs/evidence/proof-bundle-2026-07-21.json for public performed-payment facts.
+
+EVIDENCE BOUNDARY
+
+These are explanatory infographics for an already-completed Hedera testnet
+payment. They must not suggest that another payment executes during playback.
+HashScan and the Hedera mirror node prove ledger settlement. The ProofPay
+receipt independently binds that settlement to the request, evidence, output,
+source date, and software version.
+
+GLOBAL INFOGRAPHIC RULES
+
+Canvas:
+- 16:9 landscape, preferably 1920 × 1080 or 1536 × 1024.
+- Dark near-black background with graphite panels.
+- Hedera green for consensus and verification.
+- Warm gold for transferred value and confirmed payment evidence.
+- DeltaSignal red only for brand accents and the signed receipt seal.
+- Cool blue for facilitator-sponsored network fees.
+
+Typography:
+- Do not generate exact labels, account IDs, transaction IDs, hashes, URLs, or
+  timestamps inside an image model.
+- Render all exact text as deterministic HTML or SVG after image generation.
+- Keep headings short and labels readable after video compression.
+- Maintain a caption-safe lower margin of at least 18% of the canvas.
+
+Branding and provenance:
+- Overlay the real DeltaSignal logo in post-processing.
+- Add “DeltaSignal logo and visual identity © 2026 DeltaSignal.”
+- Embed truthful StrategiX provenance metadata.
+- Produce one sidecar receipt per final infographic with prompt and output
+  SHA-256 hashes.
+
+Common negative prompt:
+No invented text, fake IDs, fake HashScan pages, fake Hedera branding, private
+keys, seed phrases, wallet secrets, QR codes, humanoid robots, stock charts,
+Bitcoin symbols, flying coins, speculative-price imagery, excessive neon,
+cyberpunk clutter, illegible microtext, or misleading live-payment animation.
+
+======================================================================
+SCENE 1 OF 11 — PROOFPAY OPENING
+======================================================================
+
+Scene description:
+An autonomous agent requests a specific piece of research. The request crosses
+an HTTP payment boundary, settles on Hedera, and emerges as a verified evidence
+artifact with a signed receipt. This establishes the complete ProofPay promise
+in one image: verifiable payment for verifiable evidence.
+
+Infographic objective:
+Explain ProofPay in under three seconds without showing implementation detail.
+
+Recommended diagram:
+Four-stage hero flow.
+
+Information hierarchy:
+1. ProofPay title and value proposition.
+2. Agent request.
+3. Hedera x402 settlement.
+4. Evidence plus signed receipt.
+5. Prerecorded-evidence disclosure.
+
+Composition:
+- Left: compact autonomous-agent request node.
+- Center-left: HTTP 402 boundary.
+- Center-right: Hedera consensus field.
+- Right: sealed evidence artifact with receipt seal.
+- One continuous directional path joins all four stages.
+- Reserve the central upper area for the ProofPay title.
+- Reserve the lower 18% for captions.
+
+Exact deterministic overlay:
+- “ProofPay”
+- “Agent request”
+- “HTTP 402”
+- “Hedera testnet”
+- “Evidence + signed receipt”
+- “Prerecorded evidence walkthrough”
+- “No new payment executes during playback”
+
+Infographic generation prompt:
+Create a premium dark financial-infrastructure infographic with four clean
+stages from left to right: autonomous software request, HTTP payment boundary,
+distributed consensus field, and verified research artifact with receipt seal.
+Connect every stage with one precise gold-to-green signal path. Use minimal
+geometric forms, subtle depth, restrained lighting, large negative space, and
+an audit-grade editorial aesthetic. Leave all text areas empty for deterministic
+overlay. Keep the bottom caption-safe area clear.
+
+======================================================================
+SCENE 2 OF 11 — THE PAYMENT-TO-ARTIFACT GAP
+======================================================================
+
+Scene description:
+A blockchain record proves that funds moved, but it cannot prove what an API
+delivered. ProofPay closes this missing link by binding the settlement to the
+request, evidence, output, provenance, and software version.
+
+Infographic objective:
+Make the unsolved problem and ProofPay’s unique answer visually undeniable.
+
+Recommended diagram:
+Two-column before/after bridge diagram.
+
+Information hierarchy:
+1. Ledger proof on the left.
+2. Delivered artifact on the right.
+3. Missing evidentiary gap between them.
+4. ProofPay cryptographic binding bridge.
+
+Composition:
+- Left panel: payer, seller, amount, and timestamp represented as ledger facts.
+- Right panel: request, evidence, output, provenance, and software represented
+  as artifact layers.
+- Center: initially visible gap crossed by a hash-binding bridge.
+- Footer: one concise ProofPay conclusion.
+
+Exact deterministic overlay:
+- “PAYMENT PROVES”
+- “Payer · Seller · Amount · Time”
+- “PAYMENT DOES NOT PROVE”
+- “Request · Evidence · Output · Provenance”
+- “ProofPay binds both sides”
+
+Infographic generation prompt:
+Create a split forensic infographic. On the left, show a verified distributed
+ledger transfer with three clean ledger nodes. On the right, show a layered
+research artifact containing request, evidence, output, and provenance shapes.
+Keep a clear gap between them, then span it with an exact cryptographic bridge
+made from interlocking hash facets. The bridge is the visual focus. Leave two
+large empty label panels and one empty footer strip for deterministic text.
+
+======================================================================
+SCENE 3 OF 11 — END-TO-END ARCHITECTURE
+======================================================================
+
+Scene description:
+The agent asks for evidence. ProofPay responds with HTTP 402. The agent signs
+the exact HBAR transfer. Blocky402 verifies it and sponsors the network fee.
+Hedera reaches consensus. ProofPay unlocks the evidence and signs the receipt.
+
+Infographic objective:
+Show the complete technical sequence and clarify the responsibility of every
+component.
+
+Recommended diagram:
+Six-stage horizontal architecture pipeline.
+
+Information hierarchy:
+1. Request direction.
+2. Payment challenge.
+3. Buyer authorization.
+4. Facilitator verification and sponsorship.
+5. Hedera settlement.
+6. Evidence release and receipt.
+
+Composition:
+- Six evenly spaced stations connected by arrows.
+- Agent and HTTP boundary on the left.
+- Facilitator and Hedera in the center.
+- Evidence and receipt on the right.
+- Use gold for value, blue for sponsored fee, and green for confirmation.
+- Reserve label space directly below every station.
+
+Exact deterministic overlay:
+- “1 · Codex agent”
+- “2 · HTTP 402”
+- “3 · Exact HBAR authorization”
+- “4 · Blocky402 verification”
+- “5 · Hedera consensus”
+- “6 · Evidence + receipt”
+
+Infographic generation prompt:
+Create a clean six-stage systems architecture infographic in a precise
+horizontal sequence. Use distinct stations for an autonomous agent, HTTP 402
+boundary, signed transfer, facilitator verification chamber, Hedera-inspired
+consensus lattice, and unlocked evidence artifact with receipt. Connect them
+with one directional path and show a separate blue fee-sponsorship line joining
+the value transaction before consensus. Leave every station label area empty.
+
+======================================================================
+SCENE 4 OF 11 — COMPLETED AUTONOMOUS PURCHASE
+======================================================================
+
+Scene description:
+This is a reconstruction of the performed testnet purchase from the committed
+proof bundle. The buyer authorized 1,000,001 tinybar to the seller. The
+facilitator paid the network fee. All identities and the transaction ID are
+public, but no private signing key is exposed.
+
+Infographic objective:
+Present the performed payment roles and values clearly without resembling a
+live wallet or active transaction screen.
+
+Recommended diagram:
+Completed transaction role map.
+
+Information hierarchy:
+1. Completed status.
+2. Buyer-to-seller value transfer.
+3. Facilitator network-fee sponsorship.
+4. Transaction ID and amount.
+5. No-private-key security boundary.
+
+Composition:
+- Buyer on the left and seller on the right.
+- Thick gold arrow from buyer to seller.
+- Facilitator below with a thin blue line to the transaction envelope.
+- Hedera consensus confirmation above the transaction envelope.
+- Archive/proof-bundle frame surrounding the completed event.
+
+Exact deterministic overlay:
+- “COMPLETED · HEDERA TESTNET”
+- “Value buyer · 0.0.9676074”
+- “Seller · 0.0.9676073”
+- “Fee payer · 0.0.7162784”
+- “1,000,001 tinybar”
+- “0.0.7162784-1784665192-906989595”
+- “No private key shown”
+
+Infographic generation prompt:
+Create a completed-state transaction role map, not a live wallet. Place a buyer
+node left, seller node right, facilitator node below, and consensus confirmation
+above. Draw a thick gold value arrow buyer-to-seller and a separate thin blue
+fee-sponsorship line from facilitator to the transaction envelope. Surround the
+event with a subtle archived proof-bundle frame and settled verification marks.
+Leave all exact values and IDs blank for deterministic overlay.
+
+======================================================================
+SCENE 5 OF 11 — SPONSORED-FEE SETTLEMENT
+======================================================================
+
+Scene description:
+Hedera separates the buyer’s authorization of value from payment of the network
+fee. The buyer signs the exact transfer. The facilitator verifies it, adds its
+fee-payer signature, and submits the transaction. Evidence remains locked until
+consensus confirms success.
+
+Infographic objective:
+Explain Hedera’s sponsored-fee advantage and why the facilitator is not the
+value buyer.
+
+Recommended diagram:
+Dual-signature settlement choreography.
+
+Information hierarchy:
+1. Buyer authorizes value.
+2. Facilitator verifies and sponsors fee.
+3. Signatures combine into one transaction.
+4. Hedera reaches consensus.
+5. Evidence gate opens after success.
+
+Composition:
+- Buyer signature shard on left.
+- Facilitator signature shard below.
+- Combined transaction envelope at center.
+- Consensus network above-right.
+- Locked evidence gate far right.
+- Gold and blue paths remain visually separate until the transaction envelope.
+
+Exact deterministic overlay:
+- “Buyer · authorizes value”
+- “Facilitator · verifies + sponsors fee”
+- “One valid transaction”
+- “Hedera · consensus”
+- “ProofPay · release after success”
+
+Infographic generation prompt:
+Create a dual-signature settlement infographic. A gold buyer-authorization
+shard enters a central transaction envelope from the left. A blue
+facilitator-fee shard enters from below. The complete envelope moves into a
+green distributed-consensus lattice, and only the returned success signal opens
+a sealed evidence gate on the right. Preserve clear separation between value
+authorization and fee sponsorship. Leave five label-safe areas empty.
+
+======================================================================
+SCENE 6 OF 11 — EVIDENCE UNLOCK AND RECEIPT
+======================================================================
+
+Scene description:
+After mirror verification, ProofPay unlocked deterministic Strategy 10-K
+evidence and issued an Ed25519 receipt. The receipt binds the payment to the
+request, encrypted delivery, evidence hash, output hash, source date, and
+software version.
+
+Infographic objective:
+Show the transition from a verified settlement to a specific research artifact
+and a portable proof receipt.
+
+Recommended diagram:
+Payment-to-artifact binding diagram.
+
+Information hierarchy:
+1. Mirror-verified settlement.
+2. Evidence vault unlock.
+3. Specific filing evidence.
+4. Four receipt anchors.
+5. Portable verification.
+
+Composition:
+- Settlement record enters a mirror-verification prism on the left.
+- Green verified signal opens an evidence vault in the center.
+- Filing evidence layers unfold on the right.
+- Receipt seal beneath connects to payment, request, evidence, and output.
+
+Exact deterministic overlay:
+- “Mirror verified”
+- “MSTR · 10-K · 2025-12-31”
+- “Payment”
+- “Request”
+- “Evidence”
+- “Output”
+- “Ed25519 signed receipt”
+- “PASS”
+
+Infographic generation prompt:
+Create a payment-to-artifact binding infographic. A completed ledger event
+passes through a transparent mirror-verification prism. Its verified green
+signal opens a sealed institutional research vault. Layered filing evidence
+unfolds from the vault, while a signed receipt seal beneath connects to four
+distinct anchors representing payment, request, evidence, and output. Use gold,
+green, and one restrained DeltaSignal-red receipt accent. Leave all labels and
+identifiers blank.
+
+======================================================================
+SCENE 7 OF 11 — PUBLIC LEDGER PROOF
+======================================================================
+
+Scene description:
+The completed transaction is independently visible through HashScan and the
+Hedera mirror node. Public evidence confirms the buyer, seller, fee payer,
+amount, successful result, transaction ID, and consensus timestamp.
+
+Infographic objective:
+Turn raw ledger facts into an immediately readable public verification board.
+
+Recommended diagram:
+Transaction evidence dashboard.
+
+Information hierarchy:
+1. Transaction ID.
+2. SUCCESS result.
+3. Buyer, seller, and fee payer.
+4. Amount.
+5. Consensus timestamp.
+6. Public verification route.
+
+Composition:
+- Large transaction strip at the top.
+- Six equal evidence cells below.
+- Hedera consensus plane in the background.
+- Mirror plane repeats the same confirmed event.
+- Footer-safe strip for HashScan URL.
+
+Exact deterministic overlay:
+- “0.0.7162784-1784665192-906989595”
+- “VALUE BUYER · 0.0.9676074”
+- “SELLER · 0.0.9676073”
+- “FEE PAYER · 0.0.7162784”
+- “RESULT · SUCCESS”
+- “AMOUNT · 1,000,001 tinybar”
+- “CONSENSUS · 1784665197.689086104”
+- HashScan URL
+
+Infographic generation prompt:
+Create a forensic transaction evidence dashboard with one large immutable
+ledger strip and six balanced evidence cells. Behind it, show a subtle
+distributed-consensus plane and a separate mirror plane reflecting the same
+confirmed event. Use gold for the transaction strip and restrained green for
+verified cells. Do not imitate the HashScan website. Leave every exact-value
+field empty for deterministic overlay and preserve a clear footer URL strip.
+
+======================================================================
+SCENE 8 OF 11 — SIXTEEN INDEPENDENT CHECKS
+======================================================================
+
+Scene description:
+The proof bundle does not certify itself. A portable verifier checks trusted
+signer identity, signatures, quote binding, payment terms, request and payload
+hashes, decryption, output and evidence hashes, source date, settlement claims,
+and replay safety. All sixteen checks pass.
+
+Infographic objective:
+Show defense in depth and independent verification at a glance.
+
+Recommended diagram:
+Four-by-four verification matrix.
+
+Information hierarchy:
+1. External trust anchors.
+2. Sixteen checks.
+3. Proof bundle under examination.
+4. All checks passed.
+
+Composition:
+- Proof bundle at the center.
+- Four external anchors around it: trusted key, mirror node, canonical hashing,
+  and source evidence.
+- Sixteen cells arranged as a readable four-by-four grid.
+- Large result counter in the lower-right, above the caption-safe margin.
+
+Exact deterministic overlay:
+- “Trusted key unchanged”
+- “Signer identity”
+- “Attestation signature”
+- “Receipt signature”
+- “Quote binding”
+- “Hash binding”
+- “Sealed hash”
+- “Request hash”
+- “Payment terms hash”
+- “Payment terms”
+- “Artifact decrypts”
+- “Output hash”
+- “Artifact canonical”
+- “Evidence hash”
+- “Source date”
+- “Settlement claims”
+- “16 / 16 PASS”
+
+Infographic generation prompt:
+Create an audit-grade four-by-four verification matrix around a central proof
+bundle. Four external trust anchors feed independent validation lines into the
+matrix: trusted public key, mirror-node settlement, canonical hashing, and
+source evidence. Each of sixteen cells resolves to a restrained green pass
+state. Make it visually clear that trust enters from outside the bundle. Leave
+every check label and the result counter empty for deterministic overlay.
+
+======================================================================
+SCENE 9 OF 11 — FAIL-CLOSED TAMPER DETECTION
+======================================================================
+
+Scene description:
+One field in the decrypted artifact is changed. The canonical representation
+and evidence hash no longer match the signed receipt. Verification rejects the
+bundle immediately rather than returning altered evidence.
+
+Infographic objective:
+Demonstrate that ProofPay detects mutation and fails closed.
+
+Recommended diagram:
+Before-versus-after integrity comparison.
+
+Information hierarchy:
+1. Original verified artifact.
+2. One changed field.
+3. Broken canonical/hash alignment.
+4. Rejected delivery.
+
+Composition:
+- Left: original artifact aligned with signed hash lattice.
+- Center: magnified single-field mutation.
+- Right: broken hash lattice and closed output gate.
+- Strong but restrained red rejection indicator.
+
+Exact deterministic overlay:
+- “ORIGINAL · PASS”
+- “ONE FIELD CHANGED”
+- “artifact_canonical · FAIL”
+- “evidence_hash · FAIL”
+- “REJECTED”
+- “MUTATION DETECTED”
+
+Infographic generation prompt:
+Create a precise before-and-after integrity infographic. On the left, a
+canonical evidence artifact aligns perfectly with a signed hash lattice and
+shows a calm green pass state. In the center, magnify one subtly displaced data
+facet. On the right, show the corresponding lattice junction breaking and a
+delivery gate remaining closed behind a restrained red rejection barrier.
+Avoid attack drama; emphasize deterministic mismatch detection.
+
+======================================================================
+SCENE 10 OF 11 — DURABLE DELTASIGNAL VALUE
+======================================================================
+
+Scene description:
+ProofPay creates pay-per-evidence infrastructure for autonomous agents. Buyers
+purchase only the research they need. Every delivery is auditable, and the
+receipt model can remain consistent across Hedera and other payment rails.
+
+Infographic objective:
+Translate the technical implementation into durable product and business value.
+
+Recommended diagram:
+Four-pillar product value map.
+
+Information hierarchy:
+1. Pay per evidence.
+2. Autonomous acquisition.
+3. Auditable delivery.
+4. Multi-rail composability.
+5. Demonstrated public proof.
+
+Composition:
+- DeltaSignal evidence core at center.
+- Four equal modules around it.
+- Small agent requests receive discrete evidence units, not subscriptions.
+- Several abstract payment rails connect to one receipt model.
+- Keep Hedera visible as the demonstrated rail without implying exclusivity.
+
+Exact deterministic overlay:
+- “PAY PER EVIDENCE”
+- “AUTONOMOUS”
+- “AUDITABLE”
+- “COMPOSABLE”
+- “DEMONSTRATED”
+- “No API key · No checkout · No human in the loop”
+
+Infographic generation prompt:
+Create a balanced product-value infographic centered on a DeltaSignal evidence
+core. Surround it with four modular pillars: autonomous purchasing, auditable
+payment-to-response binding, multi-rail composability, and demonstrated public
+proof. Show small agent requests receiving individual evidence units rather
+than entering a subscription funnel. Connect several abstract payment rails to
+one portable receipt pattern. Leave four card areas and one footer strip empty.
+
+======================================================================
+SCENE 11 OF 11 — PUBLIC VERIFICATION AND CLOSE
+======================================================================
+
+Scene description:
+The project closes with three public paths to verification: the open-source
+repository, the Hedera transaction, and the portable proof bundle. Together
+they let judges reproduce the payment and evidence checks.
+
+Infographic objective:
+End with confidence, openness, and a clear verification path.
+
+Recommended diagram:
+Three-path verification convergence.
+
+Information hierarchy:
+1. Thank-you statement.
+2. Open-source repository.
+3. Hedera transaction proof.
+4. Portable proof bundle and verifier.
+5. Unified verified receipt.
+
+Composition:
+- Three paths rise from the bottom: source, settlement, and proof bundle.
+- Paths converge into one signed ProofPay receipt at center.
+- Large negative space around the receipt for the closing title.
+- Repository and transaction links remain in deterministic overlay zones.
+
+Exact deterministic overlay:
+- “Thank you!”
+- “PUBLIC SOURCE”
+- “PERFORMED SETTLEMENT”
+- “VERIFIABLE DELIVERY”
+- Repository URL
+- HashScan transaction URL
+- Copyright notice
+
+Infographic generation prompt:
+Create a calm premium closing infographic. Three distinct public-verification
+paths—open-source implementation, distributed-ledger settlement, and portable
+proof bundle—rise from the lower canvas and converge into one signed ProofPay
+receipt. Place a subtle verified green halo behind the receipt and a restrained
+DeltaSignal-red brand ring around it. Use generous black negative space and no
+celebratory effects. Leave the title and two URL areas empty.
+
+======================================================================
+INFOGRAPHIC EXPORT CHECKLIST
+======================================================================
+
+For each scene:
+
+1. Save the raw generated background.
+2. Composite exact labels and evidence using deterministic HTML/SVG.
+3. Keep account roles distinct: value buyer, seller, and transaction fee payer.
+4. Never label the fee payer as the value buyer.
+5. Keep the full transaction ID and consensus timestamp exact.
+6. Do not represent the prerecorded walkthrough as a live payment.
+7. Keep captions readable and unobstructed.
+8. Overlay the real DeltaSignal logo and copyright notice.
+9. Embed truthful provenance metadata.
+10. Produce and retain the sidecar receipt.
+11. Verify dimensions and visual safe areas.
+12. Verify prompt SHA-256 and final output SHA-256.
+
+Suggested filenames:
+
+- infographic-01-proofpay-opening.png
+- infographic-02-payment-artifact-gap.png
+- infographic-03-end-to-end-architecture.png
+- infographic-04-completed-purchase.png
+- infographic-05-sponsored-fee-settlement.png
+- infographic-06-evidence-unlock-receipt.png
+- infographic-07-public-ledger-proof.png
+- infographic-08-sixteen-checks.png
+- infographic-09-tamper-detection.png
+- infographic-10-deltasignal-value.png
+- infographic-11-public-verification-close.png

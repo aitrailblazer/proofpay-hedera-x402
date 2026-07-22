@@ -110,6 +110,10 @@ The companion
 [`slide-by-slide visualization prompts`](docs/ProofPay_Demo_Visualization_Prompts.txt)
 specify the cinematic evidence layer, deterministic overlay boundary, motion
 cues, negative prompts, branding, and provenance requirements for every slide.
+For infographic production, use the
+[`scene descriptions and infographic briefs`](docs/ProofPay_Demo_Infographic_Scene_Briefs.txt),
+which define the story, diagram type, information hierarchy, composition,
+exact overlay fields, and generation prompt for all eleven scenes.
 
 ### Rebuild the enhanced Apple narration
 

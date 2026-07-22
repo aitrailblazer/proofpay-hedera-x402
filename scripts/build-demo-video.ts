@@ -327,6 +327,10 @@ await cp(
   join(root, "docs", "ProofPay_Demo_Visualization_Prompts.txt"),
   join(outputRoot, "ProofPay_Demo_Visualization_Prompts.txt"),
 );
+await cp(
+  join(root, "docs", "ProofPay_Demo_Infographic_Scene_Briefs.txt"),
+  join(outputRoot, "ProofPay_Demo_Infographic_Scene_Briefs.txt"),
+);
 
 console.log(
   JSON.stringify(
