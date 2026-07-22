@@ -1,211 +1,283 @@
-# ProofPay — Hedera x402 evidence receipts
+<div align="center">
 
-ProofPay demonstrates an autonomous agent buying deterministic
+# ProofPay
+
+### An agent can prove it paid. ProofPay proves what it received.
+
+**Pay-per-evidence on Hedera x402, with a signed receipt binding the payment**<br>
+**to the exact request, delivered research, provenance, and software version.**
+
+<p>
+  <a href="https://github.com/aitrailblazer/proofpay-hedera-x402/actions/workflows/ci.yml"><img src="https://github.com/aitrailblazer/proofpay-hedera-x402/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <a href="https://hedera.com/"><img src="https://img.shields.io/badge/Hedera-Testnet-32E6A1?style=flat-square" alt="Hedera testnet"></a>
+  <a href="https://www.x402.org/"><img src="https://img.shields.io/badge/Protocol-x402-F2C665?style=flat-square" alt="x402 protocol"></a>
+  <a href="test/"><img src="https://img.shields.io/badge/tests-23%20passing-63E0B5?style=flat-square" alt="23 tests passing"></a>
+  <a href="https://github.com/aitrailblazer/proofpay-hedera-x402/releases/tag/demo-v3"><img src="https://img.shields.io/badge/demo-3%3A43-FF6433?style=flat-square" alt="3 minute 43 second demo"></a>
+</p>
+
+<p>
+  <a href="https://github.com/aitrailblazer/proofpay-hedera-x402/releases/download/demo-v3/ProofPay_Hedera_x402_Bounty_Demo_Enhanced_Voice.mp4">▶ Watch the demo</a>
+  &nbsp;·&nbsp;
+  <a href="https://hashscan.io/testnet/transaction/0.0.7162784-1784665192-906989595">✓ Verify the transaction</a>
+  &nbsp;·&nbsp;
+  <a href="https://proofpay-hedera.kindbeach-299ce8c4.eastus.azurecontainerapps.io/.well-known/proofpay">⚡ Try the live API</a>
+  &nbsp;·&nbsp;
+  <a href="https://aitrailblazer.github.io/deltasignal-atlas-codex-plugin/">⌁ Explore DeltaSignal</a>
+</p>
+
+<br>
+
+<a href="img/Scene01.jpg">
+  <img src="img/Scene01.jpg" width="760" alt="ProofPay turns an autonomous agent request and Hedera settlement into verified evidence with a signed receipt">
+</a>
+
+</div>
+
+---
+
+## The problem, in one look
+
+| A blockchain proves | A blockchain does **not** prove |
+|---|---|
+| Who paid | What the API returned |
+| Who received value | Which request was authorized |
+| Amount and consensus time | Which evidence and output were delivered |
+| Transaction success | Whether the response was changed later |
+
+**ProofPay closes that gap.** It creates a portable, independently verifiable
+receipt joining two worlds:
+
+```text
+Hedera settlement
+        +
+request → evidence → output → provenance → software version
+        =
+one payment-to-artifact proof
+```
+
+This matters for autonomous agents because “the payment succeeded” is not
+enough. A buyer, auditor, or downstream agent must also be able to establish
+what the payment unlocked.
+
+## What we built
+
+ProofPay demonstrates an autonomous agent purchasing deterministic
 [DeltaSignal ATLAS-7](https://aitrailblazer.github.io/deltasignal-atlas-codex-plugin/llms-full.txt)
-issuer evidence with HBAR on Hedera testnet. It extends a normal x402 payment
-with a signed receipt that binds the transaction to the request, evidence,
-delivered output, source date, and software version.
+issuer evidence with HBAR on Hedera testnet.
 
-## What is different
+<table>
+  <tr>
+    <td><strong>1 · Discover</strong><br>The agent reads the free catalog and requests a single-use quote.</td>
+    <td><strong>2 · Pay</strong><br>The protected resource returns HTTP 402 with exact Hedera payment terms.</td>
+  </tr>
+  <tr>
+    <td><strong>3 · Settle</strong><br>The buyer authorizes value; the facilitator verifies and sponsors the network fee.</td>
+    <td><strong>4 · Verify</strong><br>ProofPay checks the completed transaction against the Hedera mirror node.</td>
+  </tr>
+  <tr>
+    <td><strong>5 · Unlock</strong><br>The service releases the sealed DeltaSignal evidence only after settlement succeeds.</td>
+    <td><strong>6 · Prove</strong><br>An Ed25519 receipt binds payment, request, evidence, output, and provenance.</td>
+  </tr>
+</table>
 
-HashScan proves that value moved. ProofPay additionally proves what the payment
-unlocked. The server returns encrypted evidence after x402 settlement, verifies
-the transaction against the Hedera mirror node, then releases the decryption
-key and a signed Ed25519 receipt. The included verifier detects changed
-evidence, receipts, ciphertext, keys, or transaction bindings.
+<p align="center">
+  <a href="img/Scene03.jpg">
+    <img src="img/Scene03.jpg" width="700" alt="Six-stage ProofPay architecture from autonomous agent through Hedera settlement to signed evidence receipt">
+  </a>
+</p>
 
-DeltaSignal's live public service already exposes compatibility-first Base x402
-and an additive Circle Gateway lane. ProofPay is an isolated experiment showing
-how Hedera can become another distribution rail without moving credentials,
-wallet authority, or settlement logic into the DeltaSignal client. The bundled
-MSTR fixture was captured from DeltaSignal's filing-backed fundamentals route
-and retains its source endpoint, source date, quality flag, and snapshot hash.
+## Why Hedera
 
-## Quick start
+ProofPay uses Hedera because its payment model is unusually well suited to
+machine-to-machine purchases:
 
-Requirements: Node.js 20+, a funded Hedera testnet buyer account, a testnet
-seller account, and an x402 Hedera facilitator.
+- **Fast deterministic finality** — an agent does not need to wait through
+  probabilistic block confirmations.
+- **Predictable low fees** — useful for small, discrete evidence purchases.
+- **Sponsored network fees** — the buyer authorizes the value transfer while
+  the facilitator can pay the transaction fee.
+- **Public verification** — HashScan and mirror nodes make settlement evidence
+  independently queryable.
+- **Clear account roles** — the value buyer, seller, and fee payer can be
+  verified separately.
+
+Hedera is an **additive rail**, not a replacement for DeltaSignal’s existing
+Base, Circle, Stripe, or MPP integrations. The durable asset is the
+payment-to-artifact receipt model, which can work across rails.
+
+## Real testnet proof
+
+This repository does not stop at mock responses. It includes a completed,
+publicly verifiable Hedera testnet purchase.
+
+| Field | Performed transaction |
+|---|---|
+| Network | `hedera:testnet` |
+| Asset | HBAR — `0.0.0` |
+| Value buyer | `0.0.9676074` |
+| Seller | `0.0.9676073` |
+| Transaction fee payer | `0.0.7162784` |
+| Amount | `1,000,001 tinybar` |
+| Result | `SUCCESS` |
+| Consensus | `1784665197.689086104` |
+| Transaction | [`0.0.7162784-1784665192-906989595`](https://hashscan.io/testnet/transaction/0.0.7162784-1784665192-906989595) |
+
+**Reproduce the evidence checks:**
+
+```bash
+npm install
+npm run verify -- \
+  docs/evidence/proof-bundle-2026-07-21.json \
+  docs/evidence/proofpay-receipt-public-key.pem
+
+npm run demo:tamper
+```
+
+Expected result:
+
+```text
+16 / 16 checks passed
+Tampered artifact: REJECTED
+```
+
+The public
+[`proof bundle`](docs/evidence/proof-bundle-2026-07-21.json) contains the
+transaction, quote, receipt, ciphertext, decryption material, and deterministic
+evidence required for verification. It contains **no wallet private key** and
+**no receipt-signing private key**.
+
+## Try the deployed API
+
+The Azure backend is a public Hedera testnet preview:
+
+```bash
+export PROOFPAY="https://proofpay-hedera.kindbeach-299ce8c4.eastus.azurecontainerapps.io"
+
+# No payment
+curl "$PROOFPAY/health"
+curl "$PROOFPAY/.well-known/proofpay"
+curl "$PROOFPAY/catalog"
+
+# Quote creation is also free
+curl -X POST "$PROOFPAY/quotes" \
+  -H "content-type: application/json" \
+  -d '{"ticker":"MSTR","period":"2025-12-31"}'
+```
+
+Requesting the returned `paid_resource_url` without a payment produces a real
+HTTP `402` challenge containing:
+
+```json
+{
+  "scheme": "exact",
+  "network": "hedera:testnet",
+  "asset": "0.0.0",
+  "amount": "1000001",
+  "payTo": "0.0.9676073",
+  "extra": { "feePayer": "0.0.7162784" }
+}
+```
+
+Creating a quote does not move funds. Signing and submitting a payment requires
+explicit buyer authorization.
+
+## Run it locally
+
+Requirements:
+
+- Node.js 20+
+- funded Hedera testnet buyer account
+- separate testnet seller account
+- x402 Hedera facilitator
 
 ```bash
 npm install
 npm run keygen
 cp .env.example .env
-# Add account IDs and secret values to .env; never commit it.
+# Add local testnet values. Never commit .env.
 npm run check
 npm start
 ```
 
-In a second terminal:
+In another terminal:
 
 ```bash
 npm run buy
 npm run verify -- artifacts/live-proof/proof-bundle-....json
 ```
 
-Or run the server and buyer together with `npm run demo:live`.
+Or run both sides together:
 
-The buyer prints the real transaction ID and its
-`https://hashscan.io/testnet/transaction/...` URL.
+```bash
+npm run demo:live
+```
 
-On macOS, avoid plaintext credential files:
+### Secret-safe launch options
+
+The buyer’s private key belongs to the **paying agent**, not the ProofPay
+backend.
+
+On macOS:
 
 ```bash
 npm run configure:keychain
 npm run demo:keychain
 ```
 
-The configuration prompt hides the ECDSA private-key input and stores the
-buyer, separate seller, and receipt-signing values in macOS Keychain. Neither
-script prints the private values.
-
-For an Azure-hosted or Codex-operated demo, load the four credentials directly
-from Azure Key Vault without writing a `.env` file:
+With Azure Key Vault:
 
 ```bash
 az login
 AZURE_KEY_VAULT_NAME=aitrailblazerkeyvault npm run demo:keyvault
 ```
 
-The launcher reads `proofpay-hedera-buyer-account-id`,
-`proofpay-hedera-buyer-private-key-hex`,
-`proofpay-hedera-seller-account-id`, and
-`proofpay-receipt-private-key-pem-base64`. The values are passed only through
-the child-process environment and are never printed.
+The Key Vault launcher reads:
 
-## Environment
+- `proofpay-hedera-buyer-account-id`
+- `proofpay-hedera-buyer-private-key-hex`
+- `proofpay-hedera-seller-account-id`
+- `proofpay-receipt-private-key-pem-base64`
 
-See `.env.example`. `HEDERA_CLIENT_KEY` is required only by the buyer. The
-server needs `PAY_TO_ACCOUNT`, `FACILITATOR_URL`, and a separately generated
-receipt-signing key. Production deployments should load secrets from a secret
-manager rather than a file. Offline verification must receive the trusted
-receipt public key as the second argument; otherwise the verifier obtains it
-from the running server rather than trusting a key embedded in the bundle.
+Values are passed through the child-process environment and are never printed.
+The deployed resource server itself stores no buyer private key.
 
-## Demo flow (under five minutes)
+## Why this remains useful after the bounty
 
-1. Show `/catalog` and explain the artifact-binding gap (35 seconds).
-2. Run `npm run buy`; point out the HTTP 402 and HBAR settlement (75 seconds).
-3. Open the printed HashScan transaction (35 seconds).
-4. Show the decrypted MSTR filing evidence and receipt hashes (45 seconds).
-5. Run `npm run verify` and then a tamper test (45 seconds).
-6. Close with the DeltaSignal pay-per-evidence use case (30 seconds).
+ProofPay is not just a one-off payment demo. It gives DeltaSignal reusable
+infrastructure for:
 
-Current submission evidence is tracked in
-[`docs/ProofPay_Submission_Proof_Index.html`](docs/ProofPay_Submission_Proof_Index.html).
-Use the interactive
-[`ProofPay Demo Recording Console`](docs/ProofPay_Demo_Recording_Console.html)
-for the timed, step-by-step under-five-minute recording workflow.
+1. **Pay-per-query research** — agents purchase one evidence package instead of
+   committing to a subscription.
+2. **Auditable delivery** — every paid response can carry a portable receipt.
+3. **Cross-rail consistency** — Hedera, Base, Circle, and future rails can share
+   the same artifact-binding contract.
+4. **Agent-native distribution** — no checkout page, API-key exchange, or human
+   approval loop is required after wallet policy is configured.
+5. **Dispute and reconciliation evidence** — payment and delivery are joined by
+   cryptographic hashes rather than correlated only by logs.
 
-Watch or download the finished **3:43 captioned demo** from the
-[`demo-v3` GitHub release](https://github.com/aitrailblazer/proofpay-hedera-x402/releases/tag/demo-v3).
-The rendered video includes narration, burned-in captions, a branded opening
-slide, the payer, seller, amount, consensus timestamp and transaction ID from
-the performed Hedera testnet payment, verification and tamper evidence, and a
-closing thank-you slide. The enhanced narration uses phrase-directed Apple
-Samantha delivery, deliberate pauses, 48 kHz mastering, corrective EQ, gentle
-compression, and EBU R128 loudness normalization. A plain-text
-[`slide-by-slide transcript`](docs/ProofPay_Demo_Transcript.txt) documents every
-on-screen beat and narration line.
-The companion
-[`slide-by-slide visualization prompts`](docs/ProofPay_Demo_Visualization_Prompts.txt)
-specify the cinematic evidence layer, deterministic overlay boundary, motion
-cues, negative prompts, branding, and provenance requirements for every slide.
-For infographic production, use the
-[`scene descriptions and infographic briefs`](docs/ProofPay_Demo_Infographic_Scene_Briefs.txt),
-which define the story, diagram type, information hierarchy, composition,
-exact overlay fields, and generation prompt for all eleven scenes.
+<p align="center">
+  <a href="img/Scene10.jpg">
+    <img src="img/Scene10.jpg" width="700" alt="DeltaSignal pay-per-evidence product value: autonomous, auditable, composable, and publicly demonstrated">
+  </a>
+</p>
 
-### Visual storyboards
+## Demo and submission evidence
 
-The eleven generated infographics below correspond one-to-one with the demo
-scenes. Click any image to open the full 1024 × 1024 publication image. They
-are explanatory storyboards; the exact transaction values and authoritative evidence remain in
-the deterministic video overlays, proof bundle, mirror-node response, and
-HashScan record. Each publication image carries truthful embedded provenance
-metadata and has a matching receipt in
-[`img/provenance/`](img/provenance/manifest.json).
+| Artifact | Link |
+|---|---|
+| Enhanced 3:43 captioned demo | [Watch / download](https://github.com/aitrailblazer/proofpay-hedera-x402/releases/download/demo-v3/ProofPay_Hedera_x402_Bounty_Demo_Enhanced_Voice.mp4) |
+| Complete demo release | [`demo-v3`](https://github.com/aitrailblazer/proofpay-hedera-x402/releases/tag/demo-v3) |
+| Slide-by-slide transcript | [`ProofPay_Demo_Transcript.txt`](docs/ProofPay_Demo_Transcript.txt) |
+| Infographic scene briefs | [`ProofPay_Demo_Infographic_Scene_Briefs.txt`](docs/ProofPay_Demo_Infographic_Scene_Briefs.txt) |
+| Visualization prompts | [`ProofPay_Demo_Visualization_Prompts.txt`](docs/ProofPay_Demo_Visualization_Prompts.txt) |
+| Submission proof index | [`ProofPay_Submission_Proof_Index.html`](docs/ProofPay_Submission_Proof_Index.html) |
+| Recording console | [`ProofPay_Demo_Recording_Console.html`](docs/ProofPay_Demo_Recording_Console.html) |
+| Live-proof CI | [GitHub Actions run 29865554201](https://github.com/aitrailblazer/proofpay-hedera-x402/actions/runs/29865554201) |
 
-<table>
-  <tr>
-    <td width="50%" align="center">
-      <a href="img/Scene01.jpg"><img src="img/Scene01.jpg" width="100%" alt="Scene 1 — ProofPay opening: autonomous request becomes verified evidence"></a>
-      <br><strong>01 · ProofPay opening</strong><br>
-      Agent request → Hedera settlement → verified evidence.
-    </td>
-    <td width="50%" align="center">
-      <a href="img/Scene02.jpg"><img src="img/Scene02.jpg" width="100%" alt="Scene 2 — The payment-to-artifact verification gap"></a>
-      <br><strong>02 · The missing link</strong><br>
-      Cryptographically bind payment proof to delivered evidence.
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" align="center">
-      <a href="img/Scene03.jpg"><img src="img/Scene03.jpg" width="100%" alt="Scene 3 — End-to-end Hedera x402 architecture"></a>
-      <br><strong>03 · End-to-end architecture</strong><br>
-      Authorization, payment, verification, consensus, delivery, receipt.
-    </td>
-    <td width="50%" align="center">
-      <a href="img/Scene04.jpg"><img src="img/Scene04.jpg" width="100%" alt="Scene 4 — Completed autonomous purchase role map"></a>
-      <br><strong>04 · Completed purchase</strong><br>
-      Value buyer, seller, facilitator fee payer, and Hedera consensus.
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" align="center">
-      <a href="img/Scene05.jpg"><img src="img/Scene05.jpg" width="100%" alt="Scene 5 — Hedera sponsored-fee settlement sequence"></a>
-      <br><strong>05 · Sponsored-fee settlement</strong><br>
-      Buyer authorization and facilitator fee sponsorship remain distinct.
-    </td>
-    <td width="50%" align="center">
-      <a href="img/Scene06.jpg"><img src="img/Scene06.jpg" width="100%" alt="Scene 6 — Evidence unlock and signed receipt"></a>
-      <br><strong>06 · Evidence unlock</strong><br>
-      Mirror verification unlocks evidence and binds the receipt.
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" align="center">
-      <a href="img/Scene07.jpg"><img src="img/Scene07.jpg" width="100%" alt="Scene 7 — Public Hedera ledger and mirror-node proof"></a>
-      <br><strong>07 · Public ledger proof</strong><br>
-      Buyer, seller, fee payer, amount, result, and consensus.
-    </td>
-    <td width="50%" align="center">
-      <a href="img/Scene08.jpg"><img src="img/Scene08.jpg" width="100%" alt="Scene 8 — Sixteen independent proof-bundle checks"></a>
-      <br><strong>08 · Independent verification</strong><br>
-      Sixteen receipt, hash, artifact, and settlement checks.
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" align="center">
-      <a href="img/Scene09.jpg"><img src="img/Scene09.jpg" width="100%" alt="Scene 9 — Fail-closed evidence tamper detection"></a>
-      <br><strong>09 · Fail-closed integrity</strong><br>
-      A one-field mutation breaks canonical and evidence hashes.
-    </td>
-    <td width="50%" align="center">
-      <a href="img/Scene10.jpg"><img src="img/Scene10.jpg" width="100%" alt="Scene 10 — Durable DeltaSignal pay-per-evidence value"></a>
-      <br><strong>10 · Durable DeltaSignal value</strong><br>
-      Autonomous, auditable, composable pay-per-evidence delivery.
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" align="center">
-      <a href="img/Scene11.jpg"><img src="img/Scene11.jpg" width="100%" alt="Scene 11 — Public source, performed settlement, and verifiable delivery"></a>
-      <br><strong>11 · Public verification</strong><br>
-      Repository, Hedera transaction, proof bundle, and signed receipt.
-    </td>
-    <td width="50%" valign="middle">
-      <strong>Production references</strong><br><br>
-      <a href="docs/ProofPay_Demo_Transcript.txt">Narration transcript</a><br>
-      <a href="docs/ProofPay_Demo_Visualization_Prompts.txt">Visualization prompts</a><br>
-      <a href="docs/ProofPay_Demo_Infographic_Scene_Briefs.txt">Infographic scene briefs</a><br>
-      <a href="https://github.com/aitrailblazer/proofpay-hedera-x402/releases/tag/demo-v3">Captioned demo-v3 release</a>
-    </td>
-  </tr>
-</table>
-
-### Rebuild the enhanced Apple narration
-
-On macOS, place the eleven deterministic `scene-00.png` through
-`scene-10.png` frames in a frame directory, then run:
+The enhanced narration is generated locally with phrase-directed Apple Samantha,
+deliberate pauses, 48 kHz mastering, corrective EQ, gentle compression, and EBU
+R128 normalization. Rebuild it on macOS with:
 
 ```bash
 PROOFPAY_DEMO_FRAMES=artifacts/demo-video-v2 \
@@ -213,44 +285,62 @@ PROOFPAY_DEMO_OUTPUT=artifacts/demo-video-v3 \
 npm run demo:video
 ```
 
-The build reads phrase-level direction from
-[`scripts/demo-video-script.json`](scripts/demo-video-script.json), renders
-Apple Samantha locally at controlled rates, inserts deliberate pauses, masters
-each scene to 48 kHz mono with corrective EQ and gentle compression, normalizes
-to an EBU R128 target of -16 LUFS and -1.8 dBTP, retimes the SRT captions, and
-renders the final captioned video. The reproducible implementation is
-[`scripts/build-demo-video.ts`](scripts/build-demo-video.ts).
+See [`scripts/build-demo-video.ts`](scripts/build-demo-video.ts) and
+[`scripts/demo-video-script.json`](scripts/demo-video-script.json).
 
-## Live Hedera testnet proof
+<details>
+<summary><strong>Open the complete 11-scene visual storyboard</strong></summary>
 
-- Transaction:
-  [`0.0.7162784-1784665192-906989595`](https://hashscan.io/testnet/transaction/0.0.7162784-1784665192-906989595)
-- Public proof bundle:
-  [`docs/evidence/proof-bundle-2026-07-21.json`](docs/evidence/proof-bundle-2026-07-21.json)
-- Bundle SHA-256:
-  `8f48bdb232c8c908dc39f334bd12f7d83aae74798a8b4f4d52beb253435c2342`
-- Live-proof CI:
-  [GitHub Actions run 29865554201](https://github.com/aitrailblazer/proofpay-hedera-x402/actions/runs/29865554201)
+<br>
 
-The committed bundle contains public transaction, quote, receipt, ciphertext,
-decryption, and deterministic evidence material only. It contains no wallet or
-receipt-signing private key.
+The images below are explanatory storyboards. Exact transaction values remain
+authoritative only in the deterministic overlays, proof bundle, mirror-node
+response, and HashScan record. Each publication image contains truthful
+provenance metadata and has a receipt in
+[`img/provenance/`](img/provenance/manifest.json).
 
-The DeltaSignal logo and visual identity used in the demo are
-© 2026 DeltaSignal. All rights reserved. This notice asserts ownership in the
-published artifact; it is not a representation of government registration.
+<table>
+  <tr>
+    <td width="50%" align="center"><a href="img/Scene01.jpg"><img src="img/Scene01.jpg" width="100%" alt="Scene 1 — ProofPay opening"></a><br><strong>01 · ProofPay opening</strong></td>
+    <td width="50%" align="center"><a href="img/Scene02.jpg"><img src="img/Scene02.jpg" width="100%" alt="Scene 2 — Payment-to-artifact gap"></a><br><strong>02 · The missing link</strong></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="img/Scene03.jpg"><img src="img/Scene03.jpg" width="100%" alt="Scene 3 — End-to-end architecture"></a><br><strong>03 · Architecture</strong></td>
+    <td align="center"><a href="img/Scene04.jpg"><img src="img/Scene04.jpg" width="100%" alt="Scene 4 — Completed autonomous purchase"></a><br><strong>04 · Completed purchase</strong></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="img/Scene05.jpg"><img src="img/Scene05.jpg" width="100%" alt="Scene 5 — Sponsored-fee settlement"></a><br><strong>05 · Sponsored fees</strong></td>
+    <td align="center"><a href="img/Scene06.jpg"><img src="img/Scene06.jpg" width="100%" alt="Scene 6 — Evidence unlock and receipt"></a><br><strong>06 · Evidence unlock</strong></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="img/Scene07.jpg"><img src="img/Scene07.jpg" width="100%" alt="Scene 7 — Public ledger proof"></a><br><strong>07 · Ledger proof</strong></td>
+    <td align="center"><a href="img/Scene08.jpg"><img src="img/Scene08.jpg" width="100%" alt="Scene 8 — Sixteen verification checks"></a><br><strong>08 · Independent verification</strong></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="img/Scene09.jpg"><img src="img/Scene09.jpg" width="100%" alt="Scene 9 — Fail-closed integrity"></a><br><strong>09 · Tamper detection</strong></td>
+    <td align="center"><a href="img/Scene10.jpg"><img src="img/Scene10.jpg" width="100%" alt="Scene 10 — Durable DeltaSignal value"></a><br><strong>10 · DeltaSignal value</strong></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="img/Scene11.jpg"><img src="img/Scene11.jpg" width="100%" alt="Scene 11 — Public verification"></a><br><strong>11 · Public verification</strong></td>
+    <td valign="middle"><strong>Every claim is reproducible.</strong><br><br>Source code, settlement, proof bundle, verifier, transcript, prompts, and provenance receipts are public.</td>
+  </tr>
+</table>
 
-Run the deterministic offline verifier and tamper demonstration with:
+</details>
 
-```bash
-npm run verify -- docs/evidence/proof-bundle-2026-07-21.json docs/evidence/proofpay-receipt-public-key.pem
-npm run demo:tamper
-```
+## Evidence and security boundary
 
-## Evidence boundary
+- This is a **public Hedera testnet preview**, not a mainnet payment service.
+- The bundled MSTR snapshot is deterministic, public-safe demo evidence captured
+  from a filing-backed DeltaSignal response.
+- The fixture does not update automatically and is not investment advice.
+- No buyer key, seed phrase, facilitator secret, or receipt-signing private key
+  is committed.
+- Protected output is released only after successful settlement verification.
+- Replay protection is persistent and fail-closed.
+- Hedera packages currently carry upstream transitive advisories; review
+  `npm audit` before production use.
 
-The bundled MSTR snapshot is deterministic, public-safe bounty-demo evidence
-captured from a filing-backed DeltaSignal response. It is not live market data,
-not investment advice, and not a representation that the fixture updates
-automatically. Hedera packages currently carry upstream transitive security
-advisories; review `npm audit` before production use.
+The DeltaSignal logo and visual identity are © 2026 DeltaSignal. All rights
+reserved. This notice asserts ownership in the published artifacts; it is not a
+representation of government registration.
