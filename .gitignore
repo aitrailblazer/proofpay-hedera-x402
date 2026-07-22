@@ -6,6 +6,7 @@ artifacts/live-proof/*
 !artifacts/live-proof/.gitkeep
 artifacts/demo-video/
 artifacts/demo-video-v*/
+artifacts/demo-frames-v*/
 artifacts/infographic-source-png/
 *.log
 .DS_Store

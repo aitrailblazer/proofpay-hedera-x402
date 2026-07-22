@@ -260,10 +260,10 @@ const captionsPath = join(outputRoot, "captions.srt");
 const timelinePath = join(outputRoot, "timeline.json");
 const concatVideoPath = join(outputRoot, "concat.txt");
 const uncaptionedPath = join(outputRoot, "proofpay-demo-uncaptioned.mp4");
-const finalPath = join(
-  outputRoot,
-  "ProofPay_Hedera_x402_Bounty_Demo_Enhanced_Voice.mp4",
-);
+const finalFilename =
+  process.env.PROOFPAY_DEMO_FILENAME ??
+  "ProofPay_Hedera_x402_Bounty_Demo_Enhanced_Voice.mp4";
+const finalPath = join(outputRoot, finalFilename);
 await writeFile(captionsPath, captions.join("\n"));
 await writeFile(timelinePath, `${JSON.stringify(timeline, null, 2)}\n`);
 await writeFile(
