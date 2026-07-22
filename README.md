@@ -115,6 +115,92 @@ For infographic production, use the
 which define the story, diagram type, information hierarchy, composition,
 exact overlay fields, and generation prompt for all eleven scenes.
 
+### Visual storyboards
+
+The eleven generated infographics below correspond one-to-one with the demo
+scenes. Click any image to open the full 1024 × 1024 publication image. They
+are explanatory storyboards; the exact transaction values and authoritative evidence remain in
+the deterministic video overlays, proof bundle, mirror-node response, and
+HashScan record. Each PNG carries truthful embedded provenance metadata and has
+a matching receipt in [`img/provenance/`](img/provenance/manifest.json).
+
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <a href="img/Scene01.jpg"><img src="img/Scene01.jpg" width="100%" alt="Scene 1 — ProofPay opening: autonomous request becomes verified evidence"></a>
+      <br><strong>01 · ProofPay opening</strong><br>
+      Agent request → Hedera settlement → verified evidence.
+    </td>
+    <td width="50%" align="center">
+      <a href="img/Scene02.jpg"><img src="img/Scene02.jpg" width="100%" alt="Scene 2 — The payment-to-artifact verification gap"></a>
+      <br><strong>02 · The missing link</strong><br>
+      Cryptographically bind payment proof to delivered evidence.
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <a href="img/Scene03.jpg"><img src="img/Scene03.jpg" width="100%" alt="Scene 3 — End-to-end Hedera x402 architecture"></a>
+      <br><strong>03 · End-to-end architecture</strong><br>
+      Authorization, payment, verification, consensus, delivery, receipt.
+    </td>
+    <td width="50%" align="center">
+      <a href="img/Scene04.jpg"><img src="img/Scene04.jpg" width="100%" alt="Scene 4 — Completed autonomous purchase role map"></a>
+      <br><strong>04 · Completed purchase</strong><br>
+      Value buyer, seller, facilitator fee payer, and Hedera consensus.
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <a href="img/Scene05.jpg"><img src="img/Scene05.jpg" width="100%" alt="Scene 5 — Hedera sponsored-fee settlement sequence"></a>
+      <br><strong>05 · Sponsored-fee settlement</strong><br>
+      Buyer authorization and facilitator fee sponsorship remain distinct.
+    </td>
+    <td width="50%" align="center">
+      <a href="img/Scene06.jpg"><img src="img/Scene06.jpg" width="100%" alt="Scene 6 — Evidence unlock and signed receipt"></a>
+      <br><strong>06 · Evidence unlock</strong><br>
+      Mirror verification unlocks evidence and binds the receipt.
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <a href="img/Scene07.jpg"><img src="img/Scene07.jpg" width="100%" alt="Scene 7 — Public Hedera ledger and mirror-node proof"></a>
+      <br><strong>07 · Public ledger proof</strong><br>
+      Buyer, seller, fee payer, amount, result, and consensus.
+    </td>
+    <td width="50%" align="center">
+      <a href="img/Scene08.jpg"><img src="img/Scene08.jpg" width="100%" alt="Scene 8 — Sixteen independent proof-bundle checks"></a>
+      <br><strong>08 · Independent verification</strong><br>
+      Sixteen receipt, hash, artifact, and settlement checks.
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <a href="img/Scene09.jpg"><img src="img/Scene09.jpg" width="100%" alt="Scene 9 — Fail-closed evidence tamper detection"></a>
+      <br><strong>09 · Fail-closed integrity</strong><br>
+      A one-field mutation breaks canonical and evidence hashes.
+    </td>
+    <td width="50%" align="center">
+      <a href="img/Scene10.jpg"><img src="img/Scene10.jpg" width="100%" alt="Scene 10 — Durable DeltaSignal pay-per-evidence value"></a>
+      <br><strong>10 · Durable DeltaSignal value</strong><br>
+      Autonomous, auditable, composable pay-per-evidence delivery.
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <a href="img/Scene11.jpg"><img src="img/Scene11.jpg" width="100%" alt="Scene 11 — Public source, performed settlement, and verifiable delivery"></a>
+      <br><strong>11 · Public verification</strong><br>
+      Repository, Hedera transaction, proof bundle, and signed receipt.
+    </td>
+    <td width="50%" valign="middle">
+      <strong>Production references</strong><br><br>
+      <a href="docs/ProofPay_Demo_Transcript.txt">Narration transcript</a><br>
+      <a href="docs/ProofPay_Demo_Visualization_Prompts.txt">Visualization prompts</a><br>
+      <a href="docs/ProofPay_Demo_Infographic_Scene_Briefs.txt">Infographic scene briefs</a><br>
+      <a href="https://github.com/aitrailblazer/proofpay-hedera-x402/releases/tag/demo-v3">Captioned demo-v3 release</a>
+    </td>
+  </tr>
+</table>
+
 ### Rebuild the enhanced Apple narration
 
 On macOS, place the eleven deterministic `scene-00.png` through

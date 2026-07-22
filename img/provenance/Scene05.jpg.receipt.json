@@ -1,0 +1,24 @@
+{
+  "schema": "strategix.image.provenance.v1",
+  "owner": "AITrailblazer / DeltaSignal",
+  "copyright": "(c) 2026 AITrailblazer / DeltaSignal",
+  "notice": "User-generated ProofPay scene infographic. Verify provenance by receipt. Exact ledger facts live in deterministic evidence artifacts.",
+  "model": "unspecified (user-generated)",
+  "backend": "user-provided local artifact",
+  "receipt_id": "strategix-image-20260722-scene05-1c6c2a57a66f",
+  "prompt_sha256": "794b3cd2c6907366e0f045a83c6abdf3ae8bb2f47df6a17034adda191aba53dd",
+  "input_sha256": "1c6c2a57a66f138f255b2cdb716849a5cb3019d32aed72ef05e8c3bab570be48",
+  "created_at": "2026-07-22T07:56:10.669874Z",
+  "output_sha256": "dbf9fa2403099a24dd3db3d113770d42ac2e4f165b600f2613880a7ac004f434",
+  "scene": 5,
+  "image_path": "img/Scene05.jpg",
+  "source_format": "PNG",
+  "publication_format": "JPEG quality 90",
+  "prompt_source": "docs/ProofPay_Demo_Infographic_Scene_Briefs.txt",
+  "prompt_boundary": "Associated scene-generation prompt; original generator configuration was not supplied.",
+  "dimensions": {
+    "width": 1024,
+    "height": 1024
+  },
+  "visible_branding_verified": true
+}
