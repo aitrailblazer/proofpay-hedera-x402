@@ -290,7 +290,9 @@ npm run demo:video
 
 `burn` is the publication default: captions remain visibly embedded when
 YouTube CC is off. The final MP4 contains only H.264 video and AAC audio, so a
-second selectable subtitle stream cannot overlap the burned captions.
+second selectable subtitle stream cannot overlap the burned captions. The
+builder also normalizes all scene audio into one continuous AAC timeline from
+zero through the final frame, avoiding browser playback gaps at scene changes.
 
 See [`scripts/build-demo-video.ts`](scripts/build-demo-video.ts) and
 [`scripts/demo-video-script.json`](scripts/demo-video-script.json).

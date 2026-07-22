@@ -296,6 +296,7 @@ const captionsPath = join(outputRoot, "captions.srt");
 const timelinePath = join(outputRoot, "timeline.json");
 const concatVideoPath = join(outputRoot, "concat.txt");
 const uncaptionedPath = join(outputRoot, "proofpay-demo-uncaptioned.mp4");
+const continuousAudioPath = join(outputRoot, "proofpay-demo-continuous-audio.wav");
 const finalFilename =
   process.env.PROOFPAY_DEMO_FILENAME ??
   "ProofPay_Hedera_x402_Bounty_Demo_Enhanced_Voice.mp4";
@@ -337,6 +338,23 @@ run("ffmpeg", [
   "copy",
   uncaptionedPath,
 ]);
+const finalDuration = probeDuration(uncaptionedPath);
+run("ffmpeg", [
+  "-hide_banner",
+  "-loglevel",
+  "error",
+  "-y",
+  "-i",
+  uncaptionedPath,
+  "-vn",
+  "-af",
+  "aresample=async=1:first_pts=0,apad=pad_dur=5",
+  "-t",
+  String(finalDuration),
+  "-c:a",
+  "pcm_s16le",
+  continuousAudioPath,
+]);
 if (captionMode === "burn") {
   run("ffmpeg", [
     "-hide_banner",
@@ -345,6 +363,12 @@ if (captionMode === "burn") {
     "-y",
     "-i",
     uncaptionedPath,
+    "-i",
+    continuousAudioPath,
+    "-map",
+    "0:v:0",
+    "-map",
+    "1:a:0",
     "-vf",
     `subtitles=${captionsPath}:force_style='FontName=Arial,FontSize=16,PrimaryColour=&H00FFFFFF,BackColour=&H90000000,BorderStyle=3,Outline=0,Shadow=0,MarginV=38,Alignment=2'`,
     "-c:v",
@@ -356,7 +380,15 @@ if (captionMode === "burn") {
     "-pix_fmt",
     "yuv420p",
     "-c:a",
-    "copy",
+    "aac",
+    "-b:a",
+    "192k",
+    "-ar",
+    "48000",
+    "-ac",
+    "1",
+    "-t",
+    String(finalDuration),
     "-movflags",
     "+faststart",
     finalPath,
@@ -370,17 +402,25 @@ if (captionMode === "burn") {
     "-i",
     uncaptionedPath,
     "-i",
+    continuousAudioPath,
+    "-i",
     captionsPath,
     "-map",
     "0:v:0",
     "-map",
-    "0:a:0",
+    "1:a:0",
     "-map",
-    "1:0",
+    "2:0",
     "-c:v",
     "copy",
     "-c:a",
-    "copy",
+    "aac",
+    "-b:a",
+    "192k",
+    "-ar",
+    "48000",
+    "-ac",
+    "1",
     "-c:s",
     "mov_text",
     "-metadata:s:s:0",
@@ -389,12 +429,42 @@ if (captionMode === "burn") {
     "title=English captions",
     "-disposition:s:0",
     "0",
+    "-t",
+    String(finalDuration),
     "-movflags",
     "+faststart",
     finalPath,
   ]);
 } else {
-  await cp(uncaptionedPath, finalPath);
+  run("ffmpeg", [
+    "-hide_banner",
+    "-loglevel",
+    "error",
+    "-y",
+    "-i",
+    uncaptionedPath,
+    "-i",
+    continuousAudioPath,
+    "-map",
+    "0:v:0",
+    "-map",
+    "1:a:0",
+    "-c:v",
+    "copy",
+    "-c:a",
+    "aac",
+    "-b:a",
+    "192k",
+    "-ar",
+    "48000",
+    "-ac",
+    "1",
+    "-t",
+    String(finalDuration),
+    "-movflags",
+    "+faststart",
+    finalPath,
+  ]);
 }
 await cp(join(outputRoot, "scene-00.png"), join(outputRoot, "frame-title.png"));
 await cp(
