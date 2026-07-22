@@ -1,4 +1,5 @@
-import { execFileSync } from "node:child_process";
+import { execFileSync, spawnSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import { access, cp, mkdir, readFile, writeFile } from "node:fs/promises";
 import { basename, join, resolve } from "node:path";
 
@@ -24,14 +25,67 @@ const frameRoot = resolve(
   process.env.PROOFPAY_DEMO_FRAMES ?? "artifacts/demo-video-v2",
 );
 const audioRoot = join(outputRoot, "audio");
-const phraseRoot = join(audioRoot, "phrases");
 const segmentRoot = join(outputRoot, "segments");
 const scenes = JSON.parse(await readFile(scriptPath, "utf8")) as Scene[];
 const padBefore = 0.7;
 const padAfter = 1.5;
+const narrationVoiceMode =
+  process.env.PROOFPAY_NARRATION_VOICE_MODE ?? "system";
+
+if (!["system", "samantha"].includes(narrationVoiceMode)) {
+  throw new Error(
+    `Invalid PROOFPAY_NARRATION_VOICE_MODE=${narrationVoiceMode}; expected system or samantha`,
+  );
+}
 
 const run = (command: string, args: string[]) => {
   execFileSync(command, args, { stdio: "inherit" });
+};
+
+const sayVoiceArgs = (mode: string): string[] =>
+  mode === "system" ? [] : ["-v", "Samantha"];
+
+const detectSilences = (
+  path: string,
+  expectedCount: number,
+): { start: number; end: number; duration: number }[] => {
+  const result = spawnSync(
+    "ffmpeg",
+    [
+      "-hide_banner",
+      "-i",
+      path,
+      "-af",
+      "silencedetect=n=-42dB:d=0.35",
+      "-f",
+      "null",
+      "-",
+    ],
+    { encoding: "utf8" },
+  );
+  if (result.status !== 0) {
+    throw new Error(
+      `Silence detection failed for ${path}: ${result.stderr.trim()}`,
+    );
+  }
+  const starts = [
+    ...result.stderr.matchAll(/silence_start: ([0-9.]+)/g),
+  ].map((match) => Number(match[1]));
+  const ends = [...result.stderr.matchAll(/silence_end: ([0-9.]+)/g)].map(
+    (match) => Number(match[1]),
+  );
+  if (starts.length !== expectedCount || ends.length !== expectedCount) {
+    throw new Error(
+      `Expected ${expectedCount} phrase-boundary silences in ${path}, found ${starts.length} starts and ${ends.length} ends`,
+    );
+  }
+  return starts.map((start, index) => {
+    const end = ends[index];
+    if (end === undefined || end <= start) {
+      throw new Error(`Invalid silence boundary ${index} in ${path}`);
+    }
+    return { start, end, duration: end - start };
+  });
 };
 
 const probeDuration = (path: string): number =>
@@ -75,9 +129,87 @@ const exists = async (path: string): Promise<boolean> => {
 await Promise.all([
   mkdir(outputRoot, { recursive: true }),
   mkdir(audioRoot, { recursive: true }),
-  mkdir(phraseRoot, { recursive: true }),
   mkdir(segmentRoot, { recursive: true }),
 ]);
+
+const voiceProbeRoot = join(outputRoot, "voice-preflight");
+await mkdir(voiceProbeRoot, { recursive: true });
+const voiceProbeText =
+  "ProofPay turns one protected request into one verified Hedera payment and one evidence-backed response.";
+const systemProbePath = join(voiceProbeRoot, "system-voice.aiff");
+const samanthaProbePath = join(voiceProbeRoot, "compact-samantha-control.aiff");
+const systemProbePcmPath = join(voiceProbeRoot, "system-voice.pcm");
+const samanthaProbePcmPath = join(
+  voiceProbeRoot,
+  "compact-samantha-control.pcm",
+);
+
+run("say", [
+  ...sayVoiceArgs(narrationVoiceMode),
+  "-r",
+  "154",
+  "-o",
+  systemProbePath,
+  voiceProbeText,
+]);
+run("say", [
+  "-v",
+  "Samantha",
+  "-r",
+  "154",
+  "-o",
+  samanthaProbePath,
+  voiceProbeText,
+]);
+for (const [source, destination] of [
+  [systemProbePath, systemProbePcmPath],
+  [samanthaProbePath, samanthaProbePcmPath],
+] as const) {
+  run("ffmpeg", [
+    "-hide_banner",
+    "-loglevel",
+    "error",
+    "-y",
+    "-i",
+    source,
+    "-f",
+    "s16le",
+    "-ar",
+    "48000",
+    "-ac",
+    "1",
+    destination,
+  ]);
+}
+
+const pcmSha256 = async (path: string): Promise<string> =>
+  createHash("sha256").update(await readFile(path)).digest("hex");
+const systemProbeSha256 = await pcmSha256(systemProbePcmPath);
+const samanthaProbeSha256 = await pcmSha256(samanthaProbePcmPath);
+const systemProbeDuration = probeDuration(systemProbePath);
+const samanthaProbeDuration = probeDuration(samanthaProbePath);
+const voicePreflight = {
+  requested_mode: narrationVoiceMode,
+  expected_system_voice: "Ava (Premium)",
+  system_voice_pcm_sha256: systemProbeSha256,
+  compact_samantha_pcm_sha256: samanthaProbeSha256,
+  system_voice_duration_seconds: systemProbeDuration,
+  compact_samantha_duration_seconds: samanthaProbeDuration,
+  duration_delta_seconds: systemProbeDuration - samanthaProbeDuration,
+  differs_from_compact_samantha: systemProbeSha256 !== samanthaProbeSha256,
+};
+if (
+  narrationVoiceMode === "system" &&
+  !voicePreflight.differs_from_compact_samantha
+) {
+  throw new Error(
+    "System narration voice is identical to compact Samantha. Select Ava (Premium) in System Settings > Accessibility > Read & Speak, then retry.",
+  );
+}
+await writeFile(
+  join(voiceProbeRoot, "voice-preflight.json"),
+  `${JSON.stringify(voicePreflight, null, 2)}\n`,
+);
 
 const captions: string[] = [];
 const timeline: {
@@ -85,6 +217,7 @@ const timeline: {
   padBefore: number;
   padAfter: number;
   voice: string;
+  voicePreflight: typeof voicePreflight;
   mastering: string;
   scenes: {
     scene: number;
@@ -97,7 +230,11 @@ const timeline: {
   totalDuration: 0,
   padBefore,
   padAfter,
-  voice: "Apple Samantha (en_US), phrase-directed",
+  voice:
+    narrationVoiceMode === "system"
+      ? "macOS system voice (Ava Premium selected), scene-coherent Apple speech controls"
+      : "Apple compact Samantha (explicit fallback), scene-coherent Apple speech controls",
+  voicePreflight,
   mastering:
     "48 kHz mono; high-pass/EQ/gentle compression; EBU R128 -16 LUFS, -1.8 dBTP mastering target",
   scenes: [],
@@ -108,83 +245,55 @@ let captionIndex = 1;
 
 for (const scene of scenes) {
   const sceneName = String(scene.scene).padStart(2, "0");
-  const sceneParts: string[] = [];
+  const rawScenePath = join(audioRoot, `scene-${sceneName}-coherent.aiff`);
+  const speechControlPath = join(
+    audioRoot,
+    `scene-${sceneName}-speech-controls.txt`,
+  );
   const phraseDurations: number[] = [];
-
-  for (const [phraseIndex, phrase] of scene.phrases.entries()) {
-    const phraseName = `${sceneName}-${String(phraseIndex).padStart(2, "0")}`;
-    const rawPath = join(phraseRoot, `${phraseName}.aiff`);
-    const processedPath = join(phraseRoot, `${phraseName}.wav`);
-    const silencePath = join(phraseRoot, `${phraseName}-silence.wav`);
-
-    run("say", [
-      "-v",
-      "Samantha",
-      "-r",
-      String(phrase.rate),
-      "-o",
-      rawPath,
-      phrase.text,
-    ]);
-    run("ffmpeg", [
-      "-hide_banner",
-      "-loglevel",
-      "error",
-      "-y",
-      "-i",
-      rawPath,
-      "-af",
-      [
-        "aresample=48000",
-        "highpass=f=80",
-        "equalizer=f=220:t=q:w=1.2:g=-1.5",
-        "equalizer=f=3200:t=q:w=1:g=1.5",
-        "acompressor=threshold=0.1:ratio=2.5:attack=15:release=180:makeup=1.25",
-      ].join(","),
-      "-ar",
-      "48000",
-      "-ac",
-      "1",
-      "-c:a",
-      "pcm_s16le",
-      processedPath,
-    ]);
-    run("ffmpeg", [
-      "-hide_banner",
-      "-loglevel",
-      "error",
-      "-y",
-      "-f",
-      "lavfi",
-      "-i",
-      "anullsrc=r=48000:cl=mono",
-      "-t",
-      String(phrase.pauseAfterMs / 1000),
-      "-c:a",
-      "pcm_s16le",
-      silencePath,
-    ]);
-
-    phraseDurations.push(probeDuration(processedPath));
-    sceneParts.push(concatEntry(processedPath), concatEntry(silencePath));
+  const phrasePauseDurations: number[] = [];
+  const speechControls = scene.phrases
+    .map(
+      (phrase) =>
+        `[[rate ${phrase.rate}]] ${phrase.text} [[slnc ${Math.max(phrase.pauseAfterMs, 450)}]]`,
+    )
+    .join(" ");
+  await writeFile(speechControlPath, `${speechControls}\n`);
+  run("say", [
+    ...sayVoiceArgs(narrationVoiceMode),
+    "-o",
+    rawScenePath,
+    "-f",
+    speechControlPath,
+  ]);
+  const silenceBoundaries = detectSilences(
+    rawScenePath,
+    scene.phrases.length,
+  );
+  let detectedCursor = 0;
+  for (const boundary of silenceBoundaries) {
+    phraseDurations.push(boundary.start - detectedCursor);
+    phrasePauseDurations.push(boundary.duration);
+    detectedCursor = boundary.end;
   }
 
-  const concatPath = join(audioRoot, `scene-${sceneName}-concat.txt`);
   const narrationPath = join(audioRoot, `scene-${sceneName}-mastered.wav`);
-  await writeFile(concatPath, `${sceneParts.join("\n")}\n`);
   run("ffmpeg", [
     "-hide_banner",
     "-loglevel",
     "error",
     "-y",
-    "-f",
-    "concat",
-    "-safe",
-    "0",
     "-i",
-    concatPath,
+    rawScenePath,
     "-af",
-    "loudnorm=I=-16:TP=-1.8:LRA=7",
+    [
+      "aresample=48000",
+      "highpass=f=80",
+      "equalizer=f=220:t=q:w=1.2:g=-1.5",
+      "equalizer=f=3200:t=q:w=1:g=1.5",
+      "acompressor=threshold=0.1:ratio=2.5:attack=15:release=180:makeup=1.25",
+      "loudnorm=I=-16:TP=-1.8:LRA=7",
+    ].join(","),
     "-ar",
     "48000",
     "-ac",
@@ -209,7 +318,13 @@ for (const scene of scenes) {
       "",
     );
     captionIndex += 1;
-    phraseCursor += phraseDuration + phrase.pauseAfterMs / 1000;
+    const phrasePauseDuration = phrasePauseDurations[phraseIndex];
+    if (phrasePauseDuration === undefined) {
+      throw new Error(
+        `Missing pause duration for scene ${scene.scene}, phrase ${phraseIndex}`,
+      );
+    }
+    phraseCursor += phraseDuration + phrasePauseDuration;
   }
 
   const framePath = join(frameRoot, `scene-${sceneName}.png`);
@@ -230,9 +345,15 @@ for (const scene of scenes) {
     if (phraseDuration === undefined) {
       throw new Error(`Missing duration for scene ${scene.scene}, phrase ${phraseIndex}`);
     }
+    const phrasePauseDuration = phrasePauseDurations[phraseIndex];
+    if (phrasePauseDuration === undefined) {
+      throw new Error(
+        `Missing pause duration for scene ${scene.scene}, phrase ${phraseIndex}`,
+      );
+    }
     visualParts.push(
       concatEntry(selectedFramePath),
-      `duration ${phraseDuration + phrase.pauseAfterMs / 1000}`,
+      `duration ${phraseDuration + phrasePauseDuration}`,
     );
   }
   visualParts.push(

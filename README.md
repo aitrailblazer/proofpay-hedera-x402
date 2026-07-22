@@ -275,18 +275,35 @@ infrastructure for:
 | Recording console | [`ProofPay_Demo_Recording_Console.html`](docs/ProofPay_Demo_Recording_Console.html) |
 | Live-proof CI | [GitHub Actions run 29865554201](https://github.com/aitrailblazer/proofpay-hedera-x402/actions/runs/29865554201) |
 
-The enhanced narration is generated locally with phrase-directed Apple Samantha,
-deliberate pauses, 48 kHz mastering, corrective EQ, gentle compression, and EBU
-R128 normalization. Rebuild it on macOS with:
+The enhanced narration is generated locally with the macOS system voice set to
+**Ava (Premium)**, deliberate phrase timing, 48 kHz mastering, corrective EQ,
+gentle compression, and EBU R128 normalization. The builder intentionally omits
+`say -v`: on current macOS, explicitly requesting `Ava (Premium)` silently
+falls back to compact Samantha even though Ava is selected in Accessibility
+settings. A fail-closed preflight renders both the system voice and an explicit
+compact-Samantha control, compares decoded PCM fingerprints, and aborts if they
+are identical. Each scene is synthesized as one coherent utterance using
+Apple's native `[[rate]]` and `[[slnc]]` speech controls; caption and action
+timing is then derived from the actual waveform so prosody does not reset at
+every highlighted phrase.
+
+Before rebuilding on macOS, select **System Settings → Accessibility → Read &
+Speak → System voice → Ava (Premium)**. Then run:
 
 ```bash
 PROOFPAY_DEMO_FRAMES=artifacts/demo-frames-v5 npm run demo:frames
 PROOFPAY_DEMO_FRAMES=artifacts/demo-frames-v5 \
 PROOFPAY_DEMO_OUTPUT=artifacts/demo-video-v6 \
 PROOFPAY_DEMO_FILENAME=ProofPay_Hedera_x402_Bounty_Demo_YouTube_Edition.mp4 \
+PROOFPAY_NARRATION_VOICE_MODE=system \
 PROOFPAY_CAPTION_MODE=burn \
 npm run demo:video
 ```
+
+The preflight evidence is written to
+`<output>/voice-preflight/voice-preflight.json`. Set
+`PROOFPAY_NARRATION_VOICE_MODE=samantha` only when intentionally reproducing
+the older compact-Samantha narration.
 
 `burn` is the publication default: captions remain visibly embedded when
 YouTube CC is off. The final MP4 contains only H.264 video and AAC audio, so a
