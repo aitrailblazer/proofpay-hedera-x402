@@ -12,11 +12,11 @@
   <a href="https://hedera.com/"><img src="https://img.shields.io/badge/Hedera-Testnet-32E6A1?style=flat-square" alt="Hedera testnet"></a>
   <a href="https://www.x402.org/"><img src="https://img.shields.io/badge/Protocol-x402-F2C665?style=flat-square" alt="x402 protocol"></a>
   <a href="test/"><img src="https://img.shields.io/badge/tests-23%20passing-63E0B5?style=flat-square" alt="23 tests passing"></a>
-  <a href="https://github.com/aitrailblazer/proofpay-hedera-x402/releases/tag/demo-v4"><img src="https://img.shields.io/badge/demo-3%3A43-FF6433?style=flat-square" alt="3 minute 43 second infographic demo"></a>
+  <a href="https://github.com/aitrailblazer/proofpay-hedera-x402/releases/tag/demo-v5"><img src="https://img.shields.io/badge/demo-3%3A43-FF6433?style=flat-square" alt="3 minute 43 second YouTube-ready demo"></a>
 </p>
 
 <p>
-  <a href="https://github.com/aitrailblazer/proofpay-hedera-x402/releases/download/demo-v4/ProofPay_Hedera_x402_Bounty_Demo_Infographic_Edition.mp4">▶ Watch the demo</a>
+  <a href="https://github.com/aitrailblazer/proofpay-hedera-x402/releases/download/demo-v5/ProofPay_Hedera_x402_Bounty_Demo_YouTube_Edition.mp4">▶ Watch the demo</a>
   &nbsp;·&nbsp;
   <a href="https://hashscan.io/testnet/transaction/0.0.7162784-1784665192-906989595">✓ Verify the transaction</a>
   &nbsp;·&nbsp;
@@ -266,8 +266,8 @@ infrastructure for:
 
 | Artifact | Link |
 |---|---|
-| Infographic 3:43 captioned demo | [Watch / download](https://github.com/aitrailblazer/proofpay-hedera-x402/releases/download/demo-v4/ProofPay_Hedera_x402_Bounty_Demo_Infographic_Edition.mp4) |
-| Complete demo release | [`demo-v4`](https://github.com/aitrailblazer/proofpay-hedera-x402/releases/tag/demo-v4) |
+| YouTube-ready 3:43 captioned demo | [Watch / download](https://github.com/aitrailblazer/proofpay-hedera-x402/releases/download/demo-v5/ProofPay_Hedera_x402_Bounty_Demo_YouTube_Edition.mp4) |
+| Complete demo release | [`demo-v5`](https://github.com/aitrailblazer/proofpay-hedera-x402/releases/tag/demo-v5) |
 | Slide-by-slide transcript | [`ProofPay_Demo_Transcript.txt`](docs/ProofPay_Demo_Transcript.txt) |
 | Infographic scene briefs | [`ProofPay_Demo_Infographic_Scene_Briefs.txt`](docs/ProofPay_Demo_Infographic_Scene_Briefs.txt) |
 | Visualization prompts | [`ProofPay_Demo_Visualization_Prompts.txt`](docs/ProofPay_Demo_Visualization_Prompts.txt) |
@@ -280,11 +280,17 @@ deliberate pauses, 48 kHz mastering, corrective EQ, gentle compression, and EBU
 R128 normalization. Rebuild it on macOS with:
 
 ```bash
-PROOFPAY_DEMO_FRAMES=artifacts/demo-frames-v4 \
-PROOFPAY_DEMO_OUTPUT=artifacts/demo-video-v4 \
-PROOFPAY_DEMO_FILENAME=ProofPay_Hedera_x402_Bounty_Demo_Infographic_Edition.mp4 \
+PROOFPAY_DEMO_FRAMES=artifacts/demo-frames-v5 npm run demo:frames
+PROOFPAY_DEMO_FRAMES=artifacts/demo-frames-v5 \
+PROOFPAY_DEMO_OUTPUT=artifacts/demo-video-v6 \
+PROOFPAY_DEMO_FILENAME=ProofPay_Hedera_x402_Bounty_Demo_YouTube_Edition.mp4 \
+PROOFPAY_CAPTION_MODE=burn \
 npm run demo:video
 ```
+
+`burn` is the publication default: captions remain visibly embedded when
+YouTube CC is off. The final MP4 contains only H.264 video and AAC audio, so a
+second selectable subtitle stream cannot overlap the burned captions.
 
 See [`scripts/build-demo-video.ts`](scripts/build-demo-video.ts) and
 [`scripts/demo-video-script.json`](scripts/demo-video-script.json).

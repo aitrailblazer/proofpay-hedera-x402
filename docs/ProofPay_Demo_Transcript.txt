@@ -8,8 +8,8 @@ Voice: Apple Samantha (en_US), generated locally with macOS text to speech
 Delivery: phrase-directed at 146–158 words per minute with deliberate pauses
 Mastering: 48 kHz mono, high-pass filter, corrective EQ, gentle compression,
 EBU R128 normalization targeting -16 LUFS and -1.8 dBTP before AAC encoding
-Captions: timed per spoken phrase and burned into the final video; SRT included
-Visuals: all 11 scene infographics are integrated into the Lit slide frames
+Captions: one timed phrase is burned into the picture; no subtitle stream
+Visuals: all 11 infographics plus phrase-synchronized action highlights
 
 PUBLIC PAYMENT EVIDENCE USED IN THIS VIDEO
 

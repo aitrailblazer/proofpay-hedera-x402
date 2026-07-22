@@ -1,5 +1,5 @@
 import { execFileSync } from "node:child_process";
-import { cp, mkdir, readFile, writeFile } from "node:fs/promises";
+import { access, cp, mkdir, readFile, writeFile } from "node:fs/promises";
 import { basename, join, resolve } from "node:path";
 
 type Phrase = {
@@ -62,6 +62,15 @@ const srtTime = (seconds: number): string => {
 
 const concatEntry = (path: string) =>
   `file '${resolve(path).replaceAll("'", "'\\''")}'`;
+
+const exists = async (path: string): Promise<boolean> => {
+  try {
+    await access(path);
+    return true;
+  } catch {
+    return false;
+  }
+};
 
 await Promise.all([
   mkdir(outputRoot, { recursive: true }),
@@ -205,19 +214,44 @@ for (const scene of scenes) {
 
   const framePath = join(frameRoot, `scene-${sceneName}.png`);
   const localFramePath = join(outputRoot, `scene-${sceneName}.png`);
+  const visualConcatPath = join(outputRoot, `scene-${sceneName}-visuals.txt`);
   const segmentPath = join(segmentRoot, `scene-${sceneName}.mp4`);
   await cp(framePath, localFramePath);
+  const visualParts = [concatEntry(localFramePath), `duration ${padBefore}`];
+  for (const [phraseIndex, phrase] of scene.phrases.entries()) {
+    const phraseFramePath = join(
+      frameRoot,
+      `scene-${sceneName}-phrase-${String(phraseIndex).padStart(2, "0")}.png`,
+    );
+    const selectedFramePath = (await exists(phraseFramePath))
+      ? phraseFramePath
+      : framePath;
+    const phraseDuration = phraseDurations[phraseIndex];
+    if (phraseDuration === undefined) {
+      throw new Error(`Missing duration for scene ${scene.scene}, phrase ${phraseIndex}`);
+    }
+    visualParts.push(
+      concatEntry(selectedFramePath),
+      `duration ${phraseDuration + phrase.pauseAfterMs / 1000}`,
+    );
+  }
+  visualParts.push(
+    concatEntry(localFramePath),
+    `duration ${padAfter}`,
+    concatEntry(localFramePath),
+  );
+  await writeFile(visualConcatPath, `${visualParts.join("\n")}\n`);
   run("ffmpeg", [
     "-hide_banner",
     "-loglevel",
     "error",
     "-y",
-    "-loop",
-    "1",
-    "-framerate",
-    "30",
+    "-f",
+    "concat",
+    "-safe",
+    "0",
     "-i",
-    localFramePath,
+    visualConcatPath,
     "-itsoffset",
     String(padBefore),
     "-i",
@@ -234,6 +268,8 @@ for (const scene of scenes) {
     "yuv420p",
     "-r",
     "30",
+    "-fps_mode",
+    "cfr",
     "-c:a",
     "aac",
     "-b:a",
@@ -264,6 +300,12 @@ const finalFilename =
   process.env.PROOFPAY_DEMO_FILENAME ??
   "ProofPay_Hedera_x402_Bounty_Demo_Enhanced_Voice.mp4";
 const finalPath = join(outputRoot, finalFilename);
+const captionMode = process.env.PROOFPAY_CAPTION_MODE ?? "burn";
+if (!["burn", "soft", "none"].includes(captionMode)) {
+  throw new Error(
+    `Invalid PROOFPAY_CAPTION_MODE=${captionMode}; expected burn, soft, or none`,
+  );
+}
 await writeFile(captionsPath, captions.join("\n"));
 await writeFile(timelinePath, `${JSON.stringify(timeline, null, 2)}\n`);
 await writeFile(
@@ -295,29 +337,65 @@ run("ffmpeg", [
   "copy",
   uncaptionedPath,
 ]);
-run("ffmpeg", [
-  "-hide_banner",
-  "-loglevel",
-  "error",
-  "-y",
-  "-i",
-  uncaptionedPath,
-  "-vf",
-  `subtitles=${captionsPath}:force_style='FontName=Arial,FontSize=17,PrimaryColour=&H00FFFFFF,OutlineColour=&H00101010,BorderStyle=1,Outline=2,Shadow=0,MarginV=24,Alignment=2'`,
-  "-c:v",
-  "libx264",
-  "-preset",
-  "medium",
-  "-crf",
-  "18",
-  "-pix_fmt",
-  "yuv420p",
-  "-c:a",
-  "copy",
-  "-movflags",
-  "+faststart",
-  finalPath,
-]);
+if (captionMode === "burn") {
+  run("ffmpeg", [
+    "-hide_banner",
+    "-loglevel",
+    "error",
+    "-y",
+    "-i",
+    uncaptionedPath,
+    "-vf",
+    `subtitles=${captionsPath}:force_style='FontName=Arial,FontSize=16,PrimaryColour=&H00FFFFFF,BackColour=&H90000000,BorderStyle=3,Outline=0,Shadow=0,MarginV=38,Alignment=2'`,
+    "-c:v",
+    "libx264",
+    "-preset",
+    "medium",
+    "-crf",
+    "18",
+    "-pix_fmt",
+    "yuv420p",
+    "-c:a",
+    "copy",
+    "-movflags",
+    "+faststart",
+    finalPath,
+  ]);
+} else if (captionMode === "soft") {
+  run("ffmpeg", [
+    "-hide_banner",
+    "-loglevel",
+    "error",
+    "-y",
+    "-i",
+    uncaptionedPath,
+    "-i",
+    captionsPath,
+    "-map",
+    "0:v:0",
+    "-map",
+    "0:a:0",
+    "-map",
+    "1:0",
+    "-c:v",
+    "copy",
+    "-c:a",
+    "copy",
+    "-c:s",
+    "mov_text",
+    "-metadata:s:s:0",
+    "language=eng",
+    "-metadata:s:s:0",
+    "title=English captions",
+    "-disposition:s:0",
+    "0",
+    "-movflags",
+    "+faststart",
+    finalPath,
+  ]);
+} else {
+  await cp(uncaptionedPath, finalPath);
+}
 await cp(join(outputRoot, "scene-00.png"), join(outputRoot, "frame-title.png"));
 await cp(
   join(root, "docs", "ProofPay_Demo_Transcript.txt"),
@@ -340,6 +418,7 @@ console.log(
       duration_seconds: probeDuration(finalPath),
       voice: timeline.voice,
       mastering: timeline.mastering,
+      caption_mode: captionMode,
     },
     null,
     2,
