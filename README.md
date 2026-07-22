@@ -121,8 +121,9 @@ The eleven generated infographics below correspond one-to-one with the demo
 scenes. Click any image to open the full 1024 × 1024 publication image. They
 are explanatory storyboards; the exact transaction values and authoritative evidence remain in
 the deterministic video overlays, proof bundle, mirror-node response, and
-HashScan record. Each PNG carries truthful embedded provenance metadata and has
-a matching receipt in [`img/provenance/`](img/provenance/manifest.json).
+HashScan record. Each publication image carries truthful embedded provenance
+metadata and has a matching receipt in
+[`img/provenance/`](img/provenance/manifest.json).
 
 <table>
   <tr>
