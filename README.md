@@ -125,7 +125,7 @@ publicly verifiable Hedera testnet purchase.
 **Reproduce the evidence checks:**
 
 ```bash
-npm install
+npm ci
 npm run verify -- \
   docs/evidence/proof-bundle-2026-07-21.json \
   docs/evidence/proofpay-receipt-public-key.pem
@@ -191,7 +191,7 @@ Requirements:
 - x402 Hedera facilitator
 
 ```bash
-npm install
+npm ci
 npm run keygen
 cp .env.example .env
 # Add local testnet values. Never commit .env.
@@ -228,7 +228,7 @@ With Azure Key Vault:
 
 ```bash
 az login
-AZURE_KEY_VAULT_NAME=aitrailblazerkeyvault npm run demo:keyvault
+AZURE_KEY_VAULT_NAME=YOUR_VAULT_NAME npm run demo:keyvault
 ```
 
 The Key Vault launcher reads:
@@ -272,8 +272,7 @@ infrastructure for:
 | Infographic scene briefs | [`ProofPay_Demo_Infographic_Scene_Briefs.txt`](docs/ProofPay_Demo_Infographic_Scene_Briefs.txt) |
 | Visualization prompts | [`ProofPay_Demo_Visualization_Prompts.txt`](docs/ProofPay_Demo_Visualization_Prompts.txt) |
 | Submission proof index | [`ProofPay_Submission_Proof_Index.html`](docs/ProofPay_Submission_Proof_Index.html) |
-| Recording console | [`ProofPay_Demo_Recording_Console.html`](docs/ProofPay_Demo_Recording_Console.html) |
-| Live-proof CI | [GitHub Actions run 29865554201](https://github.com/aitrailblazer/proofpay-hedera-x402/actions/runs/29865554201) |
+| Build, tests, and public-safety CI | [GitHub Actions](https://github.com/aitrailblazer/proofpay-hedera-x402/actions/workflows/ci.yml) |
 
 The enhanced narration is generated locally with the macOS system voice set to
 **Ava (Premium)**, deliberate phrase timing, 48 kHz mastering, corrective EQ,
@@ -362,10 +361,12 @@ provenance metadata and has a receipt in
 - The fixture does not update automatically and is not investment advice.
 - No buyer key, seed phrase, facilitator secret, or receipt-signing private key
   is committed.
+- `npm run check:public` rejects tracked secret files, private-key material,
+  credential patterns, generated release artifacts, and absolute user paths.
 - Protected output is released only after successful settlement verification.
 - Replay protection is persistent and fail-closed.
-- Hedera packages currently carry upstream transitive advisories; review
-  `npm audit` before production use.
+- See [`SECURITY.md`](SECURITY.md) for the supported security boundary and
+  responsible disclosure process.
 
 The DeltaSignal logo and visual identity are © 2026 DeltaSignal. All rights
 reserved. This notice asserts ownership in the published artifacts; it is not a

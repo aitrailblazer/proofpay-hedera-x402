@@ -29,6 +29,7 @@ const app = createApp(config, { quotes, finalizer, signer });
 serve(
   {
     fetch: (request) => app.fetch(normalizeForwardedRequest(request)),
+    hostname: "0.0.0.0",
     port: config.port,
   },
   ({ port }) => {

@@ -4,7 +4,12 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 
-VAULT_NAME="${AZURE_KEY_VAULT_NAME:-aitrailblazerkeyvault}"
+VAULT_NAME="${AZURE_KEY_VAULT_NAME:-}"
+
+if [[ -z "$VAULT_NAME" ]]; then
+  echo "Set AZURE_KEY_VAULT_NAME to your Key Vault resource name." >&2
+  exit 1
+fi
 
 command -v az >/dev/null 2>&1 || {
   echo "Azure CLI is required for the Key Vault demo." >&2
